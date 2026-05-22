@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-GOG-FIRST Game Gallery Scraper - WEB ONLY VERSION (SLUG & SEARCH OPTIMIZED)
+GOG-FIRST Game Gallery Scraper - WEB ONLY VERSION (URL-PARSED & MOBILE OPTIMIZED)
 Output: indexwebonly.html | Cache: cachewebonly.json
 Python 3.11+
 """
@@ -19,7 +19,6 @@ from typing import Dict, List, Optional, Tuple
 
 import requests
 from bs4 import BeautifulSoup
-from rapidfuzz import fuzz
 from requests.adapters import HTTPAdapter
 from tqdm import tqdm
 from urllib3.util.retry import Retry
@@ -54,17 +53,6 @@ logger = logging.getLogger("gog_gallery_web")
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-# MAPPATURA MANUALE (Risolve istantaneamente le eccezioni di GOG fornite dall'utente)
-GOG_HARD_MAPPING = {
-    "alone in the dark 1": "alone_in_the_dark_the_trilogy_123",
-    "alone in the dark 2": "alone_in_the_dark_the_trilogy_123",
-    "alone in the dark 3": "alone_in_the_dark_the_trilogy_123",
-    "amerzone the explorer's legacy": "amerzone_the_explorer_legacy",
-    "amerzone": "amerzone_the_explorer_legacy",
-    "beyond good & evil": "beyond_good_and_evil",
-    "beyond good and evil": "beyond_good_and_evil"
-}
-
 # ============================================================
 # SESSIONE HTTP
 # ============================================================
@@ -80,10 +68,6 @@ def build_session() -> requests.Session:
     session.mount("https://", adapter)
     session.mount("http://", adapter)
     session.headers.update(HEADERS)
-    
-    session.cookies.set('wants_mature_content', '1', domain='store.steampowered.com')
-    session.cookies.set('birthtime', '288028801', domain='store.steampowered.com')
-    session.cookies.set('lastagecheckage', '1-0-1990', domain='store.steampowered.com')
     return session
 
 session = build_session()
@@ -106,29 +90,16 @@ def save_cache(data: Dict):
 cache = load_cache()
 
 # ============================================================
-# HELPERS DI PULIZIA E SLUGIFY MULTI-FORMATO
+# HELPERS MULTIMEDIALI ED ESTRAZIONE STRUTTURE GOG
 # ============================================================
 
-def clean_game_name(name: str) -> str:
-    s = name.replace("™", "").replace("®", "").replace("©", "")
-    s = re.sub(r"\s*[\(\[][0-9]{4}[\)\]]\s*", " ", s)  # Rimuove gli anni (1999)
-    s = s.replace(":", " ").replace("-", " ")
-    s = re.sub(r"\b(v1\.[0-9]|v[0-9]|remastered|remaster)\b", " ", s, flags=re.IGNORECASE)
-    return " ".join(s.split())
-
-def generate_slug_variants(cleaned_name: str) -> List[str]:
-    """Genera varianti di slug sia con trattino basso che alto per massima compatibilità GOG"""
-    base = cleaned_name.lower().strip().replace("'", "")
-    # Sostituisce caratteri speciali non alfa-numerici
-    base = re.sub(r"[^\w\s]", "", base)
-    
-    slug_underscore = re.sub(r"\s+", "_", base)
-    slug_dash = re.sub(r"\s+", "-", base)
-    
-    # Ritorna una lista rimuovendo duplicati mantenendo l'ordine
-    return list(dict.fromkeys([slug_underscore, slug_dash]))
+def likely_gameplay(url: str) -> bool:
+    u = url.lower()
+    blacklist = ["logo", "banner", "wallpaper", "hero", "capsule", "keyart", "portrait", "library", "icon", "product_tile"]
+    return not any(x in u for x in blacklist)
 
 def extract_highest_res_from_srcset(srcset_text: str) -> Optional[str]:
+    """ Estrae l'URL pulito ad alta risoluzione dai blocchi srcset responsivi di GOG """
     if not srcset_text:
         return None
     candidates = []
@@ -138,7 +109,7 @@ def extract_highest_res_from_srcset(srcset_text: str) -> Optional[str]:
             url = tokens[0].strip()
             if url.startswith("//"):
                 url = "https:" + url
-            if "gog-statics.com" in url or "steamstatic" in url:
+            if "gog-statics.com" in url:
                 candidates.append(url)
     if candidates:
         high_res = [c for c in candidates if "_2x" in c or "1600" in c or "product_card_v2_mobile_slider" not in c]
@@ -148,57 +119,19 @@ def extract_highest_res_from_srcset(srcset_text: str) -> Optional[str]:
     return None
 
 # ============================================================
-# INTERFACCIA DI RICERCA INTERNA ED ESTRAZIONE
+# SCRAPER DIRETTO DA URL SPECIFICO
 # ============================================================
 
-def gog_scrape_direct_web(game_name: str) -> Tuple[Optional[str], List[str]]:
-    cleaned_name = clean_game_name(game_name)
-    lookup_key = cleaned_name.lower()
-    
-    # Verifica immediata della tabella di mappatura hardcoded per i link forniti
-    slugs_to_try = []
-    if lookup_key in GOG_HARD_MAPPING:
-        slugs_to_try.append(GOG_HARD_MAPPING[lookup_key])
-    else:
-        slugs_to_try.extend(generate_slug_variants(cleaned_name))
-
-    html_text = ""
-    # Tentativo di recupero tramite gli slug diretti calcolati o mappati
-    for slug in slugs_to_try:
-        url = f"https://www.gog.com/en/game/{slug}"
-        try:
-            r = session.get(url, timeout=REQUEST_TIMEOUT)
-            if r.status_code == 200:
-                html_text = r.text
-                break
-        except Exception:
-            continue
-
-    # FALLBACK SE L'URL DIRETTO FALLISCE: Interrogazione del catalogo AJAX di ricerca di GOG
-    if not html_text:
-        try:
-            search_api_url = f"https://www.gog.com/en/games?query={requests.utils.quote(cleaned_name)}"
-            r_search = session.get(search_api_url, timeout=REQUEST_TIMEOUT)
-            if r_search.status_code == 200:
-                soup_s = BeautifulSoup(r_search.text, "html.parser")
-                found_tile = soup_s.select_one("a[href*='/en/game/']")
-                if found_tile:
-                    target_path = found_tile.get("href")
-                    url = "https://www.gog.com" + target_path if target_path.startswith("/") else target_path
-                    r_final = session.get(url, timeout=REQUEST_TIMEOUT)
-                    if r_final.status_code == 200:
-                        html_text = r_final.text
-        except Exception as e:
-            logger.debug(f"Ricerca AJAX fallita per {game_name}: {e}")
-
-    # PARSING DELL'HTML OTTENUTO (Dalle strutture responsive reali del sito)
-    if html_text:
-        try:
+def gog_scrape_by_direct_url(url: str) -> Tuple[Optional[str], List[str]]:
+    try:
+        r = session.get(url, timeout=REQUEST_TIMEOUT)
+        if r.status_code == 200:
+            html_text = r.text
             soup = BeautifulSoup(html_text, "html.parser")
             screenshots = []
             cover = None
             
-            # 1. Recupero della Cover principale (Analisi approfondita dei tag picture e og:image)
+            # 1. Parsing della Cover Principale (Dai metadati o dal tag picture di testa)
             cover_picture = soup.select_one(".product-tile__cover-picture, .js-cover-image, meta[property='og:image']")
             if cover_picture:
                 if cover_picture.name == 'meta':
@@ -212,29 +145,27 @@ def gog_scrape_direct_web(game_name: str) -> Tuple[Optional[str], List[str]]:
                             cover = res_url
                             break
 
-            # 2. Recupero degli screenshots dai tag picture interni allo slider multimediale
+            # 2. Parsing degli Screenshot dallo slider responsivo
             slider_items = soup.select("[selenium-id='ProductCardThumbnailsSlider'] picture, .productcard-thumbnails-slider__slide picture")
             for item in slider_items:
                 for source in item.select("source, img"):
                     srcset = source.get("srcset") or source.get("src")
                     img_url = extract_highest_res_from_srcset(srcset)
                     if img_url and img_url not in screenshots:
-                        # Ricostruisce l'immagine a piena risoluzione eliminando i suffissi per dispositivi mobile
-                        img_url = re.sub(r'_(product_card_v2_mobile_slider|product_card_v2_thumbnail)_\d+\.(jpg|png|webp)', r'.\2', img_url)
+                        # Pulisce i suffissi mobile lasciando il nome del file intatto per il data-full
+                        img_url = re.sub(r'_(product_card_v2_mobile_slider|product_card_v2_thumbnail|thumbnail)_\d+x?\d*\.(jpg|png|webp)', r'.\2', img_url)
                         img_url = img_url.replace("_product_card_v2_mobile_slider_450", "").replace("_product_card_v2_mobile_slider_639", "")
                         screenshots.append(img_url)
 
-            # 3. Rete a strascico regex finale in caso di slider renderizzato puramente via JavaScript di terze parti
+            # 3. Rete a strascico regex di emergenza (Se i moduli JS nascondono lo slider responsivo)
             if not screenshots:
                 links_in_raw = re.findall(r'(https?://images\.gog-statics\.com/[a-f0-9_]+(?:\.[a-zA-Z0-9]+)?)', html_text)
                 for raw_url in links_in_raw:
                     if raw_url not in screenshots and "product_tile" not in raw_url:
                         screenshots.append(raw_url)
 
-            # Pulizia e ordinamento liste
-            blacklist = ["logo", "banner", "wallpaper", "hero", "capsule", "keyart", "portrait", "library", "icon", "product_tile"]
-            screenshots = [x for x in screenshots if not any(b in x.lower() for b in blacklist)]
-            
+            # Filtri di pulizia
+            screenshots = [x for x in screenshots if likely_gameplay(x)]
             if cover in screenshots:
                 screenshots.remove(cover)
 
@@ -242,67 +173,25 @@ def gog_scrape_direct_web(game_name: str) -> Tuple[Optional[str], List[str]]:
                 cover = screenshots[0]
 
             return cover, screenshots
-        except Exception as e:
-            logger.warning(f"Errore durante l'estrazione dati GOG per {game_name}: {e}")
-
-    return None, []
-
-# ============================================================
-# FALLBACK IN CASO DI GIOCHI MANCANTI SU GOG (STEAM STORE)
-# ============================================================
-
-def steam_search_fallback(game_name: str) -> Tuple[Optional[str], List[str]]:
-    cleaned_name = clean_game_name(game_name)
-    try:
-        url = f"https://store.steampowered.com/search/?term={requests.utils.quote(cleaned_name)}"
-        r = session.get(url, timeout=REQUEST_TIMEOUT)
-        soup = BeautifulSoup(r.text, "html.parser")
-        rows = soup.select("a.search_result_row")
-        
-        best_url, best_score = None, 0
-        for row in rows[:5]:
-            title = row.select_one("span.title")
-            if not title: continue
-            score = fuzz.token_set_ratio(cleaned_name.lower(), title.text.lower())
-            if score > best_score:
-                best_score, best_url = score, row.get("href")
-        
-        if best_url and best_score >= 55:
-            r = session.get(best_url, timeout=REQUEST_TIMEOUT)
-            soup = BeautifulSoup(r.text, "html.parser")
-            cover_el = soup.select_one("img.game_header_image_full")
-            cover = cover_el.get("src") if cover_el else None
-            
-            screenshots = []
-            for a in soup.select("a.highlight_screenshot_link"):
-                href = a.get("href")
-                if href: 
-                    screenshots.append(href.split('?')[0].replace(".600x338", ""))
-            return cover, screenshots
-    except Exception: pass
+    except Exception as e:
+        logger.warning(f"Errore caricamento diretto per URL {url}: {e}")
     return None, []
 
 # ============================================================
 # PIPELINE DI ELABORAZIONE GIOCO
 # ============================================================
 
-def process_game(game_name: str) -> Dict:
-    # Ignora la cache se precedentemente salvata senza dati multimediali validi
+def process_game(game_name: str, url: str) -> Dict:
+    # Controlla se il gioco è già memorizzato correttamente con i suoi screenshot
     if game_name in cache and cache[game_name].get("found") and len(cache[game_name].get("screenshots", [])) >= MIN_SCREENSHOTS:
         return cache[game_name]
 
-    logger.info(f"Elaborazione in corso: {game_name}")
-    result = {"name": game_name, "cover": None, "screenshots": [], "found": False}
+    logger.info(f"Scraping diretto: {game_name}")
+    result = {"name": game_name, "url": url, "cover": None, "screenshots": [], "found": False}
 
-    cover_url, screenshots = gog_scrape_direct_web(game_name)
+    cover_url, screenshots = gog_scrape_by_direct_url(url)
 
-    # Se GOG è incompleto o bloccato, lancia la ricerca incrociata su Steam
-    if len(screenshots) < MIN_SCREENSHOTS or not cover_url:
-        s_cover, s_shots = steam_search_fallback(game_name)
-        if not cover_url: cover_url = s_cover
-        screenshots.extend(s_shots)
-
-    # Rimozione duplicati a parità di URL e limitazione a 6 elementi per riga HTML
+    # Rimuove i duplicati mantenendo l'ordine e imposta il limite a 6 screenshot per gioco
     screenshots = list(dict.fromkeys(screenshots))[:6]
 
     if cover_url: result["cover"] = cover_url
@@ -318,7 +207,7 @@ def process_game(game_name: str) -> Dict:
     return result
 
 # ============================================================
-# GENERATORE GALLERIA HTML (indexwebonly.html)
+# GENERATORE HTML (RISPARMIO DATI CELLULARE + LAZY LOADING)
 # ============================================================
 
 def generate_html(results: List[Dict]):
@@ -328,50 +217,69 @@ def generate_html(results: List[Dict]):
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Cloud Game Gallery - Web Only</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Game Gallery - Mobile Ultra-Light</title>
 <style>
 *{box-sizing:border-box;}
-body{background:#111;color:#eee;font-family:Arial,sans-serif;margin:30px;padding-bottom:80px;}
-h1{margin-bottom:30px;font-size:28px;border-bottom:2px solid #222;padding-bottom:12px;}
-.game{background:#1a1a1a;border:1px solid #2c2c2c;border-radius:10px;padding:20px;margin-bottom:25px;}
-.title{font-size:22px;font-weight:bold;margin-bottom:15px;color:#fff;}
-.row{display:grid;grid-template-columns:220px repeat(auto-fill, minmax(260px, 1fr));gap:12px;}
-.cover{width:220px;height:150px;object-fit:cover;border-radius:6px;cursor:pointer;border:1px solid #ffaa00;background:#222;}
-.shot{width:100%;height:150px;object-fit:cover;border-radius:6px;cursor:pointer;border:1px solid #252525;background:#222;}
+body{background:#111;color:#eee;font-family:Arial,sans-serif;margin:15px;padding-bottom:80px;}
+h1{margin-bottom:20px;font-size:24px;border-bottom:2px solid #222;padding-bottom:12px;}
+.game{background:#1a1a1a;border:1px solid #2c2c2c;border-radius:10px;padding:15px;margin-bottom:25px;}
+.title{font-size:18px;font-weight:bold;margin-bottom:12px;color:#fff;}
+.row{display:grid;grid-template-columns:140px repeat(auto-fill, minmax(130px, 1fr));gap:10px;}
+.cover{width:140px;height:100px;object-fit:cover;border-radius:6px;cursor:pointer;border:1px solid #ffaa00;background:#222;}
+.shot{width:100%;height:100px;object-fit:cover;border-radius:6px;cursor:pointer;border:1px solid #252525;background:#222;}
 img{transition:transform 0.2s, border-color 0.2s;}
 img:hover{transform:scale(1.02);border-color:#666;}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:999;cursor:pointer;}
-.lightbox img{max-width:92%;max-height:92%;border-radius:6px;box-shadow:0 0 20px rgba(255,255,255,0.1);}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:none;justify-content:center;align-items:center;z-index:999;cursor:pointer;}
+.lightbox img{max-width:95%;max-height:92%;border-radius:6px;box-shadow:0 0 20px rgba(0,0,0,0.7);}
+@media(max-width: 600px) {
+  .row { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  .cover { width: 100%; }
+}
 </style>
 </head>
 <body>
 <div id="lightbox" class="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
-<h1>Galleria Multimediale (Web Only Mode)</h1>
+<h1>Galleria Multimediale (Mobile Optimized)</h1>
 """
 
     for game in valid:
         html += f'<div class="game">\n<div class="title">{game["name"]}</div>\n<div class="row">\n'
         
+        # Salviamo la risorsa 1080p nativa dentro data-full. Il browser scaricherà solo la miniatura iniziale leggera
         if game.get("cover"):
-            html += f'  <img class="cover" src="{game["cover"]}" title="Cover" onerror="handleBrokenLink(this)" onclick="openLb(this.src)">\n'
+            html += f'  <img class="cover" src="{game["cover"]}" data-full="{game["cover"]}" loading="lazy" title="Cover" onerror="handleBrokenLink(this)" onclick="openLb(this)">\n'
             
         for shot in game.get("screenshots", []):
-            html += f'  <img loading="lazy" class="shot" src="{shot}" onerror="handleBrokenLink(this)" onclick="openLb(this.src)">\n'
+            # OTTIMIZZAZIONE GB CELLULARE: Chiede al server GOG una versione ridotta (thumbnail) per consumare meno dati nella griglia
+            thumb_url = shot
+            if "gog-statics.com" in shot and not any(x in shot for x in ["_thumbnail", "_slider"]):
+                thumb_url = shot.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png")
+
+            html += f'  <img class="shot" src="{thumb_url}" data-full="{shot}" loading="lazy" onerror="handleBrokenLink(this)" onclick="openLb(this)">\n'
             
         html += "</div>\n</div>\n"
 
     html += """
 <script>
-function openLb(src){
-    if(!src || src.includes('placehold.co')) return;
-    document.getElementById("lb-img").src = src;
+function openLb(element){
+    var fullSrc = element.getAttribute("data-full");
+    if(!fullSrc || fullSrc.includes('placehold.co')) return;
+    
+    var lbImg = document.getElementById("lb-img");
+    lbImg.src = fullSrc; // Il download dell'immagine da 2MB scatta SOLO ADESSO al click dell'utente
     document.getElementById("lightbox").style.display = "flex";
 }
 function handleBrokenLink(image) {
     image.onerror = null;
-    image.src = "https://placehold.co/600x400/222/777?text=No+Preview";
-    image.style.cursor = "default";
-    image.style.borderColor = "#333";
+    var fullSrc = image.getAttribute("data-full");
+    // Se la miniatura generata restituisce un errore 404, carica automaticamente il file originale a piena risoluzione
+    if (image.src !== fullSrc) {
+        image.src = fullSrc;
+    } else {
+        image.src = "https://placehold.co/300x200/222/777?text=No+Preview";
+        image.style.cursor = "default";
+    }
 }
 </script>
 </body>
@@ -386,32 +294,41 @@ function handleBrokenLink(image) {
 
 def main():
     if not GAMES_FILE.exists():
-        logger.error(f"File {GAMES_FILE.name} mancante nella directory di esecuzione.")
+        logger.error(f"File {GAMES_FILE.name} mancante.")
         return
 
+    # Lettura e parsing strutturato della lista (Separazione Nome - URL)
+    games_to_process = []
     with open(GAMES_FILE, "r", encoding="utf-8") as f:
-        games = [x.strip() for x in f.readlines() if x.strip()]
+        for line in f:
+            line = line.strip()
+            if line and " - " in line:
+                parts = line.split(" - ", 1)
+                name = parts[0].strip()
+                url = parts[1].strip()
+                if url.startswith("http"):
+                    games_to_process.append((name, url))
 
-    logger.info(f"Lancio dello scraping web ottimizzato per i classici. Totale giochi: {len(games)}")
+    logger.info(f"Trovati {len(games_to_process)} giochi validi nel file txt. Avvio estrazione diretta...")
     results = []
     found_count = 0
 
-    for game in tqdm(games, desc="Download in corso"):
+    for name, url in tqdm(games_to_process, desc="Scraping"):
         try:
-            res = process_game(game)
+            res = process_game(name, url)
             results.append(res)
             if res["found"]: found_count += 1
             
+            # Rigenera progressivamente l'HTML ogni 5 giochi elaborati
             if len(results) % 5 == 0: generate_html(results)
             time.sleep(1.2)
         except Exception as e:
-            logger.exception(f"Errore critico sul gioco {game}: {e}")
+            logger.exception(f"Errore sul gioco {name}: {e}")
 
     generate_html(results)
     save_cache(cache)
-    print(f"\nProcedura completata!\nGiochi scansionati: {len(games)}\nTrovati con successo: {found_count}")
-    print(f"File Cache aggiornato: {CACHE_FILE.name}")
-    print(f"File Interfaccia Web generato: {HTML_OUTPUT}")
+    print(f"\nScraping concluso!\nGiochi processati: {len(games_to_process)}\nTrovati: {found_count}")
+    print(f"Cache aggiornata: {CACHE_FILE.name}\nHTML Generato (Mobile Ready): {HTML_OUTPUT}")
 
 if __name__ == "__main__":
     main()
