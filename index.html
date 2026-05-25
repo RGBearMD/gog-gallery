@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GOG personal Library Showcase</title>
+<title>GOG Personal Library Showcase</title>
 <style>
-*{box-sizing:border-box; scroll-behavior: smooth;}
-body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;padding-bottom:80px;}
+* { box-sizing: border-box; scroll-behavior: smooth; }
+body { background: #111; color: #eee; font-family: Arial, sans-serif; margin: 20px; padding-bottom: 80px; }
 
 /* CASSETTA DI DROP (SCHERMATA INIZIALE) */
 .welcome-container {
-  max-width: 600px; margin: 100px auto; text-align: center; background: #1a1a1a;
+  max-width: 600px; margin: 60px auto; text-align: center; background: #1a1a1a;
   padding: 40px; border-radius: 16px; border: 2px dashed #333; transition: border-color 0.3s;
 }
 .welcome-container.dragover { border-color: #ffaa00; background: rgba(255,170,0,0.02); }
@@ -27,7 +27,7 @@ body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;paddi
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* INTERFACCIA GALLERIA ( nascosta all'inizio se vuota ) */
+/* INTERFACCIA GALLERIA */
 #gallery-app { display: none; }
 .header-container { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #222; padding-bottom: 15px; margin-bottom: 25px; }
 .btn-index { background: #ffaa00; color: #111; border: none; padding: 10px 20px; font-size: 14px; font-weight: bold; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
@@ -35,155 +35,53 @@ body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;paddi
 .btn-reset { background: #333; color: #ccc; border: none; padding: 10px 15px; font-size: 14px; border-radius: 20px; cursor: pointer; margin-right: 10px; }
 .btn-reset:hover { background: #ff5555; color: #fff; }
 
-/* SIDEBAR E STRUTTURA GRIGLIA (Mantenuti dal design precedente) */
+/* SIDEBAR E STRUTTURA GRIGLIA */
 .sidebar { position: fixed; top: 0; right: -350px; width: 350px; height: 100%; background: rgba(20,20,20,0.95); backdrop-filter: blur(10px); box-shadow: -5px 0 25px rgba(0,0,0,0.5); z-index: 1001; transition: right 0.3s; display: flex; flex-direction: column; border-left: 1px solid #2c2c2c; }
 .sidebar.open { right: 0; }
 .sidebar-content { padding: 10px 0; overflow-y: auto; flex-grow: 1; }
 .index-item { display: block; padding: 12px 20px; color: #ccc; text-decoration: none; font-size: 14px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .index-item:hover { background: rgba(255,170,0,0.1); color: #ffaa00; }
 
-.game{background:#1a1a1a;border:1px solid #2c2c2c;border-radius:12px;padding:20px;margin-bottom:30px; scroll-margin-top: 30px;}
-.game-title{font-size:20px;font-weight:bold;margin-bottom:15px;color:#fff;border-left:4px solid #ffaa00;padding-left:10px;}
-.row{display: grid; grid-template-columns: 180px repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; width: 100%;}
-.cover{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid #ffaa00;background:#222;}
-.shot{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer;border:1px solid #333;background:#222;}
+.game { background: #1a1a1a; border: 1px solid #2c2c2c; border-radius: 12px; padding: 20px; margin-bottom: 30px; scroll-margin-top: 30px; }
+.game-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #fff; border-left: 4px solid #ffaa00; padding-left: 10px;}
+.row { display: grid; grid-template-columns: 180px repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; width: 100%; }
+.cover { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid #ffaa00; background: #222; }
+.shot { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 1px solid #333; background: #222; }
 .cover, .shot { transition: transform 0.2s, border-color 0.2s; }
 .cover:hover, .shot:hover { transform: scale(1.03); border-color: #888; }
 
-/* LIGHTBOX (Dal design precedente) */
-.lightbox{position:fixed;inset:0;background:rgba(10,10,10,0.96);display:none;justify-content:center;align-items:center;z-index:999;}
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; background: rgba(10,10,10,0.96); display: none; justify-content: center; align-items: center; z-index: 999; }
 .lightbox-content-wrapper { position: relative; max-width: 85%; max-height: 85%; display: flex; justify-content: center; align-items: center; }
-.lightbox img{ max-width:100%; max-height:85vh; border-radius:12px; display: block; }
+.lightbox img { max-width: 100%; max-height: 85vh; border-radius: 12px; display: block; }
 .lb-btn { position: absolute; background: rgba(40,40,40,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); width: 54px; height: 54px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000; }
 .lb-btn svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 2.5; }
 .lb-btn:hover { background: rgba(255,170,0,0.9); border-color: #ffaa00; }
 .lb-prev { left: -80px; } .lb-next { right: -80px; } .lb-close { top: -65px; right: 0; }
-@media(max-width: 900px) { .lb-prev { left: 15px; bottom: -80px; top: auto; } .lb-next { right: 15px; bottom: -80px; top: auto; } .sidebar { width: 100%; right: -100%; } }
-@media(max-width: 800px) { .row { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); } .cover { grid-column: span 2; height: 140px; } }
 
-/* Stile del pulsante mostra/nascondi */
+/* BLOCCO DEL CODICE OPEN SOURCE */
 .btn-toggle-code {
-  wth: 100%;
-  background: #222;
-  color: #ccc;
-  border: 1px solid #333;
-  padding: 12px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  transition: background 0.2s, color 0.2s;
+  width: 100%; background: #222; color: #ccc; border: 1px solid #333; padding: 12px 15px;
+  border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; font-size: 14px; transition: background 0.2s, color 0.2s;
 }
-.btn-toggle-code:hover {
-  background: #2a2a2a;
-  color: #ffaa00;
-}
-
-/* Stile della scatola del codice */
-pre {
-  background: #0a0a0a;
-  border: 1px solid #222;
-  border-radius: 6px;
-  padding: 15px;
-  max-height: 250px; /* Evita che il codice allunghi troppo la pagina */
-  overflow-y: auto;  /* Aggiunge la barra di scorrimento interna */
-  margin: 0;
-}
-code {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 13px;
-  color: #44ff44; /* Colore stile terminale (verde), o #eee se lo vuoi bianco */
-  line-height: 1.5;
-}
-
-/* Posizionamento del wrapper relativo per contenere il pulsante Copia */
-#codeBlockWrapper {
-  position: relative;
-}
-
-/* Stile del pulsante Copia rapida */
-#btn-copy-script {
-  position: absolute;
-  top: 35px; /* Lo allinea sotto il testo descrittivo */
-  right: 10px;
-  background: #333;
-  color: #fff;
-  border: 1px solid #444;
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 10;
-}
-#btn-copy-script:hover {
-  background: #ffaa00;
-  color: #111;
-  border-color: #ffaa00;
-}
-#btn-copy-script.copied {
-  background: #22c55e;
-  color: #fff;
-  border-color: #22c55e;
-}
-/* Stile del pulsante mostra/nascondi */
-.btn-toggle-code {
-  width: 100%;
-  background: #222;
-  color: #ccc;
-  border: 1px solid #333;
-  padding: 12px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  transition: background 0.2s, color 0.2s;
-}
-.btn-toggle-code:hover {
-  background: #2a2a2a;
-  color: #ffaa00;
-}
-
-/* Trasformiamo la textarea in un blocco di codice scuro e pulito */
+.btn-toggle-code:hover { background: #2a2a2a; color: #ffaa00; }
+#codeBlockWrapper { position: relative; margin-top: 15px; }
 #js-script-content {
-  width: 100%;
-  height: 250px;
-  background: #0a0a0a;
-  color: #44ff44; /* Colore verde codice */
-  border: 1px solid #222;
-  border-radius: 6px;
-  padding: 15px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 13px;
-  line-height: 1.5;
-  resize: none; /* Impedisce all'utente di ridimensionarla manualmente */
-  outline: none;
+  width: 100%; height: 250px; background: #0a0a0a; color: #44ff44; border: 1px solid #222;
+  border-radius: 6px; padding: 15px; font-family: 'Courier New', Courier, monospace;
+  font-size: 13px; line-height: 1.5; resize: none; outline: none;
 }
-
-/* Posizionamento del wrapper e del pulsante Copia */
-#codeBlockWrapper { position: relative; }
 #btn-copy-script {
-  position: absolute;
-  top: 35px;
-  right: 15px;
-  background: #333;
-  color: #fff;
-  border: 1px solid #444;
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 10;
+  position: absolute; top: 35px; right: 15px; background: #333; color: #fff; border: 1px solid #444;
+  padding: 6px 12px; font-size: 12px; font-weight: bold; border-radius: 4px; cursor: pointer;
+  transition: all 0.2s; z-index: 10;
 }
 #btn-copy-script:hover { background: #ffaa00; color: #111; border-color: #ffaa00; }
 #btn-copy-script.copied { background: #22c55e; color: #fff; border-color: #22c55e; }
+
+@media(max-width: 900px) { .lb-prev { left: 15px; bottom: -80px; top: auto; } .lb-next { right: 15px; bottom: -80px; top: auto; } .sidebar { width: 100%; right: -100%; } }
+@media(max-width: 800px) { .row { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); } .cover { grid-column: span 2; height: 140px; } }
 </style>
 </head>
 <body>
@@ -200,28 +98,27 @@ code {
   
   <div style="text-align: left; background: #222; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #ffaa00;">
     <h3 style="margin: 0 0 10px 0; font-size: 16px; color: #fff;">📋 Istruzioni per iniziare:</h3>
-    <ol style="margin: 0; padding-left: 20px; color: #ccc; font-size: 14px; line-height: 1.6;">
+    <ol style="margin: 0; padding-left: 20px; color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 15px;">
       <li>Accedi al tuo account su <a href="https://www.gog.com" target="_blank" style="color: #ffaa00; text-decoration: none; font-weight: bold;">GOG.com</a>.</li>
       <li>Apri la console del browser (premi <b>F12</b> oppure tasto destro -> <i>Ispeziona</i> e vai sulla scheda <i>Console</i>).</li>
-      <li>Incolla lo script di estrazione JavaScript e premi <b>Invio</b>.</li>
+      <li>Incolla lo script di estrazione JavaScript sviluppato qui sotto e premi <b>Invio</b>.</li>
+      <li>Attendi il completamento e scarica il file <b>gog_rich_library.json</b> sul tuo computer.</li>
+      <li>Trascina quel file nel riquadro in basso per generare la tua galleria.</li>
+    </ol>
 
-    <!-- PULSANTE MOSTRA-->
-<div style="margin-top: 25px; text-align: left;">
-<button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
-  <span>💻 Visualizza lo Script (Open Source)</span>
-  <span id="arrow-code">▼</span>
-</button>
-  
-  <div id="codeBlockWrapper" style="display: none; margin-top: 10px; position: relative;">
-    <p style="color: #888; font-size: 13px; margin: 0 0 8px 0;">
-      Questo è l'esatto codice che andrai ad eseguire. Puoi copiarlo o verificarlo riga per riga:
-    </p>
-    
-    <button type="button" id="btn-copy-script" onclick="copyCodeToClipboard()">📋 Copia Codice</button>
-    
-    <textarea id="js-script-content" readonly autocomplete="off" spellcheck="false">
-
-(async function() {
+    <button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
+      <span>💻 Visualizza lo Script (Open Source)</span>
+      <span id="arrow-code">▼</span>
+    </button>
+      
+    <div id="codeBlockWrapper" style="display: none;">
+      <p style="color: #888; font-size: 13px; margin: 0 0 8px 0;">
+        Questo è l'esatto codice che andrai ad eseguire. Puoi copiarlo o verificarlo riga per riga:
+      </p>
+      
+      <button type="button" id="btn-copy-script" onclick="copyCodeToClipboard()">📋 Copia Codice</button>
+      
+      <textarea id="js-script-content" readonly autocomplete="off" spellcheck="false">(async function() {
   // 1. Creazione dell'interfaccia visiva (Overlay) su GOG
   const overlay = document.createElement('div');
   overlay.style = "position:fixed;inset:0;background:rgba(17,17,17,0.95);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;";
@@ -245,14 +142,12 @@ code {
   const rawGames = [];
   const finalGames = [];
 
-  // Funzione per scaricare l'indice dei giochi dall'account
   async function fetchPage(pageNum) {
     const url = `/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page=${pageNum}&sortBy=title&totalPages=1`;
     const resp = await fetch(url);
     return await resp.json();
   }
 
-  // Funzione per scaricare i dettagli (inclusi gli screenshot) di un singolo gioco
   async function fetchGameDetails(gameId) {
     try {
       const resp = await fetch(`https://api.gog.com/products/${gameId}`);
@@ -264,7 +159,6 @@ code {
   }
 
   try {
-    // --- FASE 1: Lettura dell'elenco completo dei giochi ---
     textEl.innerText = "Lettura del catalogo giochi...";
     const firstPageData = await fetchPage(1);
     const totalPages = firstPageData.totalPages || 1;
@@ -286,45 +180,38 @@ code {
 
     for (let page = 2; page <= totalPages; page++) {
       textEl.innerText = `Analisi catalogo: pagina ${page} di ${totalPages}...`;
-      barEl.style.width = `${(page / totalPages) * 30}%`; // Dedichiamo il primo 30% della barra al catalogo
+      barEl.style.width = `${(page / totalPages) * 30}%`;
       const pageData = await fetchPage(page);
       saveRawProducts(pageData.products);
     }
 
-    // --- FASE 2: Estrazione Screenshot Gioco per Gioco ---
     const totalGames = rawGames.length;
     textEl.innerText = `Trovati ${totalGames} giochi. Recupero degli screenshot...`;
 
     for (let i = 0; i < totalGames; i++) {
       const game = rawGames[i];
-      
-      // Aggiornamento progresso reale
-      const progressPercent = 30 + ((i + 1) / totalGames) * 70; // Il restante 70% della barra
+      const progressPercent = 30 + ((i + 1) / totalGames) * 70;
       barEl.style.width = `${progressPercent}%`;
       textEl.innerText = `Elaborazione: ${i + 1} / ${totalGames} giochi`;
       subEl.innerText = `In corso: ${game.name}`;
 
-      // Interroga l'API pubblica per gli screenshot
       const details = await fetchGameDetails(game.id);
       let screenshotsArray = [];
 
       if (details && details.images && details.images.screenshots) {
-        // Estrae i link a risoluzione massima
         screenshotsArray = details.images.screenshots.map(s => {
           let url = s.formatted_images && s.formatted_images.formatter ? s.formatted_images.formatter : s.src;
           if (url && url.includes('_{formatter}')) {
-            url = url.replace('_{formatter}', ''); // Rimuove il placeholder se presente
+            url = url.replace('_{formatter}', '');
           }
           return url;
         }).filter(Boolean);
       }
 
-      // Se l'API non ha screenshot, usa la copertina modificata come fallback elastico
       if (screenshotsArray.length === 0 && game.cover) {
          screenshotsArray.push(game.cover);
       }
 
-      // Salva nel formato perfetto richiesto dalla tua galleria
       finalGames.push({
         name: game.name,
         url: game.url,
@@ -332,13 +219,11 @@ code {
         screenshots: screenshotsArray
       });
 
-      // Micro-pausa per non sovraccaricare le API di GOG (evita i blocchi di sicurezza)
       if (i % 5 === 0) {
         await new Promise(r => setTimeout(r, 80));
       }
     }
 
-    // --- FASE 3: Generazione e Download del file JSON definitivo ---
     textEl.innerText = "Compilazione del file JSON...";
     await new Promise(r => setTimeout(r, 400));
 
@@ -364,22 +249,14 @@ code {
     subEl.innerText = "Riprova rinfrescando la pagina di GOG.";
     setTimeout(() => overlay.remove(), 5000);
   }
-})();
-
-    </textarea>
-  </div>
-</div>
-<!--FINE PULSANTE MOSTRA-->
-
-      <li>Attendi il completamento e scarica il file <b>games_data.json</b> sul tuo computer.</li>
-      <li>Trascina quel file qui sotto per generare la tua galleria permanente.</li>
-    </ol>
+})();</textarea>
+    </div>
   </div>
 
   <div style="padding:40px; border:1px dashed #444; border-radius:8px; background:#111; cursor:pointer; transition: border-color 0.2s;" 
        onclick="document.getElementById('file-input').click()"
        onmouseover="this.style.borderColor='#666'" 
-       onmouseout=\"this.style.borderColor='#444'\">
+       onmouseout="this.style.borderColor='#444'">
     <svg style="width:32px; height:32px; fill:none; stroke:#aaa; stroke-width:2; margin-bottom:10px;" viewBox="0 0 24 24">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
     </svg>
@@ -417,14 +294,14 @@ code {
 
   <div id="gallery-content"></div>
 </div>
-VERSIONE 4.0 - 250526
+
 <script>
 let currentActiveElement = null;
 const welcomeScreen = document.getElementById('welcome-screen');
 const galleryApp = document.getElementById('gallery-app');
 const loadingOverlay = document.getElementById('loadingOverlay');
 
-// Al caricamento, controlla se c'è già una libreria salvata in locale
+// Controllo persistenza dati all'avvio
 window.addEventListener('DOMContentLoaded', () => {
     const savedData = localStorage.getItem('gog_library_data');
     if (savedData) {
@@ -432,7 +309,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Setup Drag & Drop Listener
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
 
@@ -453,17 +329,14 @@ function handleFile(file) {
         return;
     }
     
-    // Mostra l'avviso "File Ricevuto"
     loadingOverlay.style.display = 'flex';
 
     const reader = new FileReader();
     reader.onload = function(e) {
         try {
             const data = JSON.parse(e.target.result);
-            // Salva nel localStorage per renderlo persistente online
             localStorage.setItem('gog_library_data', JSON.stringify(data));
             
-            // Simula un micro-ritardo per dare stabilità visiva prima di mostrare la galleria
             setTimeout(() => {
                 renderGallery(data);
                 loadingOverlay.style.display = 'none';
@@ -487,32 +360,25 @@ function renderGallery(games) {
 
     games.forEach((game, idx) => {
         const safeId = `game-anchor-${idx}`;
-        
-        // Estrazione dati flessibile (supporta sia 'name' che 'title', sia 'url' che 'link')
         const gameName = game.name || game.title || "Gioco senza titolo";
         const gameUrl = game.url || game.link || "#";
         
-        // 1. Popola l'Indice Laterale (Sidebar)
         sidebar.innerHTML += `<a href="#${safeId}" class="index-item" onclick="toggleSidebar()">${gameName}</a>`;
         
-        // 2. Costruisci il blocco del Gioco
         let htmlBlock = `<div class="game" id="${safeId}">
             <div class="game-title">${gameName}</div>
             <div class="row">`;
         
-        // Gestione Copertina Cliccabile verso GOG
         if (game.cover) {
             let cleanCover = fixGogUrl(game.cover);
             htmlBlock += `  <img class="cover" src="${cleanCover}" loading="lazy" title="Apri pagina ufficiale su GOG" onerror="this.style.display='none'" onclick="window.open('${gameUrl}', '_blank')">`;
         }
         
-        // Gestione Screenshot reali presenti nel JSON
         if (game.screenshots && Array.isArray(game.screenshots)) {
             game.screenshots.forEach(shot => {
                 let fullUrl = fixGogUrl(shot);
                 let thumbUrl = fullUrl;
                 
-                // Genera la miniatura nativa ottimizzata se è un'immagine statica standard di GOG
                 if (fullUrl.includes("gog-statics.com") && !fullUrl.includes("_thumbnail") && !fullUrl.includes("_slider")) {
                     thumbUrl = fullUrl.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png");
                 }
@@ -526,21 +392,17 @@ function renderGallery(games) {
     });
 }
 
-// Funzione corretta per ripulire e forzare l'estensione corretta dei link GOG
 function fixGogUrl(url) {
     if (!url) return "";
     let clean = url.trim();
     
-    // Rimuove eventuali rimasugli di formattazione o underscore finali
     if (clean.endsWith('_')) clean = clean.slice(0, -1);
     if (clean.endsWith('_b')) clean = clean.slice(0, -2);
     
-    // Se il link non ha già un'estensione immagine valida, gli forziamo il .jpg
     if (!clean.toLowerCase().endsWith('.jpg') && !clean.toLowerCase().endsWith('.png') && !clean.toLowerCase().endsWith('.jpeg')) {
         clean = clean + '.jpg';
     }
     
-    // Sistema il protocollo di sicurezza https
     if (!clean.startsWith('http')) {
         clean = 'https:' + (clean.startsWith('//') ? clean : '//' + clean);
     }
@@ -548,15 +410,11 @@ function fixGogUrl(url) {
     return clean;
 }
 
-// Gestore intelligente per i link rotti
 function handleBrokenLink(imgElement) {
     const currentSrc = imgElement.src;
-    
-    // Se la miniatura a bassa risoluzione (271) fallisce, prova l'immagine HD originale
     if (currentSrc.includes("_product_card_v2_thumbnail_271")) {
         imgElement.src = imgElement.getAttribute('data-full');
     } else {
-        // Se fallisce anche l'originale, nascondi l'elemento
         imgElement.style.display = 'none';
         imgElement.classList.remove('gal-item');
     }
@@ -569,11 +427,11 @@ function clearLibrary() {
     }
 }
 
-// STRUTTURA LOGICA LIGHTBOX & SIDEBAR (Invariata)
 function toggleSidebar() { document.getElementById("indexSidebar").classList.toggle("open"); }
 function openLb(element){ currentActiveElement = element; updateLightboxContent(); document.getElementById("lightbox").style.display = "flex"; }
 function closeLb() { document.getElementById("lightbox").style.display = "none"; currentActiveElement = null; }
 function closeLbIfClickOutside(event) { if (event.target.classList.contains('lightbox')) closeLb(); }
+
 function updateLightboxContent() {
     if(!currentActiveElement) return;
     document.getElementById("lb-img").src = currentActiveElement.getAttribute("data-full");
@@ -583,18 +441,21 @@ function updateLightboxContent() {
     document.getElementById("lb-prev-btn").style.visibility = (currentIndex > 0) ? "visible" : "hidden";
     document.getElementById("lb-next-btn").style.visibility = (currentIndex < items.length - 1) ? "visible" : "hidden";
 }
+
 function nextImg(event) {
     if(event) event.stopPropagation(); if(!currentActiveElement) return;
     const parentRow = currentActiveElement.closest('.row'); const items = Array.from(parentRow.querySelectorAll('.gal-item'));
     const currentIndex = items.indexOf(currentActiveElement);
     if(currentIndex < items.length - 1) { currentActiveElement = items[currentIndex + 1]; updateLightboxContent(); }
 }
+
 function prevImg(event) {
     if(event) event.stopPropagation(); if(!currentActiveElement) return;
     const parentRow = currentActiveElement.closest('.row'); const items = Array.from(parentRow.querySelectorAll('.gal-item'));
     const currentIndex = items.indexOf(currentActiveElement);
     if(currentIndex > 0) { currentActiveElement = items[currentIndex - 1]; updateLightboxContent(); }
 }
+
 document.addEventListener('keydown', e => {
     if (document.getElementById("lightbox").style.display === "flex") {
         if (e.key === "Escape") closeLb(); else if (e.key === "ArrowRight") nextImg(null); else if (e.key === "ArrowLeft") prevImg(null);
@@ -604,21 +465,7 @@ document.addEventListener('keydown', e => {
 function toggleCodeBlock() {
     const wrapper = document.getElementById('codeBlockWrapper');
     const arrow = document.getElementById('arrow-code');
-    
-    if (wrapper.style.display === 'none') {
-        wrapper.style.display = 'block';
-        arrow.innerText = '▲';
-    } else {
-        wrapper.style.display = 'none';
-        arrow.innerText = '▼';
-    }
-}
-
-function toggleCodeBlock() {
-    const wrapper = document.getElementById('codeBlockWrapper');
-    const arrow = document.getElementById('arrow-code');
-    
-    if (wrapper.style.display === 'none') {
+    if (wrapper.style.display === 'none' || wrapper.style.display === '') {
         wrapper.style.display = 'block';
         arrow.innerText = '▲';
     } else {
@@ -628,38 +475,6 @@ function toggleCodeBlock() {
 }
 
 function copyCodeToClipboard() {
-    const codeText = document.getElementById('js-script-content').innerText;
-    const btn = document.getElementById('btn-copy-script');
-    
-    navigator.clipboard.writeText(codeText).then(() => {
-        // Feedback visivo di successo
-        btn.innerText = "✔️ Copiato!";
-        btn.classList.add("copied");
-        
-        // Ripristina il pulsante dopo 2 secondi
-        setTimeout(() => {
-            btn.innerText = "📋 Copia Codice";
-            btn.classList.remove("copied");
-        }, 2000);
-    }).catch(err => {
-        alert("Impossibile copiare automaticamente. Seleziona il codice manualmente.");
-    });
-}
-
-function toggleCodeBlock() {
-    const wrapper = document.getElementById('codeBlockWrapper');
-    const arrow = document.getElementById('arrow-code');
-    if (wrapper.style.display === 'none') {
-        wrapper.style.display = 'block';
-        arrow.innerText = '▲';
-    } else {
-        wrapper.style.display = 'none';
-        arrow.innerText = '▼';
-    }
-}
-
-function copyCodeToClipboard() {
-    // Legge il testo nativo puro contenuto nella textarea (.value invece di .innerText)
     const codeText = document.getElementById('js-script-content').value;
     const btn = document.getElementById('btn-copy-script');
     
