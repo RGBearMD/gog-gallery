@@ -1,9 +1,5 @@
 __pycache__/
 *.pyc
 .venv/
-output/
-covers/
-screenshots/
 cache.json
 image_cache.json
-requirements.txt
