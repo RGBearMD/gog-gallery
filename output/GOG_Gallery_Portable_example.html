@@ -163,10 +163,6 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
   </div>
   <input type="file" id="file-input" accept=".json" style="display:none;">
 
-  <div style="text-align: center; margin-top: 25px; margin-bottom: 10px;">
-    <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script><script type="text/javascript">kofiwidget2.init('Support me on Ko-fi', '#f29100', 'X0W0206J65');kofiwidget2.draw();</script><style>img.kofiimg{display: initial!important;vertical-align:middle;height:13px!important;width:20px!important;padding-top:0!important;padding-bottom:0!important;border:none;margin-top:0;margin-right:5px!important;margin-left:0!important;margin-bottom:3px!important;content:url('https://storage.ko-fi.com/cdn/cup-border.png')}.kofiimg:after{vertical-align:middle;height:25px;padding-top:0;padding-bottom:0;border:none;margin-top:0;margin-right:6px;margin-left:0;margin-bottom:4px!important;content:url('https://storage.ko-fi.com/cdn/whitelogo.svg')}.btn-container{display:inline-block!important;white-space:nowrap;min-width:160px}span.kofitext{color:#fff !important;letter-spacing: -0.15px!important;text-wrap:none;vertical-align:middle;line-height:33px !important;padding:0;text-align:center;text-decoration:none!important; text-shadow: 0 1px 1px rgba(34, 34, 34, 0.05);}.kofitext a{color:#fff !important;text-decoration:none:important;}.kofitext a:hover{color:#fff !important;text-decoration:none}a.kofi-button{box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);line-height:36px!important;min-width:150px;display:inline-block!important;background-color:#29abe0;padding:2px 12px !important;text-align:center !important;border-radius:7px;color:#fff;cursor:pointer;overflow-wrap:break-word;vertical-align:middle;border:0 none #fff !important;font-family:'Quicksand',Helvetica,Century Gothic,sans-serif !important;text-decoration:none;text-shadow:none;font-weight:700!important;font-size:14px !important}a.kofi-button:visited{color:#fff !important;text-decoration:none !important}a.kofi-button:hover{opacity:.85;color:#f5f5f5 !important;text-decoration:none !important}a.kofi-button:active{color:#f5f5f5 !important;text-decoration:none !important}.kofitext img.kofiimg {height:15px!important;width:22px!important;display: initial;animation: kofi-wiggle 3s infinite;}@keyframes kofi-wiggle{0%{transform:rotate(0) scale(1)}60%{transform:rotate(0) scale(1)}75%{transform:rotate(0) scale(1.12)}80%{transform:rotate(0) scale(1.1)}84%{transform:rotate(-10deg) scale(1.1)}88%{transform:rotate(10deg) scale(1.1)}92%{transform:rotate(-10deg) scale(1.1)}96%{transform:rotate(10deg) scale(1.1)}100%{transform:rotate(0) scale(1)}}</style><link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css"><div class="btn-container"><a title="Support me on ko-fi.com" class="kofi-button" style="background-color:#f29100;" href="https://ko-fi.com/X0W0206J65" target="_blank"> <span class="kofitext"><img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg">Support me on Ko-fi</span></a></div>
-
-  </div>
 </div>
 
 <div id="gallery-app" style="display: block;">
@@ -190,7 +186,7 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
   <div class="header-container">
     <h1 data-i18n="nav_brand">La mia Libreria GOG</h1>
     <div class="button-group">
-      <button class="btn-premium" onclick="exportStandaloneHTML()" id="btn-export-title" title="Esporta File Portatile">
+      <button class="btn-premium" id="btn-export-title" title="Esporta File Portatile">
         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
         <span class="btn-text" data-i18n="btn_export">Esporta File Portatile</span>
       </button>
@@ -198,9 +194,8 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
         <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         <span class="btn-text" data-i18n="btn_index">Apri Indice</span>
       </button>
-      <button class="btn-premium btn-danger" onclick="clearLibrary()" id="btn-clear-title" title="Svuota">
-        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-        <span class="btn-text" data-i18n="btn_clear">Svuota</span>
+      <button class="btn-premium btn-danger" id="btn-clear-title" title="Svuota">
+        <a href="https://gog-gallery.pages.dev"><span class="btn-text" data-i18n="btn_clear">Ritorna alla home</span></a>
       </button>
       
       <div style="display:inline-block; vertical-align:middle; margin-left:auto;">
