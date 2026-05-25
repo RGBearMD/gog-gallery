@@ -224,85 +224,145 @@ code {
 (async function() {
   // 1. Creazione dell'interfaccia visiva (Overlay) su GOG
   const overlay = document.createElement('div');
-  overlay.style = "position:fixed;inset:0;background:rgba(17,17,17,0.9);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;";
+  overlay.style = "position:fixed;inset:0;background:rgba(17,17,17,0.95);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;";
   
   overlay.innerHTML = `
-    <div style="background:#1a1a1a;padding:30px;border-radius:16px;border:1px solid #ffaa00;text-align:center;width:350px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
-      <h3 style="margin:0 0 10px 0;font-size:18px;">🧙‍♂️ Estrattore Libreria GOG</h3>
-      <p id="gog-progress-text" style="color:#aaa;font-size:14px;margin-bottom:20px;">Inizializzazione...</p>
-      <div style="background:#333;width:100%;height:8px;border-radius:4px;overflow:hidden;">
+    <div style="background:#1a1a1a;padding:30px;border-radius:16px;border:1px solid #ffaa00;text-align:center;width:400px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+      <h3 style="margin:0 0 10px 0;font-size:18px;">🧙‍♂️ Estrattore Libreria GOG Pro</h3>
+      <p id="gog-progress-text" style="color:#aaa;font-size:14px;margin-bottom:20px;">Inizializzazione della libreria...</p>
+      <div style="background:#333;width:100%;height:8px;border-radius:4px;overflow:hidden;margin-bottom:10px;">
         <div id="gog-progress-bar" style="background:#ffaa00;width:0%;height:100%;transition:width 0.2s;"></div>
       </div>
+      <p id="gog-sub-text" style="color:#666;font-size:11px;margin:0;">Recupero degli screenshot in corso (operazione sicura)...</p>
     </div>
   `;
   document.body.appendChild(overlay);
 
   const textEl = document.getElementById('gog-progress-text');
   const barEl = document.getElementById('gog-progress-bar');
+  const subEl = document.getElementById('gog-sub-text');
 
-  const games = [];
+  const rawGames = [];
+  const finalGames = [];
+
+  // Funzione per scaricare l'indice dei giochi dall'account
   async function fetchPage(pageNum) {
     const url = `/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page=${pageNum}&sortBy=title&totalPages=1`;
     const resp = await fetch(url);
     return await resp.json();
   }
 
+  // Funzione per scaricare i dettagli (inclusi gli screenshot) di un singolo gioco
+  async function fetchGameDetails(gameId) {
+    try {
+      const resp = await fetch(`https://api.gog.com/products/${gameId}`);
+      if (!resp.ok) return null;
+      return await resp.json();
+    } catch (e) {
+      return null;
+    }
+  }
+
   try {
-    textEl.innerText = "Lettura della prima pagina...";
+    // --- FASE 1: Lettura dell'elenco completo dei giochi ---
+    textEl.innerText = "Lettura del catalogo giochi...";
     const firstPageData = await fetchPage(1);
     const totalPages = firstPageData.totalPages || 1;
 
-    function extractFromData(data) {
-      data.products.forEach(product => {
-        if (product.isGame && (product.url || product.slug)) {
-          const title = product.title;
-          const link = "https://www.gog.com" + (product.url || `/en/game/${product.slug}`);
-          let cover = product.image;
-          if (cover && !cover.startsWith("http")) cover = "https:" + (cover.startsWith("//") ? cover : "//" + cover);
-          if (cover && cover.includes(".jpg")) cover = cover.replace(".jpg", "_392.jpg");
-          games.push({ title, link, cover });
+    function saveRawProducts(products) {
+      products.forEach(p => {
+        if (p.isGame) {
+          rawGames.push({
+            id: p.id,
+            name: p.title,
+            url: "https://www.gog.com" + (p.url || `/en/game/${p.slug}`),
+            cover: p.image ? (p.image.startsWith('http') ? p.image : 'https:' + p.image) : null
+          });
         }
       });
     }
 
-    extractFromData(firstPageData);
-    
-    // Aggiorna progresso prima pagina
-    barEl.style.width = `${(1 / totalPages) * 100}%`;
-    textEl.innerText = `Analizzate 1 di ${totalPages} pagine...`;
+    saveRawProducts(firstPageData.products);
 
-    // Caricamento progressivo delle altre pagine per mostrare l'avanzamento reale
     for (let page = 2; page <= totalPages; page++) {
+      textEl.innerText = `Analisi catalogo: pagina ${page} di ${totalPages}...`;
+      barEl.style.width = `${(page / totalPages) * 30}%`; // Dedichiamo il primo 30% della barra al catalogo
       const pageData = await fetchPage(page);
-      extractFromData(pageData);
-      
-      // Calcolo percentuale barra
-      const percent = (page / totalPages) * 100;
-      barEl.style.width = `${percent}%`;
-      textEl.innerText = `Analizzate ${page} di ${totalPages} pagine...`;
+      saveRawProducts(pageData.products);
     }
 
-    textEl.innerText = `Generazione file JSON (${games.length} giochi)...`;
-    await new Promise(r => setTimeout(r, 500));
+    // --- FASE 2: Estrazione Screenshot Gioco per Gioco ---
+    const totalGames = rawGames.length;
+    textEl.innerText = `Trovati ${totalGames} giochi. Recupero degli screenshot...`;
 
-    // Scarica il file JSON
-    const blob = new Blob([JSON.stringify(games, null, 2)], { type: "application/json" });
+    for (let i = 0; i < totalGames; i++) {
+      const game = rawGames[i];
+      
+      // Aggiornamento progresso reale
+      const progressPercent = 30 + ((i + 1) / totalGames) * 70; // Il restante 70% della barra
+      barEl.style.width = `${progressPercent}%`;
+      textEl.innerText = `Elaborazione: ${i + 1} / ${totalGames} giochi`;
+      subEl.innerText = `In corso: ${game.name}`;
+
+      // Interroga l'API pubblica per gli screenshot
+      const details = await fetchGameDetails(game.id);
+      let screenshotsArray = [];
+
+      if (details && details.images && details.images.screenshots) {
+        // Estrae i link a risoluzione massima
+        screenshotsArray = details.images.screenshots.map(s => {
+          let url = s.formatted_images && s.formatted_images.formatter ? s.formatted_images.formatter : s.src;
+          if (url && url.includes('_{formatter}')) {
+            url = url.replace('_{formatter}', ''); // Rimuove il placeholder se presente
+          }
+          return url;
+        }).filter(Boolean);
+      }
+
+      // Se l'API non ha screenshot, usa la copertina modificata come fallback elastico
+      if (screenshotsArray.length === 0 && game.cover) {
+         screenshotsArray.push(game.cover);
+      }
+
+      // Salva nel formato perfetto richiesto dalla tua galleria
+      finalGames.push({
+        name: game.name,
+        url: game.url,
+        cover: game.cover,
+        screenshots: screenshotsArray
+      });
+
+      // Micro-pausa per non sovraccaricare le API di GOG (evita i blocchi di sicurezza)
+      if (i % 5 === 0) {
+        await new Promise(r => setTimeout(r, 80));
+      }
+    }
+
+    // --- FASE 3: Generazione e Download del file JSON definitivo ---
+    textEl.innerText = "Compilazione del file JSON...";
+    await new Promise(r => setTimeout(r, 400));
+
+    const blob = new Blob([JSON.stringify(finalGames, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "games_data.json";
+    a.download = "gog_rich_library.json";
     document.body.appendChild(a);
     a.click();
+    
     setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
 
     textEl.style.color = "#44ff44";
-    textEl.innerText = "📥 Download Completato!";
-    setTimeout(() => overlay.remove(), 1500);
+    textEl.innerText = "📥 Estratto con Successo!";
+    subEl.innerText = "Trascina il file scaricato sulla tua Cloudflare Page.";
+    setTimeout(() => overlay.remove(), 2500);
 
   } catch (err) {
+    console.error(err);
     textEl.style.color = "#ff5555";
-    textEl.innerText = "Errore durante l'estrazione!";
-    setTimeout(() => overlay.remove(), 3000);
+    textEl.innerText = "Errore critico durante l'estrazione!";
+    subEl.innerText = "Riprova rinfrescando la pagina di GOG.";
+    setTimeout(() => overlay.remove(), 5000);
   }
 })();
 
