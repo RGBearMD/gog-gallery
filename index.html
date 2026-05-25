@@ -526,26 +526,39 @@ function renderGallery(games) {
     });
 }
 
-// Funzione di utilità per pulire al volo i link malformati di GOG (es. quelli che finiscono con _ o _b)
+// Funzione corretta per ripulire e forzare l'estensione corretta dei link GOG
 function fixGogUrl(url) {
     if (!url) return "";
-    let clean = url;
-    if (clean.endsWith('_')) clean = clean.slice(0, -1) + '.jpg';
-    if (clean.endsWith('_b')) clean = clean.slice(0, -2) + '.jpg';
-    if (!clean.startsWith('http')) clean = 'https:' + (clean.startsWith('//') ? clean : '//' + clean);
+    let clean = url.trim();
+    
+    // Rimuove eventuali rimasugli di formattazione o underscore finali
+    if (clean.endsWith('_')) clean = clean.slice(0, -1);
+    if (clean.endsWith('_b')) clean = clean.slice(0, -2);
+    
+    // Se il link non ha già un'estensione immagine valida, gli forziamo il .jpg
+    if (!clean.toLowerCase().endsWith('.jpg') && !clean.toLowerCase().endsWith('.png') && !clean.toLowerCase().endsWith('.jpeg')) {
+        clean = clean + '.jpg';
+    }
+    
+    // Sistema il protocollo di sicurezza https
+    if (!clean.startsWith('http')) {
+        clean = 'https:' + (clean.startsWith('//') ? clean : '//' + clean);
+    }
+    
     return clean;
 }
 
-// Gestore intelligente per i link rotti degli screenshot
+// Gestore intelligente per i link rotti
 function handleBrokenLink(imgElement) {
     const currentSrc = imgElement.src;
-    // Se la miniatura ottimizzata fallisce (404), prova a caricare l'immagine originale a risoluzione massima
+    
+    // Se la miniatura a bassa risoluzione (271) fallisce, prova l'immagine HD originale
     if (currentSrc.includes("_product_card_v2_thumbnail_271")) {
         imgElement.src = imgElement.getAttribute('data-full');
     } else {
-        // Se fallisce anche l'originale, nascondi l'immagine per non rompere la griglia della galleria
+        // Se fallisce anche l'originale, nascondi l'elemento
         imgElement.style.display = 'none';
-        imgElement.classList.remove('gal-item'); // Rimuove dal carosello del lightbox
+        imgElement.classList.remove('gal-item');
     }
 }
 
