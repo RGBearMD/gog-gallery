@@ -25,11 +25,20 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
 
 /* INTERFACCIA GALLERIA */
 #gallery-app { display: none; }
-.header-container { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #232329; padding-bottom: 20px; margin-bottom: 30px; }
-.header-container h1 { margin: 0; font-size: 24px; font-weight: 700; color: #fff; }
-.button-group { display: flex; gap: 10px; align-items: center; }
 
-/* NUOVO DESIGN DEI PULSANTI (STILE MODERN GAMING UI) */
+/* STRUTTURA: TITOLO SOPRA, PULSANTI SOTTO */
+.header-container { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 15px; 
+  border-bottom: 1px solid #232329; 
+  padding-bottom: 20px; 
+  margin-bottom: 30px; 
+}
+.header-container h1 { margin: 0; font-size: 26px; font-weight: 700; color: #fff; }
+.button-group { display: flex; gap: 10px; align-items: center; width: 100%; }
+
+/* DESIGN DEI PULSANTI */
 .btn-premium {
   background: #1c1c24; color: #e2e2e9; border: 1px solid #31313f; padding: 10px 18px;
   font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer;
@@ -38,24 +47,20 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
 }
 .btn-premium svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 .btn-premium:hover { background: #252530; border-color: #444456; color: #fff; transform: translateY(-1px); }
-.btn-premium:active { transform: translateY(0); }
+.btn-premium .btn-text { display: inline; }
 
-/* Pulsante Indice (Evidenziato in arancione scuro ma elegante, non neon) */
-.btn-premium.btn-accent {
-  background: #f29100; color: #0f0f12; border: 1px solid #f29100;
-}
+.btn-premium.btn-accent { background: #f29100; color: #0f0f12; border: 1px solid #f29100; }
 .btn-premium.btn-accent:hover { background: #ffa61a; border-color: #ffa61a; color: #000; box-shadow: 0 4px 12px rgba(242, 145, 0, 0.2); }
-
-/* Pulsante Svuota/Reset */
 .btn-premium.btn-danger:hover { background: #3a1c1c; border-color: #ef4444; color: #ef4444; }
 
-/* SIDEBAR E STRUTTURA GRIGLIA */
+/* SIDEBAR */
 .sidebar { position: fixed; top: 0; right: -350px; width: 350px; height: 100%; background: rgba(20,20,26,0.96); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); box-shadow: -10px 0 30px rgba(0,0,0,0.5); z-index: 1001; transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; border-left: 1px solid #232329; }
 .sidebar.open { right: 0; }
 .sidebar-content { padding: 10px 0; overflow-y: auto; flex-grow: 1; }
 .index-item { display: block; padding: 14px 20px; color: #aaa; text-decoration: none; font-size: 13px; font-weight: 500; border-bottom: 1px solid #16161a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: all 0.15s; }
 .index-item:hover { background: rgba(242,145,0,0.08); color: #f29100; padding-left: 25px; }
 
+/* GRIGLIA DESKTOP */
 .game { background: #141417; border: 1px solid #232329; border-radius: 12px; padding: 20px; margin-bottom: 25px; scroll-margin-top: 30px; content-visibility: auto; contain-intrinsic-size: 180px; }
 .game-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: #fff; border-left: 3px solid #f29100; padding-left: 12px; }
 .row { display: grid; grid-template-columns: 170px repeat(auto-fit, minmax(135px, 1fr)); gap: 12px; width: 100%; }
@@ -63,6 +68,16 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
 .shot { width: 100%; height: 110px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 1px solid #2c2c35; background: #1a1a1f; }
 .cover, .shot { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s, filter 0.2s; }
 .cover:hover, .shot:hover { transform: scale(1.04); border-color: #888; filter: brightness(1.1); }
+
+/* CONTAINER LOGO GOG (Per giochi rimossi/senza pagina) */
+.gog-fallback-container {
+  grid-column: 1 / -1; display: flex; align-items: center; background: #1a1a1f; 
+  padding: 15px 25px; border-radius: 8px; border: 1px dashed #31313f; gap: 15px;
+}
+.gog-logo-svg { width: 32px; height: 32px; fill: #f29100; flex-shrink: 0; }
+.gog-fallback-text { font-size: 13px; color: #8a8a98; }
+.gog-fallback-text a { color: #f29100; text-decoration: none; font-weight: 600; }
+.gog-fallback-text a:hover { text-decoration: underline; }
 
 /* LIGHTBOX */
 .lightbox { position: fixed; inset: 0; background: rgba(10,10,12,0.98); display: none; justify-content: center; align-items: center; z-index: 999; }
@@ -73,26 +88,32 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
 .lb-btn:hover { background: #f29100; border-color: #f29100; color: #000; transform: scale(1.05); }
 .lb-prev { left: -70px; } .lb-next { right: -70px; } .lb-close { top: -60px; right: 0; }
 
-/* DESIGN BLOCCO CODICE ESPANDIBILE */
-.btn-toggle-code {
-  width: 100%; background: #1c1c24; color: #aaa; border: 1px solid #2a2a35; padding: 12px 15px;
-  border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between;
-  align-items: center; font-size: 13px; font-weight: 600; transition: all 0.2s; margin-bottom: 15px;
-}
+/* BLOCCO CODICE ESTRATTORE */
+.btn-toggle-code { width: 100%; background: #1c1c24; color: #aaa; border: 1px solid #2a2a35; padding: 12px 15px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; transition: all 0.2s; margin-bottom: 15px; }
 .btn-toggle-code:hover { background: #22222c; color: #fff; }
 #codeBlockWrapper { position: relative; }
-#js-script-content {
-  width: 100%; height: 200px; background: #0b0b0d; color: #50fa7b; border: 1px solid #232329;
-  border-radius: 8px; padding: 15px; font-family: monospace; font-size: 12px; line-height: 1.5; resize: none; outline: none;
-}
-#btn-copy-script {
-  position: absolute; top: 12px; right: 12px; background: #22222c; color: #fff; border: 1px solid #31313f;
-  padding: 6px 12px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; z-index: 10;
-}
+#js-script-content { width: 100%; height: 200px; background: #0b0b0d; color: #50fa7b; border: 1px solid #232329; border-radius: 8px; padding: 15px; font-family: monospace; font-size: 12px; line-height: 1.5; resize: none; outline: none; }
+#btn-copy-script { position: absolute; top: 12px; right: 12px; background: #22222c; color: #fff; border: 1px solid #31313f; padding: 6px 12px; font-size: 11px; font-weight: bold; border-radius: 4px; cursor: pointer; z-index: 10; }
 #btn-copy-script:hover { background: #f29100; color: #000; border-color: #f29100; }
 
-@media(max-width: 900px) { .lb-prev { left: 15px; bottom: -80px; top: auto; } .lb-next { right: 15px; bottom: -80px; top: auto; } .sidebar { width: 100%; right: -100%; } }
-@media(max-width: 800px) { .row { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); } .cover { grid-column: span 2; height: 140px; } }
+/* 📱 REGOLE MOBILE OTTIMIZZATE */
+@media(max-width: 800px) { 
+  .header-container { align-items: center; text-align: center; }
+  .btn-premium .btn-text { display: none; }
+  .button-group { justify-content: center; gap: 15px; }
+  .btn-premium { padding: 12px; border-radius: 50%; width: 48px; height: 48px; justify-content: center; }
+  .btn-premium svg { width: 20px; height: 20px; }
+
+  .row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cover, .shot { height: 110px; width: 100%; }
+
+  .row > *:nth-child(n+5) { display: none !important; }
+  .row img.cover[style*="display: none"] ~ .shot:nth-child(5) { display: block !important; }
+
+  .lb-prev { left: 15px; bottom: -80px; top: auto; } 
+  .lb-next { right: 15px; bottom: -80px; top: auto; } 
+  .sidebar { width: 100%; right: -100%; } 
+}
 </style>
 </head>
 <body>
@@ -112,7 +133,7 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
       <li>Accedi a <a href="https://www.gog.com" target="_blank" style="color: #f29100; text-decoration: none; font-weight: 600;">GOG.com</a>.</li>
       <li>Apri la console sviluppatori (tasto <b>F12</b>).</li>
       <li>Copia lo script qui sotto, incollalo in console e premi <b>Invio</b>.</li>
-      <li>Prendi il file scaricato <b>gog_rich_library.json</b> e trascinalo qui dentro.</li>
+      <li>Prendi il file scaricato <b>my_gog_library.json</b> e trascinalo qui dentro.</li>
     </ol>
 
     <button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
@@ -124,38 +145,65 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
       <button type="button" id="btn-copy-script" onclick="copyCodeToClipboard()">COPIA</button>
       <textarea id="js-script-content" readonly autocomplete="off" spellcheck="false">(async function() {
   const overlay = document.createElement('div');
-  overlay.style = "position:fixed;inset:0;background:rgba(15,15,18,0.96);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;";
-  overlay.innerHTML = `<div style="background:#141417;padding:30px;border-radius:12px;border:1px solid #f29100;text-align:center;width:420px;"><h3 style="margin:0 0 10px 0;font-size:16px;">Estrattore GOG</h3><p id="gog-progress-text" style="color:#aaa;font-size:13px;margin-bottom:15px;">Inizializzazione...</p><div style="background:#222;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:10px;"><div id="gog-progress-bar" style="background:#f29100;width:0%;height:100%;transition:width 0.2s;"></div></div></div>`;
+  overlay.style = "position:fixed;inset:0;background:rgba(15,15,18,0.96);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;padding:20px;";
+  overlay.innerHTML = `<div style="background:#141417;padding:35px;border-radius:16px;border:1px solid #f29100;text-align:center;max-width:460px;box-shadow:0 10px 30px rgba(0,0,0,0.5);"><h3 style="margin:0 0 12px 0;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;color:#fff;">RACCOLTA IMMAGINI IN CORSO</h3><p style="color:#aaa;font-size:13px;line-height:1.6;margin:0 0 20px 0;">Sto raccogliendo i link delle copertine e delle immagini dei giochi nella tua collezione. Non chiudere questa scheda, ci vorrà qualche minuto. Non appena avrò finito potrai scaricare il file <b>my_gog_library.json</b> e caricarlo su <b>my-gog-experience.com</b> per generare la tua gallery.</p><div style="background:#222;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;"><div id="gog-progress-bar" style="background:#f29100;width:0%;height:100%;transition:width 0.2s;"></div></div><p id="gog-progress-text" style="color:#f29100;font-size:12px;font-weight:bold;margin:0;">Inizializzazione...</p></div>`;
   document.body.appendChild(overlay);
   const textEl = document.getElementById('gog-progress-text');
   const barEl = document.getElementById('gog-progress-bar');
   const rawGames = []; const finalGames = [];
+  
   async function fetchPage(p) { return await (await fetch(`/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page=${p}&sortBy=title&totalPages=1`)).json(); }
   try {
     textEl.innerText = "Lettura libreria...";
     const first = await fetchPage(1); const totalPages = first.totalPages || 1;
-    const add = data => data.products.forEach(p => p.isGame && rawGames.push({id:p.id,name:p.title,url:"https://www.gog.com"+(p.url||`/en/game/${p.slug}`),cover:p.image?(p.image.startsWith('http')?p.image:'https:'+p.image):null}));
+    
+    const add = data => data.products.forEach(p => {
+      if (p.isGame) {
+        let detectedCover = null;
+        if (p.image) {
+          let cleanHash = p.image.replace('_product_card_v2.jpg', '').replace('_196.jpg', '').replace('https:', '').replace('//', '').split('/').pop();
+          if (cleanHash && cleanHash.length > 20) {
+            detectedCover = `https://images-2.gog-statics.com/${cleanHash}_392.jpg`;
+          } else {
+            detectedCover = p.image.startsWith('http') ? p.image : 'https:' + p.image;
+          }
+        }
+        rawGames.push({id:p.id, name:p.title, url:"https://www.gog.com"+(p.url||`/en/game/${p.slug}`), cover:detectedCover});
+      }
+    });
+    
     add(first); for (let p=2; p<=totalPages; p++) add(await fetchPage(p));
+    
     for (let i=0; i<rawGames.length; i++) {
-      const g = rawGames[i]; barEl.style.width = `${((i+1)/rawGames.length)*100}%`; textEl.innerText = `Scraping: ${i+1}/${rawGames.length} giochi`;
+      const g = rawGames[i]; barEl.style.width = `${((i+1)/rawGames.length)*100}%`; textEl.innerText = `${i+1} / ${rawGames.length} - ${g.name}`;
       let shots = [];
       try {
         const r = await fetch(g.url);
-        if (r.ok) {
+        if (r.ok && !r.url.endsWith('/en/games')) {
           const txt = await r.text();
           const doc = new DOMParser().parseFromString(txt,'text/html');
+          
+          const storePic = doc.querySelector('.product-row__img');
+          if (storePic) {
+            let srcSetAttr = storePic.getAttribute('ng-srcset') || storePic.getAttribute('srcset') || '';
+            let matches = srcSetAttr.match(/\/\/images(?:-\d+)?\.gog-statics\.com\/[a-f0-9_]+/g);
+            if (matches && matches.length > 0) {
+              g.cover = 'https:' + matches[matches.length - 1];
+            }
+          }
+          
           doc.querySelectorAll('.productcard-thumbnails-slider__image, .productcard-thumbnails-slider__slide-item img, [slider-event-bus-channel="galleryThumbnails"] img').forEach(img=>{
             const s = img.getAttribute('src')||img.getAttribute('srcset')||img.src||'';
             const m = s.match(/([a-f0-9]{64})/i); if(m) shots.push(`https://images.gog-statics.com/${m[1]}.jpg`);
           });
         }
       } catch(e){}
-      if(!shots.length && g.cover) shots.push(g.cover);
-      finalGames.push({name:g.name,url:g.url,cover:g.cover,screenshots:[...new Set(shots)].slice(0,9)});
-      await new Promise(r=>setTimeout(r,150));
+      
+      finalGames.push({name:g.name, url:g.url, cover:g.cover, screenshots:[...new Set(shots)].slice(0,9)});
+      await new Promise(r=>setTimeout(r,100));
     }
     const b = new Blob([JSON.stringify(finalGames,null,2)],{type:"application/json"});
-    const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href=u; a.download="gog_rich_library.json"; a.click(); overlay.remove();
+    const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href=u; a.download="my_gog_library.json"; a.click(); overlay.remove();
   } catch(e){ overlay.remove(); }
 })();</textarea>
     </div>
@@ -191,15 +239,18 @@ body { background: #0f0f12; color: #eee; font-family: -apple-system, BlinkMacSys
   <div class="header-container">
     <h1>La mia Libreria GOG</h1>
     <div class="button-group">
-      <button class="btn-premium" onclick="exportStandaloneHTML()" title="Esporta un singolo file HTML contenente già i dati incorporati">
+      <button class="btn-premium" onclick="exportStandaloneHTML()" title="Esporta File Portatile">
         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Esporta File Portatile
+        <span class="btn-text">Esporta File Portatile</span>
       </button>
-      <button class="btn-premium btn-accent" onclick="toggleSidebar()">
-        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-        Apri Indice
+      <button class="btn-premium btn-accent" onclick="toggleSidebar()" title="Apri Indice Giochi">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span class="btn-text">Apri Indice</span>
       </button>
-      <button class="btn-premium btn-danger" onclick="clearLibrary()">Svuota</button>
+      <button class="btn-premium btn-danger" onclick="clearLibrary()" title="Svuota Libreria">
+        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        <span class="btn-text">Svuota</span>
+      </button>
     </div>
   </div>
 
@@ -212,7 +263,6 @@ let renderedCount = 0;
 const BATCH_SIZE = 12;
 let currentActiveElement = null;
 
-// Gestione dei dati statici pre-iniettati nel caso di esportazione portatile
 /*INJECTED_DATA_PLACEHOLDER*/
 
 const welcomeScreen = document.getElementById('welcome-screen');
@@ -222,13 +272,11 @@ const mainProgressBar = document.getElementById('main-progress-bar');
 const dropZone = document.getElementById('drop-zone');
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Se ci sono dati pre-iniettati dall'esportatore, usali subito saltando il drop dei file
     if (typeof INJECTED_GAMES !== 'undefined' && INJECTED_GAMES.length > 0) {
         allGamesData = INJECTED_GAMES;
         initGalleryStructure();
         return;
     }
-    
     const savedData = localStorage.getItem('gog_library_data');
     if (savedData) {
         allGamesData = JSON.parse(savedData);
@@ -293,22 +341,37 @@ function renderNextBatch() {
     for (let i = renderedCount; i < end; i++) {
         const game = allGamesData[i];
         const safeId = `game-anchor-${i}`;
+        
+        const isFallbackPage = (game.url && game.url.endsWith('/en/games')) || ((!game.screenshots || game.screenshots.length === 0) && !game.cover);
+
         htmlFragment += `<div class="game" id="${safeId}">
             <div class="game-title">${game.name || game.title}</div>
             <div class="row">`;
         
-        if (game.cover) {
-            htmlFragment += `  <img class="cover" src="${fixGogUrl(game.cover)}" loading="lazy" onerror="this.style.display='none'" onclick="window.open('${game.url || '#'}', '_blank')">`;
-        }
-        if (game.screenshots && Array.isArray(game.screenshots)) {
-            game.screenshots.slice(0, 9).forEach(shot => {
-                let fullUrl = fixGogUrl(shot);
-                let thumbUrl = fullUrl;
-                if (fullUrl.includes("gog-statics.com") && !fullUrl.includes("_thumbnail") && !fullUrl.includes("_slider")) {
-                    thumbUrl = fullUrl.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png");
-                }
-                htmlFragment += `  <img class="shot gal-item" src="${thumbUrl}" data-full="${fullUrl}" loading="lazy" onerror="handleBrokenLink(this)" onclick="openLb(this)">`;
-            });
+        if (isFallbackPage) {
+            htmlFragment += `
+              <div class="gog-fallback-container">
+                <svg class="gog-logo-svg" viewBox="0 0 32 32">
+                  <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zm6.388 21.313c-1.312 1.35-3.1 2.112-5.038 2.112-3.95 0-7.15-3.138-7.15-7.05s3.2-7.05 7.15-7.05c1.863 0 3.55.713 4.85 1.913l-2.188 2.112c-.7-.687-1.637-1.087-2.663-1.087-2.225 0-4.025 1.763-4.025 3.987s1.8 3.987 4.025 3.987c.925 0 1.762-.325 2.45-.887v-1.7h-2.45v-2.825h5.538v6.238l-2.5 2.25z"/>
+                </svg>
+                <div class="gog-fallback-text">
+                  Pagina store non disponibile. <a href="${game.url || '#'}" target="_blank">Apri collegamento GOG</a>
+                </div>
+              </div>`;
+        } else {
+            if (game.cover) {
+                htmlFragment += `  <img class="cover" src="${fixGogUrl(game.cover)}" loading="lazy" onerror="this.style.display='none'" onclick="window.open('${game.url || '#'}', '_blank')">`;
+            }
+            if (game.screenshots && Array.isArray(game.screenshots)) {
+                game.screenshots.slice(0, 8).forEach(shot => {
+                    let fullUrl = fixGogUrl(shot);
+                    let thumbUrl = fullUrl;
+                    if (fullUrl.includes("gog-statics.com") && !fullUrl.includes("_thumbnail") && !fullUrl.includes("_slider")) {
+                        thumbUrl = fullUrl.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png");
+                    }
+                    htmlFragment += `  <img class="shot gal-item" src="${thumbUrl}" data-full="${fullUrl}" loading="lazy" onerror="handleBrokenLink(this)" onclick="openLb(this)">`;
+                });
+            }
         }
         htmlFragment += `</div></div>`;
     }
@@ -337,21 +400,13 @@ function handleBrokenLink(imgElement) {
 
 function exportStandaloneHTML() {
     if(!allGamesData.length) return alert("Nessun dato da esportare.");
-    
-    // Legge l'HTML corrente della pagina stessa
     let currentHTML = document.documentElement.outerHTML;
-    
-    // Inietta i dati correnti direttamente dentro il segnaposto per renderlo portatile
     const dataString = `const INJECTED_GAMES = ${JSON.stringify(allGamesData)};`;
     const cleanHTML = "<!DOCTYPE html>\n<html lang=\"it\">\n" + currentHTML.replace("/*INJECTED_DATA_PLACEHOLDER*/", dataString);
-    
     const blob = new Blob([cleanHTML], { type: "text/html" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url;
-    a.download = "GOG_Gallery_Portable.html";
-    a.click();
-    URL.revokeObjectURL(url);
+    a.href = url; a.download = "GOG_Gallery_Portable.html"; a.click(); URL.revokeObjectURL(url);
 }
 
 function clearLibrary() { if(confirm("Vuoi svuotare la libreria locale?")) { localStorage.removeItem('gog_library_data'); location.reload(); } }
@@ -364,7 +419,7 @@ function updateLightboxContent() {
     if(!currentActiveElement) return;
     document.getElementById("lb-img").src = currentActiveElement.getAttribute("data-full");
     const parentRow = currentActiveElement.closest('.row');
-    const items = Array.from(parentRow.querySelectorAll('.gal-item'));
+    const items = Array.from(parentRow.querySelectorAll('.gal-item')).filter(el => window.getComputedStyle(el).display !== 'none');
     const currentIndex = items.indexOf(currentActiveElement);
     document.getElementById("lb-prev-btn").style.visibility = (currentIndex > 0) ? "visible" : "hidden";
     document.getElementById("lb-next-btn").style.visibility = (currentIndex < items.length - 1) ? "visible" : "hidden";
@@ -372,14 +427,16 @@ function updateLightboxContent() {
 
 function nextImg(event) {
     if(event) event.stopPropagation(); if(!currentActiveElement) return;
-    const parentRow = currentActiveElement.closest('.row'); const items = Array.from(parentRow.querySelectorAll('.gal-item'));
+    const parentRow = currentActiveElement.closest('.row'); 
+    const items = Array.from(parentRow.querySelectorAll('.gal-item')).filter(el => window.getComputedStyle(el).display !== 'none');
     const currentIndex = items.indexOf(currentActiveElement);
     if(currentIndex < items.length - 1) { currentActiveElement = items[currentIndex + 1]; updateLightboxContent(); }
 }
 
 function prevImg(event) {
     if(event) event.stopPropagation(); if(!currentActiveElement) return;
-    const parentRow = currentActiveElement.closest('.row'); const items = Array.from(parentRow.querySelectorAll('.gal-item'));
+    const parentRow = currentActiveElement.closest('.row'); 
+    const items = Array.from(parentRow.querySelectorAll('.gal-item')).filter(el => window.getComputedStyle(el).display !== 'none');
     const currentIndex = items.indexOf(currentActiveElement);
     if(currentIndex > 0) { currentActiveElement = items[currentIndex - 1]; updateLightboxContent(); }
 }
@@ -400,8 +457,7 @@ function toggleCodeBlock() {
 function copyCodeToClipboard() {
     navigator.clipboard.writeText(document.getElementById('js-script-content').value).then(() => {
         const btn = document.getElementById('btn-copy-script');
-        btn.innerText = "COPIATO!";
-        setTimeout(() => { btn.innerText = "COPIA"; }, 2000);
+        btn.innerText = "COPIATO!"; setTimeout(() => { btn.innerText = "COPIA"; }, 2000);
     });
 }
 </script>
