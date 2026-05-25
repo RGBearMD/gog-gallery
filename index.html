@@ -219,7 +219,9 @@ code {
     
     <button type="button" id="btn-copy-script" onclick="copyCodeToClipboard()">📋 Copia Codice</button>
     
-    <textarea id="js-script-content" readonly autocomplete="off" spellcheck="false">(async function() {
+    <textarea id="js-script-content" readonly autocomplete="off" spellcheck="false">
+
+(async function() {
   // 1. Creazione dell'interfaccia visiva (Overlay) su GOG
   const overlay = document.createElement('div');
   overlay.style = "position:fixed;inset:0;background:rgba(17,17,17,0.9);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;";
@@ -265,13 +267,16 @@ code {
 
     extractFromData(firstPageData);
     
+    // Aggiorna progresso prima pagina
     barEl.style.width = `${(1 / totalPages) * 100}%`;
     textEl.innerText = `Analizzate 1 di ${totalPages} pagine...`;
 
+    // Caricamento progressivo delle altre pagine per mostrare l'avanzamento reale
     for (let page = 2; page <= totalPages; page++) {
       const pageData = await fetchPage(page);
       extractFromData(pageData);
       
+      // Calcolo percentuale barra
       const percent = (page / totalPages) * 100;
       barEl.style.width = `${percent}%`;
       textEl.innerText = `Analizzate ${page} di ${totalPages} pagine...`;
@@ -280,6 +285,7 @@ code {
     textEl.innerText = `Generazione file JSON (${games.length} giochi)...`;
     await new Promise(r => setTimeout(r, 500));
 
+    // Scarica il file JSON
     const blob = new Blob([JSON.stringify(games, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -298,7 +304,9 @@ code {
     textEl.innerText = "Errore durante l'estrazione!";
     setTimeout(() => overlay.remove(), 3000);
   }
-})();</textarea>
+})();
+
+    </textarea>
   </div>
 </div>
 <!--FINE PULSANTE MOSTRA-->
