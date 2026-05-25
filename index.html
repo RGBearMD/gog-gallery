@@ -80,6 +80,92 @@ body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;paddi
       <li>Accedi al tuo account su <a href="https://www.gog.com" target="_blank" style="color: #ffaa00; text-decoration: none; font-weight: bold;">GOG.com</a>.</li>
       <li>Apri la console del browser (premi <b>F12</b> oppure tasto destro -> <i>Ispeziona</i> e vai sulla scheda <i>Console</i>).</li>
       <li>Incolla lo script di estrazione JavaScript e premi <b>Invio</b>.</li>
+      <code>
+(async function() {
+  // 1. Creazione dell'interfaccia visiva (Overlay) su GOG
+  const overlay = document.createElement('div');
+  overlay.style = "position:fixed;inset:0;background:rgba(17,17,17,0.9);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;";
+  
+  overlay.innerHTML = `
+    <div style="background:#1a1a1a;padding:30px;border-radius:16px;border:1px solid #ffaa00;text-align:center;width:350px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+      <h3 style="margin:0 0 10px 0;font-size:18px;">🧙‍♂️ Estrattore Libreria GOG</h3>
+      <p id="gog-progress-text" style="color:#aaa;font-size:14px;margin-bottom:20px;">Inizializzazione...</p>
+      <div style="background:#333;width:100%;height:8px;border-radius:4px;overflow:hidden;">
+        <div id="gog-progress-bar" style="background:#ffaa00;width:0%;height:100%;transition:width 0.2s;"></div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const textEl = document.getElementById('gog-progress-text');
+  const barEl = document.getElementById('gog-progress-bar');
+
+  const games = [];
+  async function fetchPage(pageNum) {
+    const url = `/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page=${pageNum}&sortBy=title&totalPages=1`;
+    const resp = await fetch(url);
+    return await resp.json();
+  }
+
+  try {
+    textEl.innerText = "Lettura della prima pagina...";
+    const firstPageData = await fetchPage(1);
+    const totalPages = firstPageData.totalPages || 1;
+
+    function extractFromData(data) {
+      data.products.forEach(product => {
+        if (product.isGame && (product.url || product.slug)) {
+          const title = product.title;
+          const link = "https://www.gog.com" + (product.url || `/en/game/${product.slug}`);
+          let cover = product.image;
+          if (cover && !cover.startsWith("http")) cover = "https:" + (cover.startsWith("//") ? cover : "//" + cover);
+          if (cover && cover.includes(".jpg")) cover = cover.replace(".jpg", "_392.jpg");
+          games.push({ title, link, cover });
+        }
+      });
+    }
+
+    extractFromData(firstPageData);
+    
+    // Aggiorna progresso prima pagina
+    barEl.style.width = `${(1 / totalPages) * 100}%`;
+    textEl.innerText = `Analizzate 1 di ${totalPages} pagine...`;
+
+    // Caricamento progressivo delle altre pagine per mostrare l'avanzamento reale
+    for (let page = 2; page <= totalPages; page++) {
+      const pageData = await fetchPage(page);
+      extractFromData(pageData);
+      
+      // Calcolo percentuale barra
+      const percent = (page / totalPages) * 100;
+      barEl.style.width = `${percent}%`;
+      textEl.innerText = `Analizzate ${page} di ${totalPages} pagine...`;
+    }
+
+    textEl.innerText = `Generazione file JSON (${games.length} giochi)...`;
+    await new Promise(r => setTimeout(r, 500));
+
+    // Scarica il file JSON
+    const blob = new Blob([JSON.stringify(games, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "games_data.json";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1000);
+
+    textEl.style.color = "#44ff44";
+    textEl.innerText = "📥 Download Completato!";
+    setTimeout(() => overlay.remove(), 1500);
+
+  } catch (err) {
+    textEl.style.color = "#ff5555";
+    textEl.innerText = "Errore durante l'estrazione!";
+    setTimeout(() => overlay.remove(), 3000);
+  }
+})();
+</code>
       <li>Attendi il completamento e scarica il file <b>games_data.json</b> sul tuo computer.</li>
       <li>Trascina quel file qui sotto per generare la tua galleria permanente.</li>
     </ol>
