@@ -6,3 +6,4 @@ covers/
 screenshots/
 cache.json
 image_cache.json
+requirements.txt
