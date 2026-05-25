@@ -205,15 +205,16 @@ code {
       <li>Apri la console del browser (premi <b>F12</b> oppure tasto destro -> <i>Ispeziona</i> e vai sulla scheda <i>Console</i>).</li>
       <li>Incolla lo script di estrazione JavaScript e premi <b>Invio</b>.</li>
 
+    <!-- PULSANTE MOSTRA-->
 <div style="margin-top: 25px; text-align: left;">
   <button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
-    <span>Mostra Script JavaScript</span>
+    <span>👁️ Mostra lo Script JavaScript (Verifica la sicurezza)</span>
     <span id="arrow-code">▼</span>
   </button>
   
   <div id="codeBlockWrapper" style="display: none; margin-top: 10px; position: relative;">
     <p style="color: #888; font-size: 13px; margin: 0 0 8px 0;">
-      Questo è il codice che andrai ad eseguire.
+      Questo è l'esatto codice che andrai ad eseguire. Puoi copiarlo o verificarlo riga per riga:
     </p>
     
     <button type="button" id="btn-copy-script" onclick="copyCodeToClipboard()">📋 Copia Codice</button>
@@ -300,6 +301,7 @@ code {
 })();</textarea>
   </div>
 </div>
+<!--FINE PULSANTE MOSTRA-->
 
       <li>Attendi il completamento e scarica il file <b>games_data.json</b> sul tuo computer.</li>
       <li>Trascina quel file qui sotto per generare la tua galleria permanente.</li>
