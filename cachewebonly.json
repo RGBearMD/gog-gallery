@@ -4277,5 +4277,56 @@
       "https://images.gog-statics.com/087b542421ba79c93a036677fe46ec371dfef1128706a36710dd472642e83920.jpg"
     ],
     "found": true
+  },
+  "War Wind ": {
+    "name": "War Wind ",
+    "url": "https://www.gog.com/en/game/war_wind",
+    "cover": "https://images-4.gog-statics.com/fb04b8c1e4536da657ab043b92c9199d57338297bfbca5f6f6079db115745fb2",
+    "screenshots": [
+      "https://images.gog-statics.com/b83ea323ef25a13f8bca82e7779f6d5f355a22f5f05ebb58e5fb247f2d8b22e3.jpg",
+      "https://images.gog-statics.com/7baa04417e7ac70ee51ccf1e7339fb6b821f629a5f7d7a692d5bb39345af45c9.jpg",
+      "https://images.gog-statics.com/79f812bdb925e38048fea7ee1f714c83bbebbeba18df64fa9c4cbc8d4a987a1e.jpg",
+      "https://images.gog-statics.com/43e53e860ba47dbb2c59ad4a1543fd0b334e5dd37bdefb1103c1d4c60a12cec4.jpg",
+      "https://images.gog-statics.com/b556a545705bf48003089640af6e6572ca4ca9c777d7e934cc2786238c0dd970.jpg",
+      "https://images.gog-statics.com/9a63dd590a8ebc2b42df6a9444b25aa91a855bb2c15f8e191eb035585fbbef69.jpg"
+    ]
+  },
+  "Warhammer 40,000: Gladius - Relics of War": {
+    "name": "Warhammer 40,000: Gladius - Relics of War",
+    "url": "https://www.gog.com/en/game/warhammer_40000_gladius_relics_of_war",
+    "cover": "https://images-3.gog-statics.com/fe0fa01266af131e0bc03535f070087a08f194e4bdcbb005e6315a4a1b075266",
+    "screenshots": [
+      "https://images.gog-statics.com/e13f4c9b51e83ec9c172f2bd1564fc3100bacf5ff0a926d19128d917eabd836d.jpg",
+      "https://images.gog-statics.com/6384ee2b62475f8ab12ea4bc6015622bb6d5db64fe285697c52662d62954bf83.jpg",
+      "https://images.gog-statics.com/93e862db812972eb53d0669dba0f7f59e2709a505c438c0dba8ddb4746ea2728.jpg",
+      "https://images.gog-statics.com/9001ab5d0b564d210824b01d01ce40c94bd6a285b85d550fcd52b4e49745cf7a.jpg",
+      "https://images.gog-statics.com/89e7f04653e45ae47318ab41e87d682c10ccf167a0000ed2a5a700c8b76aa3e1.jpg",
+      "https://images.gog-statics.com/b37eb11d6d3c07889293a231bd3775d4150c29bf0e981bb6c758ffea46c2ad7d.jpg"
+    ]
+  },
+  "Witchaven": {
+    "name": "Witchaven",
+    "url": "https://www.gog.com/en/game/witchaven",
+    "cover": "https://images-1.gog-statics.com/8967d3c8092266168e0831be2c9fe916efce982b6ca5255a20e8e8cf6f21ea4b",
+    "screenshots": [
+      "https://images.gog-statics.com/3a3c0becd1eafc6608fa0b3b497693ea97ee6841b25563d64ed75d6b17b4cae2.jpg",
+      "https://images.gog-statics.com/2e1f09bf550728aff9a14e8ddc664eb727e8eb7e1671d5de397fc1433f7841d4.jpg",
+      "https://images.gog-statics.com/a43641a05a25608989be7ac5067aae50499dc335550f6a94361394527c7d6c2b.jpg",
+      "https://images.gog-statics.com/864849a05ca9f904d978da6973d2d3fd4996833ddf9fb15f610f31a7a9f31709.jpg",
+      "https://images.gog-statics.com/09f4ed249d74ed53d36f223e821634261f295bebc690bf43e3bdcf305fdc013d.jpg"
+    ]
+  },
+  "Witchaven II: Blood Vengeance": {
+    "name": "Witchaven II: Blood Vengeance",
+    "url": "https://www.gog.com/en/game/witchaven_ii_blood_vengeance",
+    "cover": "https://images-3.gog-statics.com/aaa14941f2c3cfe94eb9a0fdd19b69e29b54c5fdd7afa2dfb0f3918456ce6eb4",
+    "screenshots": [
+      "https://images.gog-statics.com/53f2e5c2d46c322e4afe1342691d4c79fd343d92c8948beda01575a24087fe81.jpg",
+      "https://images.gog-statics.com/7a265722af05536b86ce2f715c21294d089ca5192a18088f2a2d9ddeb37bddf0.jpg",
+      "https://images.gog-statics.com/745bf6c1d102c14bc10977e95d347ed23779ec990de645d3eaca8184f0909055.jpg",
+      "https://images.gog-statics.com/ad5f66df5688863ab045ee41fa17ae4e7a10da89dccf1cb68a8b62955b896364.jpg",
+      "https://images.gog-statics.com/b0e55f9485767ae59b33332c89ef8e73d2d2c8ab0d9345d4cae4f398cb147426.jpg",
+      "https://images.gog-statics.com/a35c2bf7232423e91f0d45b54ab1c37d545cce063f75c69900ed986fd7bcf8a7.jpg"
+    ]
   }
 }
