@@ -60,6 +60,43 @@ body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;paddi
 .lb-prev { left: -80px; } .lb-next { right: -80px; } .lb-close { top: -65px; right: 0; }
 @media(max-width: 900px) { .lb-prev { left: 15px; bottom: -80px; top: auto; } .lb-next { right: 15px; bottom: -80px; top: auto; } .sidebar { width: 100%; right: -100%; } }
 @media(max-width: 800px) { .row { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); } .cover { grid-column: span 2; height: 140px; } }
+
+/* Stile del pulsante mostra/nascondi */
+.btn-toggle-code {
+  wth: 100%;
+  background: #222;
+  color: #ccc;
+  border: 1px solid #333;
+  padding: 12px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-toggle-code:hover {
+  background: #2a2a2a;
+  color: #ffaa00;
+}
+
+/* Stile della scatola del codice */
+pre {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 15px;
+  max-height: 250px; /* Evita che il codice allunghi troppo la pagina */
+  overflow-y: auto;  /* Aggiunge la barra di scorrimento interna */
+  margin: 0;
+}
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  color: #44ff44; /* Colore stile terminale (verde), o #eee se lo vuoi bianco */
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -80,7 +117,23 @@ body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;paddi
       <li>Accedi al tuo account su <a href="https://www.gog.com" target="_blank" style="color: #ffaa00; text-decoration: none; font-weight: bold;">GOG.com</a>.</li>
       <li>Apri la console del browser (premi <b>F12</b> oppure tasto destro -> <i>Ispeziona</i> e vai sulla scheda <i>Console</i>).</li>
       <li>Incolla lo script di estrazione JavaScript e premi <b>Invio</b>.</li>
-      <code>
+      <div style="margin-top: 25px; text-align: left;">
+  <button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
+    <span>👁️ Mostra lo Script JavaScript (Verifica la sicurezza)</span>
+    <span id="arrow-code">▼</span>
+  </button>
+  
+  <div id="codeBlockWrapper" style="display: none; margin-top: 10px;">
+    <p style="color: #888; font-size: 13px; margin: 0 0 8px 0;">
+      Questo è l'esatto codice che andrai ad eseguire. Puoi copiarlo da qui o verificarlo riga per riga:
+    </p>
+    <pre><code>(async function() {
+  // Interfaccia visiva di caricamento
+  const overlay = document.createElement('div');
+  overlay.style = "position:fixed;inset:0;background:rgba(17,17,17,0.9);z-index:99999;...
+
+  // Il resto del tuo script JS va qui dentro...
+
 (async function() {
   // 1. Creazione dell'interfaccia visiva (Overlay) su GOG
   const overlay = document.createElement('div');
@@ -165,7 +218,12 @@ body{background:#111;color:#eee;font-family: Arial, sans-serif;margin:20px;paddi
     setTimeout(() => overlay.remove(), 3000);
   }
 })();
-</code>
+//fine dello script di estrazione
+  
+})();</code></pre>
+  </div>
+</div>
+
       <li>Attendi il completamento e scarica il file <b>games_data.json</b> sul tuo computer.</li>
       <li>Trascina quel file qui sotto per generare la tua galleria permanente.</li>
     </ol>
@@ -350,6 +408,19 @@ document.addEventListener('keydown', e => {
         if (e.key === "Escape") closeLb(); else if (e.key === "ArrowRight") nextImg(null); else if (e.key === "ArrowLeft") prevImg(null);
     }
 });
+
+function toggleCodeBlock() {
+    const wrapper = document.getElementById('codeBlockWrapper');
+    const arrow = document.getElementById('arrow-code');
+    
+    if (wrapper.style.display === 'none') {
+        wrapper.style.display = 'block';
+        arrow.innerText = '▲';
+    } else {
+        wrapper.style.display = 'none';
+        arrow.innerText = '▼';
+    }
+}
 </script>
 </body>
 </html>
