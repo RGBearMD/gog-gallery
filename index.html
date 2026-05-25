@@ -420,42 +420,65 @@ function renderGallery(games) {
     games.forEach((game, idx) => {
         const safeId = `game-anchor-${idx}`;
         
-        // 1. Popola l'Indice Laterale (Sidebar)
-        sidebar.innerHTML += `<a href="#${safeId}" class="index-item" onclick="toggleSidebar()">${game.title}</a>`;
+        // Estrazione dati flessibile (supporta sia 'name' che 'title', sia 'url' che 'link')
+        const gameName = game.name || game.title || "Gioco senza titolo";
+        const gameUrl = game.url || game.link || "#";
         
-        // 2. Costruisci il blocco del Gioco (Griglia identica a Python)
+        // 1. Popola l'Indice Laterale (Sidebar)
+        sidebar.innerHTML += `<a href="#${safeId}" class="index-item" onclick="toggleSidebar()">${gameName}</a>`;
+        
+        // 2. Costruisci il blocco del Gioco
         let htmlBlock = `<div class="game" id="${safeId}">
-            <div class="game-title">${game.title}</div>
+            <div class="game-title">${gameName}</div>
             <div class="row">`;
         
-        // Gestione Copertina Cliccabile
+        // Gestione Copertina Cliccabile verso GOG
         if (game.cover) {
-            htmlBlock += `  <img class="cover" src="${game.cover}" loading="lazy" title="Apri pagina ufficiale su GOG" onerror="this.style.display='none'" onclick="window.open('${game.link}', '_blank')">`;
+            let cleanCover = fixGogUrl(game.cover);
+            htmlBlock += `  <img class="cover" src="${cleanCover}" loading="lazy" title="Apri pagina ufficiale su GOG" onerror="this.style.display='none'" onclick="window.open('${gameUrl}', '_blank')">`;
         }
         
-        // Gestione degli Screenshot (Se presenti nel JSON)
+        // Gestione Screenshot reali presenti nel JSON
         if (game.screenshots && Array.isArray(game.screenshots)) {
             game.screenshots.forEach(shot => {
-                let thumbUrl = shot;
-                // Applica la stessa identica conversione del codice Python per le miniature di GOG
-                if (shot.includes("gog-statics.com") && !shot.includes("_thumbnail") && !shot.includes("_slider")) {
-                    thumbUrl = shot.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png");
+                let fullUrl = fixGogUrl(shot);
+                let thumbUrl = fullUrl;
+                
+                // Genera la miniatura nativa ottimizzata se è un'immagine statica standard di GOG
+                if (fullUrl.includes("gog-statics.com") && !fullUrl.includes("_thumbnail") && !fullUrl.includes("_slider")) {
+                    thumbUrl = fullUrl.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png");
                 }
 
-                htmlBlock += `  <img class="shot gal-item" src="${thumbUrl}" data-full="${shot}" loading="lazy" onerror="handleBrokenLink(this)" onclick="openLb(this)">`;
+                htmlBlock += `  <img class="shot gal-item" src="${thumbUrl}" data-full="${fullUrl}" loading="lazy" onerror="handleBrokenLink(this)" onclick="openLb(this)">`;
             });
-        } else {
-            // Fallback: Se il vecchio estrattore non salvava i singoli screenshot, creiamo la miniatura principale
-            if (game.cover) {
-                let backupShot = game.cover.replace('_392.jpg', '_product_card_v2_mobile_slider_639.jpg');
-                let backupFull = game.cover.replace('_392.jpg', '.jpg');
-                htmlBlock += `  <img class="shot gal-item" src="${backupShot}" data-full="${backupFull}" loading="lazy" onerror="this.style.display='none'" onclick="openLb(this)">`;
-            }
         }
 
         htmlBlock += `</div></div>`;
         content.innerHTML += htmlBlock;
     });
+}
+
+// Funzione di utilità per pulire al volo i link malformati di GOG (es. quelli che finiscono con _ o _b)
+function fixGogUrl(url) {
+    if (!url) return "";
+    let clean = url;
+    if (clean.endsWith('_')) clean = clean.slice(0, -1) + '.jpg';
+    if (clean.endsWith('_b')) clean = clean.slice(0, -2) + '.jpg';
+    if (!clean.startsWith('http')) clean = 'https:' + (clean.startsWith('//') ? clean : '//' + clean);
+    return clean;
+}
+
+// Gestore intelligente per i link rotti degli screenshot
+function handleBrokenLink(imgElement) {
+    const currentSrc = imgElement.src;
+    // Se la miniatura ottimizzata fallisce (404), prova a caricare l'immagine originale a risoluzione massima
+    if (currentSrc.includes("_product_card_v2_thumbnail_271")) {
+        imgElement.src = imgElement.getAttribute('data-full');
+    } else {
+        // Se fallisce anche l'originale, nascondi l'immagine per non rompere la griglia della galleria
+        imgElement.style.display = 'none';
+        imgElement.classList.remove('gal-item'); // Rimuove dal carosello del lightbox
+    }
 }
 
 function clearLibrary() {
