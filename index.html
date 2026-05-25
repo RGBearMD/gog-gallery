@@ -207,10 +207,10 @@ code {
 
     <!-- PULSANTE MOSTRA-->
 <div style="margin-top: 25px; text-align: left;">
-  <button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
-    <span>👁️ Mostra lo Script JavaScript (Verifica la sicurezza)</span>
-    <span id="arrow-code">▼</span>
-  </button>
+<button type="button" class="btn-toggle-code" onclick="toggleCodeBlock()">
+  <span>💻 Visualizza lo Script (Open Source)</span>
+  <span id="arrow-code">▼</span>
+</button>
   
   <div id="codeBlockWrapper" style="display: none; margin-top: 10px; position: relative;">
     <p style="color: #888; font-size: 13px; margin: 0 0 8px 0;">
@@ -420,29 +420,38 @@ function renderGallery(games) {
     games.forEach((game, idx) => {
         const safeId = `game-anchor-${idx}`;
         
-        // 1. Popola Sidebar
+        // 1. Popola l'Indice Laterale (Sidebar)
         sidebar.innerHTML += `<a href="#${safeId}" class="index-item" onclick="toggleSidebar()">${game.title}</a>`;
         
-        // 2. Popola Griglia (Usando la logica degli screenshot dinamici di GOG)
-        // Nota: Poiché Cloudflare Pages non ha il backend Python, generiamo 4 screenshot mockup/standard basati sul pattern GOG
-        // o link di fallback se non gestito da API serverless dedicati.
+        // 2. Costruisci il blocco del Gioco (Griglia identica a Python)
         let htmlBlock = `<div class="game" id="${safeId}">
             <div class="game-title">${game.title}</div>
             <div class="row">`;
         
+        // Gestione Copertina Cliccabile
         if (game.cover) {
-            htmlBlock += `  <img class="cover" src="${game.cover}" loading="lazy" title="Apri su GOG" onclick="window.open('${game.link}', '_blank')">`;
+            htmlBlock += `  <img class="cover" src="${game.cover}" loading="lazy" title="Apri pagina ufficiale su GOG" onerror="this.style.display='none'" onclick="window.open('${game.link}', '_blank')">`;
         }
         
-        // Eseguiamo il rendering di immagini/anteprime (utilizzando i server statici GOG legati al prodotto se disponibili)
-        // In un setup cloudflare completo senza python, gli screenshot derivano direttamente dall'oggetto JSON se salvati dall'API.
-        const mockShots = [
-            game.cover ? game.cover.replace('_392.jpg', '_product_card_v2_mobile_slider_639.jpg') : ''
-        ].filter(Boolean);
+        // Gestione degli Screenshot (Se presenti nel JSON)
+        if (game.screenshots && Array.isArray(game.screenshots)) {
+            game.screenshots.forEach(shot => {
+                let thumbUrl = shot;
+                // Applica la stessa identica conversione del codice Python per le miniature di GOG
+                if (shot.includes("gog-statics.com") && !shot.includes("_thumbnail") && !shot.includes("_slider")) {
+                    thumbUrl = shot.replace(".jpg", "_product_card_v2_thumbnail_271.jpg").replace(".png", "_product_card_v2_thumbnail_271.png");
+                }
 
-        mockShots.forEach(shot => {
-            htmlBlock += `  <img class="shot gal-item" src="${shot}" data-full="${shot.replace('_product_card_v2_mobile_slider_639.jpg', '.jpg')}" loading="lazy" onclick="openLb(this)">`;
-        });
+                htmlBlock += `  <img class="shot gal-item" src="${thumbUrl}" data-full="${shot}" loading="lazy" onerror="handleBrokenLink(this)" onclick="openLb(this)">`;
+            });
+        } else {
+            // Fallback: Se il vecchio estrattore non salvava i singoli screenshot, creiamo la miniatura principale
+            if (game.cover) {
+                let backupShot = game.cover.replace('_392.jpg', '_product_card_v2_mobile_slider_639.jpg');
+                let backupFull = game.cover.replace('_392.jpg', '.jpg');
+                htmlBlock += `  <img class="shot gal-item" src="${backupShot}" data-full="${backupFull}" loading="lazy" onerror="this.style.display='none'" onclick="openLb(this)">`;
+            }
+        }
 
         htmlBlock += `</div></div>`;
         content.innerHTML += htmlBlock;
