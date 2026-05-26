@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOG Wrapped & Showcase</title>
+<style>
+:root { --bg: #09090b; --card: #141417; --border: #27272a; --text: #e4e4e7; --brand: #f29100; --brand-glow: rgba(242, 145, 0, 0.15); }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* CONTENITORE APPLICAZIONE */
+.app-wrapper { max-width: 480px; margin: 0 auto; min-height: 100vh; padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; }
+
+/* SCHERMATE FLOW ELEGANTE */
+.flow-screen { display: none; animation: cubicIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.flow-screen.active { display: flex; flex-direction: column; }
+@keyframes cubicIn { from { opacity: 0; transform: scale(0.96) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+/* STEP PILL */
+.step-badge { background: #1f1f23; color: var(--brand); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 auto 20px auto; width: fit-content; }
+
+/* TITOLI CINEMATICI */
+h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; text-align: center; margin-bottom: 12px; background: linear-gradient(135deg, #fff 50%, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; }
+.subtitle { color: #a1a1aa; font-size: 15px; text-align: center; line-height: 1.5; margin-bottom: 35px; }
+
+/* IL PULSANTE DA TRASCINARE */
+.drag-button-container { text-align: center; margin-bottom: 35px; position: relative; }
+.sync-magic-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #09090b; padding: 16px 28px; border-radius: 14px; font-weight: 700; font-size: 15px; text-decoration: none; cursor: grab; border: 2px dashed rgba(255,255,255,0.3); box-shadow: 0 10px 25px var(--brand-glow); transition: transform 0.2s; }
+.sync-magic-btn:active { cursor: grabbing; transform: scale(0.98); }
+
+/* COMFORT INTERFACE (OPZIONI COMODE) */
+.options-stack { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 30px; }
+.option-item { background: var(--card); border: 2px solid var(--border); padding: 18px; border-radius: 14px; cursor: pointer; display: flex; align-items: center; gap: 15px; transition: all 0.2s; }
+.option-item:hover { border-color: #3f3f46; }
+.option-item.selected { border-color: var(--brand); background: rgba(242,145,0,0.03); }
+.option-item .icon { font-size: 24px; }
+.option-item .details h3 { font-size: 15px; color: #fff; font-weight: 700; margin-bottom: 2px; }
+.option-item .details p { font-size: 12px; color: #71717a; }
+
+/* BOTTONI DI NAVIGAZIONE APP */
+.btn-prime { background: #fff; color: #09090b; border: none; padding: 16px; font-size: 15px; font-weight: 700; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; }
+.btn-prime:hover { background: #e4e4e7; transform: translateY(-1px); }
+
+/* LOADING ANIMATO INTERATTIVO */
+.loader-box { text-align: center; padding: 20px; }
+.rolling-stats { font-size: 48px; font-weight: 900; color: var(--brand); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.pulse-bar { width: 140px; height: 4px; background: var(--border); margin: 20px auto; border-radius: 2px; overflow: hidden; }
+.pulse-fill { height: 100%; background: var(--brand); width: 40%; animation: pulseMove 1s infinite ease-in-out; }
+@keyframes pulseMove { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+
+/* VERA INTERFACCIA WEB APP (POST-LOG) */
+#main-gallery-view { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; animation: cubicIn 0.5s ease-out; }
+.dashboard-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; gap: 20px; flex-wrap: wrap; }
+.search-control { background: var(--card); border: 1px solid var(--border); padding: 14px 20px; border-radius: 12px; color: #fff; font-size: 14px; width: 100%; max-width: 400px; outline: none; }
+.search-control:focus { border-color: var(--brand); box-shadow: 0 0 15px var(--brand-glow); }
+
+/* INIEZIONE VARIANTI TEMI E LAYOUT */
+.gallery-grid { display: grid; gap: 20px; }
+/* Varianti Layout */
+.theme-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+.theme-netflix { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+/* Varianti Grafiche */
+.game-node { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+.game-node img { width: 100%; height: auto; display: block; object-fit: cover; }
+.theme-netflix .game-node img { height: 160px; }
+.theme-retro { filter: sepia(0.3) contrast(1.1); font-family: 'Courier New', Courier, monospace; }
+.theme-retro .game-node { border-radius: 0; border: 2px solid #33ff33; background: #000; }
+.theme-retro .game-title { color: #33ff33 !important; }
+
+.node-meta { padding: 12px; }
+.game-title { font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* VISUAL GUIDES MINI */
+.mini-gif-placeholder { background: #0c0c0e; border: 1px solid #1f1f23; border-radius: 12px; padding: 30px; text-align: center; color: #52525b; font-size: 13px; margin-bottom: 25px; border-style: dashed; }
+</style>
+</head>
+<body>
+
+<div id="onboarding-container" class="app-wrapper">
+  <div class="step-badge" id="step-pill">Passo 1 di 3</div>
+
+  <div id="scr-1" class="flow-screen active">
+    <h1>Crea la tua bacheca GOG</h1>
+    <p class="subtitle">Trasforma la tua collezione di giochi in una bacheca d'impatto, senza configurazioni o registrazioni.</p>
+    
+    <div class="drag-button-container">
+      <a id="dynamic-sync-button" class="sync-magic-btn" href="#" onclick="alert('Trascina questo pulsante nella barra dei preferiti in alto!'); return false;">
+        ✨ Sincronizza GOG
+      </a>
+    </div>
+
+    <div class="mini-gif-placeholder">
+      👋 Trascina il pulsante arancione in alto nella barra dei preferiti del tuo browser.
+    </div>
+
+    <button class="btn-prime" onclick="advanceStep(2)">Pronto, ho fatto!</button>
+  </div>
+
+  <div id="scr-2" class="flow-screen">
+    <h1>Attiva il collegamento</h1>
+    <p class="subtitle">Ora vai sul sito di GOG per importare in automatico la lista dei tuoi titoli.</p>
+
+    <div class="options-stack">
+      <div class="option-item" onclick="window.open('https://www.gog.com/en/account', '_blank')">
+        <span class="icon">🚀</span>
+        <div class="details">
+          <h3>1. Apri la tua pagina GOG</h3>
+          <p>Clicca qui per aprire il tuo profilo (lasciando aperta questa scheda).</p>
+        </div>
+      </div>
+      <div class="option-item">
+        <span class="icon">🖱️</span>
+        <div class="details">
+          <h3>2. Clicca il preferito "Sincronizza GOG"</h3>
+          <p>Mentre sei sulla pagina di GOG, premi il pulsante salvato prima.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini-gif-placeholder" id="waiting-message">
+      ⏳ In attesa del segnale... La bacheca si aggiornerà da sola appena clicchi il pulsante su GOG.
+    </div>
+  </div>
+
+  <div id="scr-3" class="flow-screen">
+    <h1>Configurazione Stile</h1>
+    <p class="subtitle">Personalizza l'aspetto visivo della tua nuova bacheca digitale.</p>
+
+    <div class="options-stack">
+      <div class="option-item selected" id="sty-grid" onclick="pickStyle('grid')">
+        <span class="icon">🖼️</span>
+        <div class="details">
+          <h3>Griglia Pulita</h3>
+          <p>Layout geometrico, minimale e focalizzato sulle copertine.</p>
+        </div>
+      </div>
+      <div class="option-item" id="sty-netflix" onclick="pickStyle('netflix')">
+        <span class="icon">🎬</span>
+        <div class="details">
+          <h3>Cinema Row</h3>
+          <p>Orizzontale, panoramico. Stile piattaforma streaming.</p>
+        </div>
+      </div>
+      <div class="option-item" id="sty-retro" onclick="pickStyle('retro')">
+        <span class="icon">📟</span>
+        <div class="details">
+          <h3>Retro CRT</h3>
+          <p>Stile hacker anni '80 con font a matrice verde fosforo.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-prime" onclick="showFinalGallery()">Mostra la mia Bacheca</button>
+  </div>
+</div>
+
+<div id="main-gallery-view">
+  <div class="dashboard-nav">
+    <h2 id="gallery-badge-title" style="font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">La mia Collezione</h2>
+    <input type="text" id="live-search" class="search-control" placeholder="Cerca un gioco al volo..." oninput="renderGalleryGrid()">
+  </div>
+  <div id="visual-deck" class="gallery-grid theme-grid"></div>
+</div>
+
+<script>
+let activeStep = 1;
+let selectedStyle = 'grid';
+let rawCollection = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    buildDynamicBookmarklet();
+    checkHandshakeParams();
+});
+
+// Generazione dinamica del codice interno al pulsante
+function buildDynamicBookmarklet() {
+    const currentDomain = window.location.href.split('?')[0];
+    
+    const code = `javascript:(async function(){
+        const overlay = document.createElement('div');
+        overlay.style = "position:fixed;inset:0;background:rgba(9,9,11,0.98);z-index:999999;display:flex;justify-content:center;align-items:center;color:#fff;font-family:sans-serif;";
+        overlay.innerHTML = '<div style="text-align:center;"><h2 style="color:#f29100;margin-bottom:10px;font-size:20px;">Sincronizzazione in corso...</h2><p style="color:#a1a1aa;font-size:14px;">Sto impacchettando la tua libreria di giochi</p></div>';
+        document.body.appendChild(overlay);
+
+        try {
+            const res = await fetch('/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page=1&sortBy=title');
+            const data = await res.json();
+            const items = data.products.map(p => ({
+                name: p.title,
+                cover: p.image ? 'https:' + p.image : null
+            }));
+
+            // Apre la Web App e invia i dati tramite cross-origin handshake sicuro
+            const appWindow = window.open('${currentDomain}?syncMode=active', 'gog_wrapped_receiver');
+            
+            window.addEventListener('message', function receiver(e) {
+                if (e.data === 'APP_READY') {
+                    appWindow.postMessage({ type: 'COLLECTION_DATA', payload: items }, '*');
+                    overlay.innerHTML = '<div style="text-align:center;"><h2 style="color:#4ade80;margin-bottom:5px;">Fatto!</h2><p style="color:#aaa;">Puoi chiudere questa scheda.</p></div>';
+                    window.removeEventListener('message', receiver);
+                }
+            });
+        } catch(e) {
+            alert('Errore. Assicurati di essere dentro la pagina del tuo profilo GOG.');
+            overlay.remove();
+        }
+    })();`;
+
+    document.getElementById('dynamic-sync-button').setAttribute('href', code.replace(/\s+/g, ' '));
+}
+
+// Controllo dell'handshake da finestra a finestra
+function checkHandshakeParams() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('syncMode')) {
+        window.name = 'gog_wrapped_receiver';
+        
+        // Segnala alla scheda di GOG originaria che la Web App è pronta a ricevere la pipeline di dati
+        if (window.opener) {
+            window.opener.postMessage('APP_READY', '*');
+        }
+
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.type === 'COLLECTION_DATA') {
+                rawCollection = event.data.payload;
+                // Salta direttamente alla fase di caricamento ed estetica
+                document.getElementById('onboarding-container').style.maxWidth = "480px";
+                advanceStep(3);
+            }
+        });
+    }
+}
+
+function advanceStep(target) {
+    activeStep = target;
+    document.querySelectorAll('.flow-screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(`scr-${target}`).classList.add('active');
+    document.getElementById('step-pill').innerText = `Passo ${target} di 3`;
+}
+
+function pickStyle(styleName) {
+    selectedStyle = styleName;
+    document.querySelectorAll('.option-item').forEach(i => i.classList.remove('selected'));
+    document.getElementById(`sty-${styleName}`).classList.add('selected');
+}
+
+function showFinalGallery() {
+    document.getElementById('onboarding-container').style.display = 'none';
+    const view = document.getElementById('main-gallery-view');
+    view.style.display = 'block';
+    
+    if(selectedStyle === 'retro') {
+        document.body.classList.add('theme-retro');
+    }
+    
+    const deck = document.getElementById('visual-deck');
+    deck.className = `gallery-grid theme-${selectedStyle === 'retro' ? 'grid' : selectedStyle}`;
+    
+    document.getElementById('gallery-badge-title').innerText = `La mia Vetrina (${rawCollection.length} Giochi)`;
+    renderGalleryGrid();
+}
+
+function renderGalleryGrid() {
+    const deck = document.getElementById('visual-deck');
+    const query = document.getElementById('live-search').value.toLowerCase().trim();
+    deck.innerHTML = '';
+
+    rawCollection.filter(g => g.name.toLowerCase().includes(query)).forEach(game => {
+        const node = document.createElement('div');
+        node.className = 'game-node';
+        node.innerHTML = `
+            <img src="${game.cover || ''}" loading="lazy" onerror="this.style.opacity='0.2'">
+            <div class="node-meta">
+                <div class="game-title">${game.name}</div>
+            </div>
+        `;
+        deck.appendChild(node);
+    });
+}
+</script>
+</body>
+</html>

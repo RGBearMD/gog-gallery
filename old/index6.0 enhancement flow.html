@@ -10,7 +10,7 @@
 body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
 /* STRUTTURA FLUIDA APP SCREEN */
-.screen-view { display: none; min-height: 100vh; width: 100%; padding: 60px 20px; flex-direction: column; align-items: center; justify-content: center; animation: smoothIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.screen-view { display: none; min-height: 100vh; width: 100%; padding: 40px 20px; flex-direction: column; align-items: center; justify-content: center; animation: smoothIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .screen-view.active { display: flex; }
 @keyframes smoothIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -26,9 +26,6 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-fo
 h1 { font-size: 34px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 12px; background: linear-gradient(135deg, #fff 40%, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bottom: 30px; }
 
-/* BADGE PRIVACY SOTTO CTA */
-.privacy-badge { font-size: 12px; color: var(--text-muted); margin-top: 15px; line-height: 1.4; display: flex; align-items: center; justify-content: center; gap: 6px; }
-
 /* BOTTONI PREMIUM */
 .cta-button { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; padding: 18px 30px; border-radius: 16px; font-weight: 700; font-size: 16px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 10px 25px var(--brand-glow); transition: all 0.2s; }
 .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(242, 145, 0, 0.3); }
@@ -39,16 +36,11 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .back-arrow-link { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 25px; transition: color 0.15s; }
 .back-arrow-link:hover { color: #fff; }
 
-/* SEZIONE 3: TRASPARENZA E SICUREZZA */
-.security-section { width: 100%; max-width: 700px; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; }
-.security-section h2 { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 25px; color: #fff; }
-.security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
-.security-card { background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: 14px; text-align: left; }
-.security-card .icon { font-size: 20px; margin-bottom: 10px; display: block; }
-.security-card h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-.security-card p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-.github-link { display: inline-flex; align-items: center; gap: 8px; color: var(--brand); font-size: 13px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; }
-.github-link:hover { opacity: 0.8; text-decoration: underline; }
+/* EARLY PREVIEW */
+.early-preview-deck { display: flex; gap: 10px; justify-content: center; margin-bottom: 40px; perspective: 1000px; }
+.mock-card { width: 85px; height: 120px; background: var(--surface-card); border: 1px solid var(--border); border-radius: 8px; transform: rotateY(-15deg) rotateX(10deg); box-shadow: -10px 10px 20px rgba(0,0,0,0.5); background-size: cover; background-position: center; }
+.mock-card:nth-child(2) { transform: translateZ(15px) rotateY(-5deg); }
+.mock-card:nth-child(3) { transform: rotateY(15deg) rotateX(10deg); box-shadow: 10px 10px 20px rgba(0,0,0,0.5); }
 
 /* IL PULSANTE RITUALE DA TRASCINARE */
 .drag-pill-anchor { display: inline-flex; align-items: center; gap: 10px; background: #1f1f27; color: var(--brand); padding: 16px 28px; border-radius: 14px; font-weight: 700; font-size: 15px; text-decoration: none; cursor: grab; border: 2px dashed rgba(242,145,0,0.4); transition: transform 0.2s; margin: 20px 0; }
@@ -92,9 +84,6 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .theme-crt .game-title-text { color: #33ff33; }
 
 .visual-hint { background: #0a0a0d; border: 1px solid var(--border); border-radius: 14px; padding: 22px; text-align: center; color: var(--text-muted); font-size: 13px; margin-bottom: 25px; line-height: 1.5; }
-
-/* POSIZIONAMENTO CONTENITORE KO-FI */
-.kofi-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
 </style>
 </head>
 <body>
@@ -103,40 +92,14 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 
   <div id="view-landing" class="screen-view active">
     <div class="content-card">
-      <h1 style="margin-top: 20px;">La tua libreria GOG,<br>diventata arte.</h1>
+      <div class="early-preview-deck">
+        <div class="mock-card" style="background-image: url('https://images-2.gog-statics.com/da686df749e79435b89a803be2df790bf7e716e25f82b7c433ff9e3b9e4a3bfb_392.jpg');"></div>
+        <div class="mock-card" style="background-image: url('https://images-2.gog-statics.com/62e08e61fb196e8e04b46c2f90a990ec8a571da574d642af58e0a7e6b7d2f948_392.jpg');"></div>
+        <div class="mock-card" style="background-image: url('https://images-2.gog-statics.com/b5ba805b55050e413008fe58e803c4a229fa1b5cb11b418ad11603ba08fb2fae_392.jpg');"></div>
+      </div>
+      <h1>La tua libreria GOG,<br>diventata arte.</h1>
       <p class="lead">Trasforma la tua collezione di giochi in una splendida bacheca interattiva stile Netflix o Steam. Bastano 5 secondi.</p>
-      
       <button class="cta-button" onclick="changeView('view-step1', 25)">✨ Avvia Sincronizzazione</button>
-      
-      <div class="privacy-badge">
-        <span>🔒</span>
-        <p><b>100% Privato:</b> Nessuna password richiesta. I dati dei tuoi giochi rimangono nel tuo browser e non vengono salvati su nessun server.</p>
-      </div>
-
-      <div class="security-section">
-        <h2>La sicurezza al microscopio</h2>
-        <div class="security-grid">
-          <div class="security-card">
-            <span class="icon">🚫</span>
-            <h3>Zero Password</h3>
-            <p>Il pulsante non ti chiederà mai i dati di accesso. Sfrutta la sessione che hai già attivo su GOG in totale sicurezza.</p>
-          </div>
-          <div class="security-card">
-            <span class="icon">💻</span>
-            <h3>Solo sul tuo PC</h3>
-            <p>La sincronizzazione avviene da scheda a scheda all'interno del tuo browser. Nessun server esterno raccoglie o spia le tue informazioni.</p>
-          </div>
-          <div class="security-card">
-            <span class="icon">🇪🇺</span>
-            <h3>100% GDPR compliant</h3>
-            <p>Tu mantieni il pieno controllo. L'applicazione non archivia nulla e genera un file offline di tua esclusiva proprietà.</p>
-          </div>
-        </div>
-        <a href="https://github.com/RGBearMD/gog-gallery" target="_blank" class="github-link">
-          🐙 Ispeziona il codice sorgente su GitHub →
-        </a>
-      </div>
-
     </div>
   </div>
 
@@ -182,7 +145,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
       </div>
 
       <div style="font-size: 13px; color: var(--brand); font-weight: 600; margin-top: 15px;">
-        🔒 Connessione locale sicura... Stiamo solo leggendo i titoli dei tuoi giochi, nessuna credenziale viene toccata.
+        ⏳ In attesa dei dati... Questa pagina si aggiornerà da sola.
       </div>
       <button class="cta-button-secondary" onclick="simulateWrappedArrival()">Usa dati demo (Se sei da Mobile)</button>
     </div>
@@ -268,14 +231,6 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
   <div id="gallery-deck" class="deck-grid layout-grid"></div>
 </div>
 
-<div class="kofi-container">
-  <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-  <script type='text/javascript'>
-    kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'X0W0206J65');
-    kofiwidget2.draw();
-  </script>
-</div>
-
 <script>
 let currentLayout = 'grid';
 let userGamesCollection = [];
@@ -285,9 +240,11 @@ document.addEventListener('DOMContentLoaded', () => {
     listenForCrossWindowHandshake();
 });
 
+// COMPILAZIONE DEL PULSANTE: Scrittura blindata e flessibile
 function compileInvisibleBookmarkletCode() {
+    // CONTROLLO DI SICUREZZA: Blocca l'onboarding se l'app è aperta localmente via file://
     if (window.location.protocol === 'file:') {
-        console.warn("L'app è aperta via file:// - Ricorda che per far funzionare l'handshake reale serve un ambiente locale o online (http/https).");
+        alert("⚠️ ATTENZIONE DELLO SVILUPPATORE:\n\nNon puoi testare la sincronizzazione aprendo il file direttamente dal tuo computer (file://).\n\nPer funzionare, l'app deve girare su un server locale (es. Live Server di VS Code, http://localhost) o essere caricata online (es. GitHub Pages).");
     }
 
     const targetEndpoint = window.location.href.split('?')[0];
@@ -335,6 +292,7 @@ function compileInvisibleBookmarkletCode() {
     document.getElementById('injection-sync-pill').setAttribute('href', compactScript.replace(/\s+/g, ' '));
 }
 
+// HANDSHAKE DI RICEZIONE DATI SULLA WEB APP
 function listenForCrossWindowHandshake() {
     const urlArgs = new URLSearchParams(window.location.search);
     if (urlArgs.has('syncEngine')) {
@@ -343,9 +301,12 @@ function listenForCrossWindowHandshake() {
         window.addEventListener('message', (e) => {
             if (e.data && e.data.type === 'DATA_TRANSFER') {
                 userGamesCollection = e.data.payload;
+                
+                // Invia la conferma di ricezione alla scheda madre (GOG) per fermare il loop di trasmissione
                 if (window.opener) {
                     window.opener.postMessage('SYNC_SUCCESS_CONFIRM', '*');
                 }
+                
                 processWrappedStatistics();
                 changeView('view-wrapped', 75);
             }
