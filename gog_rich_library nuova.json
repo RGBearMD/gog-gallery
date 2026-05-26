@@ -1,0 +1,1552 @@
+[
+  {
+    "id": 1207658810,
+    "name": "Advent Rising",
+    "cover": "https://images-2.gog-statics.com/53a056e07c6f1ce0a76306dfcecb104d9b7f106605605f5c5aac8fb133b3cc73"
+  },
+  {
+    "id": 1207658883,
+    "name": "Age of Wonders",
+    "cover": "https://images-4.gog-statics.com/97440bb2a5ff595650c71488fd09f4badd4d0e7e1de5513eacaa9b02c4b679ed"
+  },
+  {
+    "id": 1207658885,
+    "name": "Age of Wonders: Shadow Magic",
+    "cover": "https://images-1.gog-statics.com/2515bc7a3156a84023606bfc66db86857a8d34e183f252b39e83fae365f8bd7d"
+  },
+  {
+    "id": 1243209140,
+    "name": "Agent A: A puzzle in disguise",
+    "cover": "https://images-4.gog-statics.com/0bbdab84ab40ac305e97283f9949060663e71dce00b116a285475fe548a60f1d"
+  },
+  {
+    "id": 1207666073,
+    "name": "Akalabeth: World of Doom",
+    "cover": "https://images-1.gog-statics.com/56262850671fd7232b8ff46deba530007ff7a437fab0ddd67147f8d41aa6bca0"
+  },
+  {
+    "id": 1742114859,
+    "name": "Akane",
+    "cover": "https://images-2.gog-statics.com/d379b38f01a2ceaadc5163ac240a7a999f26ead51f7493c49d639e8497c4112a"
+  },
+  {
+    "id": 1892014768,
+    "name": "Alba: A Wildlife Adventure",
+    "cover": "https://images-4.gog-statics.com/7f8e976697560b1016ea0e2ad54b6540175dcf3a42fa46a6534d34925f804252"
+  },
+  {
+    "id": 2018305509,
+    "name": "Alder's Blood Prologue",
+    "cover": "https://images-4.gog-statics.com/e5aae5ed2ce39c025e9263e0fcf07598b5f4296cf5b77d8814496ced767c7d3b"
+  },
+  {
+    "id": 1207660923,
+    "name": "Alone in the Dark 1",
+    "cover": "https://images-4.gog-statics.com/cc3623efccf2d4be01bb3364b23bb8710a4bdc323710ef72af6d7c1d72077b6c"
+  },
+  {
+    "id": 1207660963,
+    "name": "Alone in the Dark 2",
+    "cover": "https://images-4.gog-statics.com/fbeb7abd02b2582026d94dd029d70a915e0894fdf636e8fd7a83adbf754d4a39"
+  },
+  {
+    "id": 1207660973,
+    "name": "Alone in the Dark 3",
+    "cover": "https://images-3.gog-statics.com/92a2cbda2d08f3d411c65a22173d8dbe261aa0a69d70f6eeb3493884a0879556"
+  },
+  {
+    "id": 1207658847,
+    "name": "Amerzone: The Explorer's Legacy (1999)",
+    "cover": "https://images-4.gog-statics.com/5c5f1d2806fa7906f98336ab337ffd86e73d3d3c1a94da7d4f0950a92a37c47e"
+  },
+  {
+    "id": 1207659012,
+    "name": "Anachronox",
+    "cover": "https://images-2.gog-statics.com/cdb979a144ddf74f47eae8955d821b6be6c279bac822f595962e9a91f462ea6f"
+  },
+  {
+    "id": 1751965389,
+    "name": "Ancient Enemy",
+    "cover": "https://images-4.gog-statics.com/1165e0d391121888bbbd7e9f6986bf067c412c46a8b63d7a8501bb8be56330eb"
+  },
+  {
+    "id": 1436955893,
+    "name": "Archimedean Dynasty",
+    "cover": "https://images-1.gog-statics.com/9934e957cf31b287b843ed8c4535bbf9a4ecbfcf8ccf37b332ddece8f30de78f"
+  },
+  {
+    "id": 1433157800,
+    "name": "Armikrog",
+    "cover": "https://images-2.gog-statics.com/aa34fb86bbee0ec99a8cde6591df16340e5ed05fcb1d37926b4a969865a1994b"
+  },
+  {
+    "id": 1207658680,
+    "name": "Arx Fatalis",
+    "cover": "https://images-4.gog-statics.com/c2520dded66c1e9fc65ebc0ece3fb480e26f40c966a6809366a0d9a43f2b27e0"
+  },
+  {
+    "id": 1207664543,
+    "name": "Ascendant",
+    "cover": "https://images-3.gog-statics.com/3d01fb154f70418e15db31139f2b51ecad8f145c61dcd5b9cb216eb02a5be40e"
+  },
+  {
+    "id": 1999648426,
+    "name": "Ascension to the Throne",
+    "cover": "https://images-3.gog-statics.com/824819dce3f3404f7fdefe701f69c7ba3ca9ad03256c799a34b462619e40b59e"
+  },
+  {
+    "id": 1207666373,
+    "name": "Baldur's Gate II: Enhanced Edition",
+    "cover": "https://images-2.gog-statics.com/865e412024677b4594a91ea7cc3da75077ce8114adc26d5b92cb82c7f9b4509f"
+  },
+  {
+    "id": 1207666353,
+    "name": "Baldur's Gate: Enhanced Edition",
+    "cover": "https://images-2.gog-statics.com/90ba7463dae94110fd495957a6311648a6e1999bab1a0fcc2d5176b3f46141e8"
+  },
+  {
+    "id": 1454067812,
+    "name": "BattleZone 98 Redux",
+    "cover": "https://images-3.gog-statics.com/6d5f9b8caf133cc70104b810a1e87ba8b4e2d16a2c5e92ee8d4657a04ad4bb33"
+  },
+  {
+    "id": 1120387413,
+    "name": "Battlezone: Combat Commander",
+    "cover": "https://images-2.gog-statics.com/44f47b72a5495818b36c0a6c5ef398fa836af3001d48b2add17948f79d249662"
+  },
+  {
+    "id": 1787679429,
+    "name": "Bee Simulator",
+    "cover": "https://images-1.gog-statics.com/7faf10bc68e993a991c3f555daaea1735f8b0d3132a385d8a965c1ec636ab433"
+  },
+  {
+    "id": 1451215361,
+    "name": "Beholder 2",
+    "cover": "https://images-4.gog-statics.com/d2b1530325d7853986a1869829303ea38eb3879edd24053450fb43c719028573"
+  },
+  {
+    "id": 1207658695,
+    "name": "Beneath a Steel Sky (1994)",
+    "cover": "https://images-1.gog-statics.com/8c9562087850f4f0bc5cbb073e2207e75cb016d7b1632800db3e36c8e85d79d2"
+  },
+  {
+    "id": 1090734724,
+    "name": "Betrayer",
+    "cover": "https://images-1.gog-statics.com/798b87f729fa965e96455dff61c7983d54eb86a450675e05de2583b78b134973"
+  },
+  {
+    "id": 1207658746,
+    "name": "Beyond Good & Evil™",
+    "cover": "https://images-2.gog-statics.com/190142155a2ecc45787be16844baf53d77c027cd8755c4eb2cf8caa76fd178ab"
+  },
+  {
+    "id": 1449569170,
+    "name": "Bio Menace",
+    "cover": "https://images-1.gog-statics.com/2d0cd253f7d22db29fd4c2e411f5ef39c9347771b58f385158a8ac58f198560d"
+  },
+  {
+    "id": 1207659125,
+    "name": "Bioforge",
+    "cover": "https://images-4.gog-statics.com/05e898e55053432a2e776eefdf9f676f6bf577dd7df32381215631a3ad7f5445"
+  },
+  {
+    "id": 1207667233,
+    "name": "Blackguards 2",
+    "cover": "https://images-2.gog-statics.com/a1c21181e8ba9132b9ad5dc39e495e2777b2070d2cd8edb8b3b00657ecab42fc"
+  },
+  {
+    "id": 1370811355,
+    "name": "Blade Runner",
+    "cover": "https://images-4.gog-statics.com/1c63bfb4ca12960a8d91520f0e0a2ecc279f6b536561d13d2d4cf236f452c2cc"
+  },
+  {
+    "id": 1884045679,
+    "name": "Blade Runner - Enhanced Edition",
+    "cover": "https://images-1.gog-statics.com/3f402baea6c778b0e638e446da5cf2e39bfbe56ed46e4a3dd84df225e9e2bd69"
+  },
+  {
+    "id": 2001710861,
+    "name": "Blazing Beaks",
+    "cover": "https://images-2.gog-statics.com/d0af34d3257eba360d4cbbf9be2285c21b4bda1f0607beb4a9b394049b2eb095"
+  },
+  {
+    "id": 1374469660,
+    "name": "Blood: Fresh Supply",
+    "cover": "https://images-3.gog-statics.com/babecb9bed321fab4928676c2f619b3e7d2b5f108c6ee28b59e3c36b46dcc0ac"
+  },
+  {
+    "id": 1542190742,
+    "name": "Bloody Hell",
+    "cover": "https://images-3.gog-statics.com/d7b910245cf6152d606e0f8fd1a42c4d51a923e7fdd6ccbc9e4bc99c03a2b881"
+  },
+  {
+    "id": 1207658707,
+    "name": "Broken Sword 2: Remastered (2010)",
+    "cover": "https://images-2.gog-statics.com/cf0635fd4743c0ca4a3960d29929e870dadd03284fb7bf2f5339ed303da4e515"
+  },
+  {
+    "id": 1212177362,
+    "name": "Builders of Egypt: Prologue",
+    "cover": "https://images-4.gog-statics.com/cbd5cf5d90aa6c5c75a3828bc4fda8814f3dda94a13280b808bd44b7109334f6"
+  },
+  {
+    "id": 1619245923,
+    "name": "Bullet Runner: The First Slaughter",
+    "cover": "https://images-3.gog-statics.com/4a31410b5f70e1d44837b3a7e01f8c2ff7938267345e9ad23ccb093457e953fc"
+  },
+  {
+    "id": 1189711155,
+    "name": "Call of Cthulhu: Dark Corners of the Earth",
+    "cover": "https://images-1.gog-statics.com/96bd5c2f3a877ce4c8add1569ee9864ee852ff8bd1bdab4ac266e41d6fac0d06"
+  },
+  {
+    "id": 1909524379,
+    "name": "Call of Juarez",
+    "cover": "https://images-1.gog-statics.com/78a1dceebceefb8e407755c05bc3c2f1201bff3d5934b73128c6b769dc7e5d32"
+  },
+  {
+    "id": 1770556474,
+    "name": "Call of Juarez: Bound in Blood",
+    "cover": "https://images-2.gog-statics.com/0b626860c7459e93cb5ed3a5b13598a5ccb08edfc14a00c4f44fc821cea35e59"
+  },
+  {
+    "id": 1207659047,
+    "name": "Carmageddon Max Pack",
+    "cover": "https://images-3.gog-statics.com/9598650c71ad5ad4f185dcdb881a5c864bacc422bda9d3eafaf011389052ebcc"
+  },
+  {
+    "id": 1600722961,
+    "name": "Caveblazers",
+    "cover": "https://images-3.gog-statics.com/ee37e0bb054cc9a65bc3a8f62efd4336b08aac05e8bbaafebc2f39499a015333"
+  },
+  {
+    "id": 2016844216,
+    "name": "CAYNE",
+    "cover": "https://images-1.gog-statics.com/cbcce9d6ab1b18f8c4a8630fa9b6f566b5fa61ac7e316ec2d39042377bc0e8eb"
+  },
+  {
+    "id": 1207659191,
+    "name": "Clive Barker's Undying",
+    "cover": "https://images-1.gog-statics.com/be0b1a8316b89cb7c28c61226ed3a6f6c3f3ea1b403bafed39d4ff2b8f5478b2"
+  },
+  {
+    "id": 1649233263,
+    "name": "Close Combat 2: A Bridge Too Far",
+    "cover": "https://images-1.gog-statics.com/b2ececd37d64b98462d369cab87663208efadc8fbc135fcbc0bd8b4f221707f7"
+  },
+  {
+    "id": 1981721026,
+    "name": "Close Combat 3: The Russian Front",
+    "cover": "https://images-2.gog-statics.com/dc94a48efb98d1736e5d49413adc9020a41105c06281d2399e70053c1eecd34f"
+  },
+  {
+    "id": 1714577252,
+    "name": "Close Combat 4: The Battle of the Bulge",
+    "cover": "https://images-3.gog-statics.com/8e83d67772dd8fafc6ab0da0ea562b68673a84e0567d2bbf71b1a9df1a4bf074"
+  },
+  {
+    "id": 1988084980,
+    "name": "Close Combat: Cross of Iron",
+    "cover": "https://images-4.gog-statics.com/d0e93516d54d723a99dae510e29bb9970a69ebca2b1993b1279786b919e0c320"
+  },
+  {
+    "id": 2078946998,
+    "name": "Close Combat: Modern Tactics",
+    "cover": "https://images-3.gog-statics.com/5e596fed25849ca229be426b52dd8d98fdda5a5b7197fd286423938cea0b023a"
+  },
+  {
+    "id": 2049187585,
+    "name": "Control Ultimate Edition",
+    "cover": "https://images-1.gog-statics.com/6e6dbbd1637253394627e72c2b99f39d5c89e160ef07ca0d7823ad7603062496"
+  },
+  {
+    "id": 1137712636,
+    "name": "Crusader Kings II",
+    "cover": "https://images-3.gog-statics.com/213d787841d1878be7e0c3bbf8cfb953ceace118e19c2b6861bbfe09f9fab779"
+  },
+  {
+    "id": 1207658982,
+    "name": "Crusader: No Regret™",
+    "cover": "https://images-2.gog-statics.com/8ff2e224b333e1b302bdebbf3dede95398daad30f4390479c201cca359253ee6"
+  },
+  {
+    "id": 1666511461,
+    "name": "Crysis Warhead",
+    "cover": "https://images-2.gog-statics.com/1c8b4b40ab7d74067961093a43607f5747ba226c4606fe92478e6cb7a010d602"
+  },
+  {
+    "id": 2014921890,
+    "name": "Crysis Wars",
+    "cover": "https://images-4.gog-statics.com/d05c6e1f4e2eaf6edccf0a5c58cf96f774b4d57d7f47e451fcbec1816837bbc7"
+  },
+  {
+    "id": 1809223221,
+    "name": "Crysis®",
+    "cover": "https://images-3.gog-statics.com/e087bbbde75278ebefe198ce2935c178e29437f0150b4fd44cf32611cde58d20"
+  },
+  {
+    "id": 1638321975,
+    "name": "Cyberpunk SFX",
+    "cover": "https://images-3.gog-statics.com/500e5247642a9d27fc73a09db334e14461d6c0165c9af8917e8b855694bb2d94"
+  },
+  {
+    "id": 1659763953,
+    "name": "CyClones",
+    "cover": "https://images-4.gog-statics.com/5d41de29d3410ba7cf13fff7d724f8fceeaf33eed214a2cf0e5aa024675ac8ed"
+  },
+  {
+    "id": 1782995089,
+    "name": "Daggerfall Unity - GOG Cut",
+    "cover": "https://images-4.gog-statics.com/0878e7c7a9c1bcce30c589a715f09c13785da1539615e73b27a15fd463b6ef7b"
+  },
+  {
+    "id": 1132748633,
+    "name": "Dagon: by H. P. Lovecraft",
+    "cover": "https://images-4.gog-statics.com/0b9f83b1914cb4c8a131d5ece0a77e873ae167d7f12d33e96a23ac8d0288a428"
+  },
+  {
+    "id": 1544460195,
+    "name": "Daymare: 1998",
+    "cover": "https://images-4.gog-statics.com/2e45a6a84c14e124fe2260a1b9d096740df546314ecc6055a7d78983b6967a67"
+  },
+  {
+    "id": 1386697093,
+    "name": "Death Track: Resurrection",
+    "cover": "https://images-2.gog-statics.com/22c7d6d71da28af25dbe65baa18a2403d5d5d20000ada8b74d99d9677d9a3e0b"
+  },
+  {
+    "id": 1250071528,
+    "name": "Delores: A Thimbleweed Park Mini-Adventure",
+    "cover": "https://images-4.gog-statics.com/f76171d53c548400e95a4c1f31ca70f92ae482ba57a0906a3a0fa981fb3b4ce1"
+  },
+  {
+    "id": 1207659103,
+    "name": "Deponia",
+    "cover": "https://images-3.gog-statics.com/55bad7c5bb1a9bdfb34e9ae97e13e674f7d1756ded14370e69a8ebfb561837d7"
+  },
+  {
+    "id": 1207659124,
+    "name": "Deponia 2: Chaos on Deponia",
+    "cover": "https://images-2.gog-statics.com/1116e5b988a9f7e566858f0e2cbcc25e11b4c924f0658594a9ae05cb0ce1521d"
+  },
+  {
+    "id": 1380961633,
+    "name": "Desert Law",
+    "cover": "https://images-4.gog-statics.com/533ae7499afa15f10681cd75cc5aad296f752d9ce8fddcf3af0435672bb01d8d"
+  },
+  {
+    "id": 1401174839,
+    "name": "DethKarz",
+    "cover": "https://images-4.gog-statics.com/c75305c777c11448f6123f939eda503f33a3f551c77a795695f3072b0b24f812"
+  },
+  {
+    "id": 1370227705,
+    "name": "Deus Ex: Human Revolution - Director’s Cut",
+    "cover": "https://images-4.gog-statics.com/42c6aec0e9ae93304d487ebb9ec40eb5fd221d6c174f54b752a1d20915bde11f"
+  },
+  {
+    "id": 1929434313,
+    "name": "Dex",
+    "cover": "https://images-4.gog-statics.com/e9029c481d84815c77706610f11af8af6bdb64f793124bd02b70a8da2871d90f"
+  },
+  {
+    "id": 1207658647,
+    "name": "Die By The Sword + Limb From Limb",
+    "cover": "https://images-4.gog-statics.com/723e3e94f2f1d4ce40806ab251c5454b6fd9a6f0c3970c8e9f46f855f6e63fe7"
+  },
+  {
+    "id": 2095461205,
+    "name": "Diggles: The Myth of Fenris",
+    "cover": "https://images-1.gog-statics.com/d8447a84cde40c977be7b7e1d8b353b9523ad2b9cd8771a1461064da58ce0288"
+  },
+  {
+    "id": 1517047613,
+    "name": "Diluvian Ultra",
+    "cover": "https://images-3.gog-statics.com/6850861e81324c7dc4c7ba596b0a537feb307411456b6e1cdbacf545fe2252d4"
+  },
+  {
+    "id": 1640863824,
+    "name": "Dink Smallwood HD",
+    "cover": "https://images-2.gog-statics.com/fa31881af39436b62bef91cb325f462c8f288d6af2090a256d0f8a1e991ffa88"
+  },
+  {
+    "id": 1207663703,
+    "name": "Disciples 2 - Dark Prophecy and Gallean's Return",
+    "cover": "https://images-3.gog-statics.com/7e15610dadc17be7915e295bd6ab514f6b87465e54345d31917008e7756db5e3"
+  },
+  {
+    "id": 1207663713,
+    "name": "Disciples 2 - Rise of the Elves",
+    "cover": "https://images-4.gog-statics.com/181fa95481e68fd90f12596356d9e1e242615df7db6217a5e3ec9abb8534f566"
+  },
+  {
+    "id": 1207658683,
+    "name": "Disciples: Sacred Lands Gold",
+    "cover": "https://images-3.gog-statics.com/eaa5d8b3118e23a1c7d8f8fdba1f8874a4f12abfc40dfbd0655b8c96e7949f01"
+  },
+  {
+    "id": 1701063787,
+    "name": "Dishonored - Definitive Edition",
+    "cover": "https://images-3.gog-statics.com/059f24a27dd530a1390c368bfd276b60615bb73f10dd7e3051432640f28e712b"
+  },
+  {
+    "id": 1431426311,
+    "name": "Dishonored 2",
+    "cover": "https://images-2.gog-statics.com/65811050eda91f39725b29a46ca7c7e68bdd7ec515ab4ef127dc96d77fab0c44"
+  },
+  {
+    "id": 1707860700,
+    "name": "Dishonored®: Death of the Outsider™",
+    "cover": "https://images-4.gog-statics.com/0aba570f591b334e42c7dc697ecfedaead6688f541d79e9e8859c5cace08fdd7"
+  },
+  {
+    "id": 1207658805,
+    "name": "Divine Divinity",
+    "cover": "https://images-2.gog-statics.com/370d03749313745491bc54aeaf84fbd5537cc0077309dfd11fb90231246fa3d1"
+  },
+  {
+    "id": 1207659105,
+    "name": "Divinity 2: Developer's Cut",
+    "cover": "https://images-1.gog-statics.com/9002921c8dbe2d727793f78e2f483a953c252b87ace018f0ae44f508f8b50c10"
+  },
+  {
+    "id": 1390579243,
+    "name": "DOOM (2016)",
+    "cover": "https://images-3.gog-statics.com/82a7cd303997644e10450fad1be3a3666f5cb0cfbc1fa44b38b429e607e64426"
+  },
+  {
+    "id": 1413291984,
+    "name": "DOOM + DOOM II",
+    "cover": "https://images-2.gog-statics.com/eaad5d1fce93e36d33b9983fba7edc623e23793e138667aafff6b7a305717c84"
+  },
+  {
+    "id": 2015545325,
+    "name": "DOOM I Enhanced",
+    "cover": "https://images-4.gog-statics.com/2cbe0fc4f6726cbbd35bc3578bcefc6d33fe7138ca5bfc35c795087d738dfbd0"
+  },
+  {
+    "id": 1435848814,
+    "name": "DOOM II + Master Levels",
+    "cover": "https://images-3.gog-statics.com/c1f0858b5d431d7ff13ea7e577d52959e8f832ea8066d66035f86cb5bd8c80ff"
+  },
+  {
+    "id": 1426071866,
+    "name": "DOOM II Enhanced",
+    "cover": "https://images-3.gog-statics.com/b8a290c8e8e0315715851722306c3494e67c58c1b928d07dcc233959d9c759ee"
+  },
+  {
+    "id": 1207660693,
+    "name": "Doomdark's Revenge",
+    "cover": "https://images-4.gog-statics.com/43b050c658e5c7c9757b15eee9b94f5800c27561aebd030e6a01e5b99ee83570"
+  },
+  {
+    "id": 1663627600,
+    "name": "Dreamscaper",
+    "cover": "https://images-4.gog-statics.com/f5098d9054dfb2dfcb66d3e9b1f5ee87f4cd8b91c6e71a33606407de00a0b247"
+  },
+  {
+    "id": 1207658934,
+    "name": "Dungeon Keeper Gold™",
+    "cover": "https://images-2.gog-statics.com/59d47094960f0ba6b8712a046a2022ba23c8047bc4c75fda94d6c8b2304e4794"
+  },
+  {
+    "id": 1207658959,
+    "name": "Dungeon Keeper™ 2",
+    "cover": "https://images-3.gog-statics.com/3f85f1590f99c8d3ff5c70321fd15e7f7b9e3db71d409bcf7549ae53934374d1"
+  },
+  {
+    "id": 1114411610,
+    "name": "E.Y.E: Divine Cybermancy - Single-Player Edition",
+    "cover": "https://images-2.gog-statics.com/51b2a61d8500171266391d41d9d514916be94ca8f8ae1f738b639277ba1dc82f"
+  },
+  {
+    "id": 2076457657,
+    "name": "Endling - Extinction is Forever",
+    "cover": "https://images-4.gog-statics.com/58881a14e114aa8ae4964e38e556597c15f9df40acf56af28ab6073563d1ade7"
+  },
+  {
+    "id": 1207659221,
+    "name": "Eschalon: Book I",
+    "cover": "https://images-4.gog-statics.com/cf9a191ba37d07a3a932ef2568a8e1bc81c88eaedcc343e3a02b5fa8c4ad125c"
+  },
+  {
+    "id": 1462182139,
+    "name": "Euphoria: Supreme Mechanics",
+    "cover": "https://images-2.gog-statics.com/eab19dfa2c4bb8fa0dfa0b97dbd9d0cb710884c8dfdc4c23a479d82841ed8ccf"
+  },
+  {
+    "id": 1513949567,
+    "name": "EVERSPACE™",
+    "cover": "https://images-1.gog-statics.com/e5aa16043bc1434164e51299695d6802909228943005f7c331bbe746db1845ac"
+  },
+  {
+    "id": 1876546888,
+    "name": "Fall of Porcupine: Prologue",
+    "cover": "https://images-2.gog-statics.com/255c13273d77d9791bec1c2a63a36b0aeb40bb865a6ae2db21c3a5f90eee80d2"
+  },
+  {
+    "id": 1440148836,
+    "name": "Fallout",
+    "cover": "https://images-4.gog-statics.com/0584f7fbcb480d39f317067ba81e78c76f6735d41c3d281b8db8b1bbe8d715d4"
+  },
+  {
+    "id": 1440151285,
+    "name": "Fallout 2",
+    "cover": "https://images-2.gog-statics.com/e1fb495117c3c3c5b50c30db055acdc7545893b842111058d49c5039f2014680"
+  },
+  {
+    "id": 1454587428,
+    "name": "Fallout: New Vegas Ultimate Edition",
+    "cover": "https://images-4.gog-statics.com/74d5fb286ceae7fb8c424c8deb0812faabcc14ec596ef49cd6b23e2d020fb96e"
+  },
+  {
+    "id": 1430136345,
+    "name": "Fantasy General",
+    "cover": "https://images-4.gog-statics.com/ae0dd2346e947205e49491fa53915906789cd83a1e537eadd616677becfde044"
+  },
+  {
+    "id": 1435812428,
+    "name": "Figment 2: Creed Valley Demo",
+    "cover": "https://images-4.gog-statics.com/4ec5816a35c46597eb98e3a8556f5cc67a712c385f3b48568dad575b01a2f557"
+  },
+  {
+    "id": 1435848742,
+    "name": "Final Doom",
+    "cover": "https://images-4.gog-statics.com/366a67d13a260dbafbc0b07d7080b148825bde15814547ae38a631ccace111c0"
+  },
+  {
+    "id": 1436454557,
+    "name": "Final Liberation: Warhammer Epic 40,000",
+    "cover": "https://images-3.gog-statics.com/6aa368a6f89562026f6e1f18172810c96162434a9a87201f3e325e4bbe878aa8"
+  },
+  {
+    "id": 1486529526,
+    "name": "Flashback™",
+    "cover": "https://images-3.gog-statics.com/cfbb26f44012638c90b9649bda0359292cca1e04dd889b862614c232384eacfa"
+  },
+  {
+    "id": 1997220672,
+    "name": "Flashout 2",
+    "cover": "https://images-1.gog-statics.com/7ed24c83870f0ce5ee13a98da9ecb45203d87b2b3f100bf644d4f299fce3d105"
+  },
+  {
+    "id": 1086047076,
+    "name": "Flashout 3",
+    "cover": "https://images-1.gog-statics.com/d9b2afeb6e7eb439edccfb2e2ad223ab1626af8f1b057f4d5e9af7363c0a9b3d"
+  },
+  {
+    "id": 2121564020,
+    "name": "Flashout 3D: Enhanced Edition",
+    "cover": "https://images-1.gog-statics.com/09011753df7ead3ab93e9d0fbaaad9f4fe3ceb31f09b130742b35af300780150"
+  },
+  {
+    "id": 1207659723,
+    "name": "Flight of the Amazon Queen",
+    "cover": "https://images-2.gog-statics.com/23f2b3ea51d94d412516374660aa231561f5d25bd99947c5b49e8f255119a185"
+  },
+  {
+    "id": 2133872469,
+    "name": "Forgotton Anne",
+    "cover": "https://images-1.gog-statics.com/46d5e10a1af798bc003636eb1373da31f9de1629aca1ef44040e2dbe0d5c1b92"
+  },
+  {
+    "id": 1438076423,
+    "name": "Frozen Synapse",
+    "cover": "https://images-1.gog-statics.com/91900dd4ed25b7338528a6805e1f9caf3bd8c9e7202c59dbc0e7f85265bd238f"
+  },
+  {
+    "id": 1325415523,
+    "name": "Full Throttle Remastered",
+    "cover": "https://images-4.gog-statics.com/ac3fdfa98a006fd65d359c9746fa2dc101fe6b384f8faa4f3e4a7ac9411bd19d"
+  },
+  {
+    "id": 1875167847,
+    "name": "Ghost of a Tale",
+    "cover": "https://images-1.gog-statics.com/d7d01f3b7ef46b7aa0559490ffafc930e111976d74936074f217f1f366d04f86"
+  },
+  {
+    "id": 1862226811,
+    "name": "GOG-chan Figurine",
+    "cover": "https://images-1.gog-statics.com/0d133aeecee2914d6904d2f65d98f26e0b18459bf6cf0dbc31b07629741d7f53"
+  },
+  {
+    "id": 1207658744,
+    "name": "Gorky 17",
+    "cover": "https://images-2.gog-statics.com/c91e8a68492bab2221932e47a6beb53369aed1a4bfce9a978b32c055958d6616"
+  },
+  {
+    "id": 1526229423,
+    "name": "Gravewood High",
+    "cover": "https://images-3.gog-statics.com/2cf8eccabdb9394ef5651675f043f9efa0d8786b5858fda1bf2ff5e8d42c7d7c"
+  },
+  {
+    "id": 2142923325,
+    "name": "Greak: Memories of Azur",
+    "cover": "https://images-1.gog-statics.com/4d2508cf24589d577bb7b19ae728a0d75914e57519394255e48c1353bcd7adaa"
+  },
+  {
+    "id": 1342466874,
+    "name": "GRIP",
+    "cover": "https://images-4.gog-statics.com/dc021a1d14c25002ea4eaae039810aa48ce4f6626bd562b939e1cdbb28c8cbd2"
+  },
+  {
+    "id": 2078272297,
+    "name": "GRIS",
+    "cover": "https://images-2.gog-statics.com/2711f1155f42d68a57c9ad2fb755a49839e6bc17a22b4a0bc262b0e35cb73115"
+  },
+  {
+    "id": 1863535689,
+    "name": "Hello Neighbor Alpha Version",
+    "cover": "https://images-3.gog-statics.com/818658294fc9ed5ce966acf2792e93aa8cb6d4776813071c6774b93c73d0f6f5"
+  },
+  {
+    "id": 1666688320,
+    "name": "Hero of the Kingdom II",
+    "cover": "https://images-2.gog-statics.com/961a6f6832b80f6db89c149336335e824da6f0a50981920915755c8109151c1e"
+  },
+  {
+    "id": 1207661743,
+    "name": "Heroes Chronicles [Chapter 1] - Warlords of the Wasteland",
+    "cover": "https://images-1.gog-statics.com/f2d0607f3ebf9dddb84767273b72a74a350f7fc546200cd680a596a0b422f3f9"
+  },
+  {
+    "id": 1207661753,
+    "name": "Heroes Chronicles [Chapter 2] - Conquest of the Underworld",
+    "cover": "https://images-1.gog-statics.com/670fe7fc3d02c4db41afb249d4429595074808ea81f763b178f9c7701d23ba2f"
+  },
+  {
+    "id": 1207661763,
+    "name": "Heroes Chronicles [Chapter 3] - Masters of the Elements",
+    "cover": "https://images-2.gog-statics.com/b16393f6b349c26deba8a504aa7816f845393091488ef91d9af380f664d0e4c4"
+  },
+  {
+    "id": 1207661773,
+    "name": "Heroes Chronicles [Chapter 4] - Clash of the Dragons",
+    "cover": "https://images-1.gog-statics.com/7cc76783fbdf6da836a29dcf78c6895751674d2d6a2a47c2143eecc49cd24aaa"
+  },
+  {
+    "id": 1207661783,
+    "name": "Heroes Chronicles [Chapter 5] - The World Tree",
+    "cover": "https://images-2.gog-statics.com/cc66d18a57557b05e709753e1a53582d4f73a4ad3e10f903373139588411a234"
+  },
+  {
+    "id": 1207661793,
+    "name": "Heroes Chronicles [Chapter 6] - The Fiery Moon",
+    "cover": "https://images-3.gog-statics.com/85862e06fa7f802f32341141ce0730d472f7cecf97e153327581ec73bf5560a7"
+  },
+  {
+    "id": 1207661803,
+    "name": "Heroes Chronicles [Chapter 7] - Revolt of the Beastmasters",
+    "cover": "https://images-1.gog-statics.com/a798c65f61da6825fb84ac3321bca11295fb267cc528886cccca92b1432239f5"
+  },
+  {
+    "id": 1207661813,
+    "name": "Heroes Chronicles [Chapter 8] - The Sword of Frost",
+    "cover": "https://images-1.gog-statics.com/21a7dc9cdd79476313308e2d84260dd0ff1d73180464e216781c605085cf5f4c"
+  },
+  {
+    "id": 1207658787,
+    "name": "Heroes of Might and Magic® 3: Complete",
+    "cover": "https://images-4.gog-statics.com/a18a7017bdca7bdd14fb003a46522e320051d3e9c1fb939559a4517d90f86170"
+  },
+  {
+    "id": 1207658915,
+    "name": "Heroes of Might and Magic® 4: Complete",
+    "cover": "https://images-1.gog-statics.com/3549b565446a62a7aa085620de0de02d2d587df6bf9a0f3fe6b8445a4f63c525"
+  },
+  {
+    "id": 1798886022,
+    "name": "Hexen II",
+    "cover": "https://images-2.gog-statics.com/8981ad43ca04da71a8794fbf9744c0131fdfe1db5f4562c3df84b5535f42e825"
+  },
+  {
+    "id": 2094700167,
+    "name": "HUNTDOWN",
+    "cover": "https://images-1.gog-statics.com/ad79170dea248b08761569c1af05bfd96a85d30b0aed00021f895bda7ac8a2b7"
+  },
+  {
+    "id": 1207659593,
+    "name": "I Have No Mouth And I Must Scream",
+    "cover": "https://images-3.gog-statics.com/30901ac72be00f081ec474f970ee56f9c9126781d3e309311cec83641689bca5"
+  },
+  {
+    "id": 1207666683,
+    "name": "Icewind Dale: Enhanced Edition",
+    "cover": "https://images-2.gog-statics.com/07b99d39695f0b08d82487a86cfb784fe880da91dd53c0dc9269017a069c22f9"
+  },
+  {
+    "id": 1207658873,
+    "name": "Independence War™ II: Edge of Chaos",
+    "cover": "https://images-3.gog-statics.com/60269fb805b12ee56bf6e5ea5e585580587342d89a88d42b87546a9b210a19e9"
+  },
+  {
+    "id": 1207661003,
+    "name": "Interstate '76",
+    "cover": "https://images-1.gog-statics.com/c1f5c18674c62b200fdd910148164e184f0a601e757c50f6d9e42adbb3565841"
+  },
+  {
+    "id": 1207661023,
+    "name": "Interstate '76 Nitro Pack",
+    "cover": "https://images-3.gog-statics.com/e1ad4255dd131400efe422579599df4206ad387f485580e0029b467d3ac372ce"
+  },
+  {
+    "id": 1207659076,
+    "name": "Interstate '82",
+    "cover": "https://images-4.gog-statics.com/dd9f1227fb2968282e2af6bb512c05b33b560ced690a81e3380be7b2bb5b7579"
+  },
+  {
+    "id": 1207658696,
+    "name": "Jagged Alliance 2",
+    "cover": "https://images-2.gog-statics.com/0bd69a02f78359063bcba7966ed6941d0efbd74c9bdf3a04f938e862fed98961"
+  },
+  {
+    "id": 1207658743,
+    "name": "Jagged Alliance 2: Wildfire",
+    "cover": "https://images-3.gog-statics.com/94cbeb8c8dd7fccb65a14389b3842d0e146b5b054019edcd01d1a4a63e52440b"
+  },
+  {
+    "id": 1813565692,
+    "name": "Janosik",
+    "cover": "https://images-1.gog-statics.com/cf43ca3d02bd9b9e2f142de1e5be662430657aae0ce1d75d45b5ef216d579883"
+  },
+  {
+    "id": 1597842603,
+    "name": "Jazz Jackrabbit 2: The Christmas Chronicles",
+    "cover": "https://images-4.gog-statics.com/536ece4995c6df5d66e5155b02195e2198d19313ee3d0182bf7009a4a6f85f93"
+  },
+  {
+    "id": 1351891846,
+    "name": "Jazz Jackrabbit 2: The Secret Files",
+    "cover": "https://images-4.gog-statics.com/33586aa0d3f347dbc393f5c1ea9cf3d937a063755ea572f0fe9c40326b52af87"
+  },
+  {
+    "id": 1129701343,
+    "name": "Jill of the Jungle: The Complete Trilogy",
+    "cover": "https://images-3.gog-statics.com/b6184bdfe32a6b50777057d0b599c4e00758a68e31ebdaad2d737839b0fb170d"
+  },
+  {
+    "id": 1833855510,
+    "name": "Just Cause 2 - Complete Edition",
+    "cover": "https://images-3.gog-statics.com/96e6f2caf36956248deb6bab6bd096b8a971b663fb817fc9ea60a78a2fd45fd9"
+  },
+  {
+    "id": 1207658867,
+    "name": "King's Bounty: The Legend",
+    "cover": "https://images-1.gog-statics.com/f43343ed27913f5749f5d517db907638bc0ff3461cffbb52ce8c1b910342e697"
+  },
+  {
+    "id": 9,
+    "name": "Kingpin: Life of Crime",
+    "cover": "https://images-1.gog-statics.com/46be11273ec3b4be47c4d74086e76a7dff2ed59b31c83d94e7509dcabfdd4a1a"
+  },
+  {
+    "id": 1207658772,
+    "name": "Knights and Merchants",
+    "cover": "https://images-2.gog-statics.com/9dd63e16d5cd6f04b961dd0f3b83f32f63fb211bffb8bdc59cd7f73da7f614b4"
+  },
+  {
+    "id": 1207659101,
+    "name": "Legacy of Kain: Blood Omen 2",
+    "cover": "https://images-4.gog-statics.com/7ac78966e4f6ff659e56b8847c9e146c0624526542a2db57f734d865b768b83c"
+  },
+  {
+    "id": 1207659088,
+    "name": "Legacy of Kain: Defiance (2003)",
+    "cover": "https://images-2.gog-statics.com/6170378108ebc443e2d5befd470d000c70552b0941144df9c0107ac204acb4ac"
+  },
+  {
+    "id": 1207659063,
+    "name": "Legacy of Kain: Soul Reaver 2",
+    "cover": "https://images-1.gog-statics.com/6cc8fe0484d1764a96b20b5861e8d219efd0b9db44bac0d886105bcd200c22e4"
+  },
+  {
+    "id": 2020648154,
+    "name": "Legend of Keepers: Prologue",
+    "cover": "https://images-1.gog-statics.com/de93af3aa44f35ca2bd2d63b8a1af0a75c28ec9ac8e7fddf53583295cb797bbd"
+  },
+  {
+    "id": 1780442795,
+    "name": "Liberated",
+    "cover": "https://images-3.gog-statics.com/7a6cdc7b8d8d7c0b0fba6bd7d24ebf0fdad31ce92b001ec54e5a2c4df7e63ccf"
+  },
+  {
+    "id": 1426765313,
+    "name": "Lichdom: Battlemage",
+    "cover": "https://images-3.gog-statics.com/16fad6364447d058604f3ae58501ff60b4d2cd8289b2ddcc482659a0c393b85f"
+  },
+  {
+    "id": 1604161214,
+    "name": "Loria",
+    "cover": "https://images-4.gog-statics.com/91b710cf819d08c5d33dca07579d21aa13459a1258ad64f3ff38ea600a22d9e0"
+  },
+  {
+    "id": 1207658694,
+    "name": "Lure of the Temptress (1992)",
+    "cover": "https://images-3.gog-statics.com/c142bc01845e073ea337341303cee07a8e9e980434cd1d148bf1f43e8634c734"
+  },
+  {
+    "id": 1296467424,
+    "name": "Mad Max",
+    "cover": "https://images-1.gog-statics.com/0c95b9a655f85c2d73032cc90854dd5a88fabcd5cd313d3f64eae157f14f77c9"
+  },
+  {
+    "id": 1423481910,
+    "name": "Majesty Gold HD",
+    "cover": "https://images-3.gog-statics.com/eb78e3012f129d2dbe2ff0a6969ff073b044d4f652085459ac55c3aa53a3c274"
+  },
+  {
+    "id": 1692939089,
+    "name": "Martial Law",
+    "cover": "https://images-4.gog-statics.com/8089085fc8eeb452abd97ef1288f8581b2352efc0878dfd6de59ccbb2dbea396"
+  },
+  {
+    "id": 1207661633,
+    "name": "Master of Orion 2",
+    "cover": "https://images-2.gog-statics.com/3fd40ec161e1452b5d028819c21483096d7aca9e80be2c0f5cd0cc8116564d1b"
+  },
+  {
+    "id": 1207661623,
+    "name": "Master of Orion Classic",
+    "cover": "https://images-1.gog-statics.com/b32a7e40965d2ae1149b87d8b553e811f1c8330dc4a9c5e75b85da88cc9b6ee2"
+  },
+  {
+    "id": 6,
+    "name": "MDK",
+    "cover": "https://images-3.gog-statics.com/c02a5a3b627f4682a672f14b716334a9b37acc554308852396c3b6fc89ee405d"
+  },
+  {
+    "id": 1207658645,
+    "name": "MDK 2",
+    "cover": "https://images-3.gog-statics.com/727c27ece9944d7873210bee007a94f76783fb68afbb1d1fc33fe5cde826f5cf"
+  },
+  {
+    "id": 7,
+    "name": "Messiah",
+    "cover": "https://images-2.gog-statics.com/c4b3a466c8925326b5f8a887728ba1be2a6103593e52e245f8f27ef507bc4d1a"
+  },
+  {
+    "id": 1769957642,
+    "name": "Metal Fatigue",
+    "cover": "https://images-1.gog-statics.com/b0242dccfa63a167487d230720182b8d2b9a9c5dca419279c29ff5a15fa9c147"
+  },
+  {
+    "id": 1207658895,
+    "name": "Moto Racer",
+    "cover": "https://images-3.gog-statics.com/95fd14e9911f917b880b0af4d6525ea16f3f076558eca615d54995caa311610d"
+  },
+  {
+    "id": 1531168671,
+    "name": "My Brother Rabbit",
+    "cover": "https://images-4.gog-statics.com/8f63dc385febb3fff5c7935b3194fe6a62c99f3bc8ecba424cfd0cec96b5d938"
+  },
+  {
+    "id": 1446112277,
+    "name": "Never Alone Arctic Collection",
+    "cover": "https://images-3.gog-statics.com/c217661f02f6c79fb1d27f81d4437e038126807dc216b38dfdca789bec466061"
+  },
+  {
+    "id": 1207658890,
+    "name": "Neverwinter Nights Diamond",
+    "cover": "https://images-3.gog-statics.com/690e76916523b140d297f86906c67e2816b27005ee1b6743b53332c9583b2654"
+  },
+  {
+    "id": 1097893768,
+    "name": "Neverwinter Nights: Enhanced Edition",
+    "cover": "https://images-2.gog-statics.com/8706f7fb87a4a41bc34254f3b49f59f96cf13d067b2c8bbfd8d41c327392052a"
+  },
+  {
+    "id": 1433027987,
+    "name": "Nomads of Driftland",
+    "cover": "https://images-4.gog-statics.com/639db451490d29c5b1a2644307939ce47a23e13e4428db58153540685b3424d6"
+  },
+  {
+    "id": 1207658964,
+    "name": "Nox™",
+    "cover": "https://images-2.gog-statics.com/319f768899cd2190b977fc0b420ccb2169b375e14a43c3d88a4f2d740d1da6e7"
+  },
+  {
+    "id": 1207659190,
+    "name": "Omikron: The Nomad Soul",
+    "cover": "https://images-4.gog-statics.com/56d8a2c71f7770232662ecbc777690f01e5c0a483964eca1cc8d14559467cab9"
+  },
+  {
+    "id": 1613568205,
+    "name": "Onde",
+    "cover": "https://images-1.gog-statics.com/edb847b211fdf1c66fab2cb91267c7ef24aa0928e530477e43680fdfb86ff42c"
+  },
+  {
+    "id": 1293297882,
+    "name": "OpenTTD",
+    "cover": "https://images-3.gog-statics.com/664b8ec67726af0163c7a3f8c40e935bfaa572abfcd66ef4db4eb6bbb265c39b"
+  },
+  {
+    "id": 1207658652,
+    "name": "Original War",
+    "cover": "https://images-2.gog-statics.com/4fa41c8b155b70716ac942400532670ac5d569c837afc2060bc2a9e2b3aa621d"
+  },
+  {
+    "id": 1137422289,
+    "name": "Original War Legacy Version",
+    "cover": "https://images-3.gog-statics.com/9a12b22e056bd75d87e278bb681109540f645b9bfd170debe703c66176314667"
+  },
+  {
+    "id": 2109390794,
+    "name": "Outcast - Second Contact",
+    "cover": "https://images-2.gog-statics.com/f5774206dc2f16503745180921e533da918c3e6361d22a045fb098f0126a3908"
+  },
+  {
+    "id": 1207658853,
+    "name": "Outcast 1.1",
+    "cover": "https://images-4.gog-statics.com/1e3d93502fc5c23abf7f5a9bccf2878797a59965661e762f8e2452539a482e3c"
+  },
+  {
+    "id": 1425302464,
+    "name": "Outlaws + A Handful of Missions (Classic, 1997)",
+    "cover": "https://images-4.gog-statics.com/cb2a94e496a41edebd5792c52a17d65447f97ff6860084c82f6af5bfba03c8e6"
+  },
+  {
+    "id": 1074885762,
+    "name": "Outshine",
+    "cover": "https://images-1.gog-statics.com/cf404ed3effab036d8dc9cde132fe02266855ce9307506fc5441d6e60fca4bb9"
+  },
+  {
+    "id": 1308814788,
+    "name": "Outwars",
+    "cover": "https://images-3.gog-statics.com/eb643b7f300ccd3e765983c0b0feae1fd6526183f3f070aa01c40b01c739fad3"
+  },
+  {
+    "id": 1309632191,
+    "name": "Overload",
+    "cover": "https://images-3.gog-statics.com/86021784ec0e8e811590312c8d1d1d387094ec7b5559262fc3a0621a428efb58"
+  },
+  {
+    "id": 1245077743,
+    "name": "Overload - Playable Teaser",
+    "cover": "https://images-3.gog-statics.com/b7272e6bb4022f3838c91a37cc403d99673fb657d57fad34f53dfa2dd4a2cafd"
+  },
+  {
+    "id": 1207658871,
+    "name": "Panzer General 2",
+    "cover": "https://images-2.gog-statics.com/b2f97b7aa633cc2cabea3f0d2b62a1030100107763f7d8c228056f3752a9ae04"
+  },
+  {
+    "id": 1207658706,
+    "name": "Patrician 3",
+    "cover": "https://images-4.gog-statics.com/489e9df66168db5a7d0c99ebd2516e5d6171a21e45a096de3ec90c91672ceef2"
+  },
+  {
+    "id": 1167911806,
+    "name": "Phoning Home",
+    "cover": "https://images-2.gog-statics.com/c07fb6821411546195400a7b0be5985168f1fde1af54edacd2d6db0284681869"
+  },
+  {
+    "id": 1207666813,
+    "name": "Pillars of Eternity",
+    "cover": "https://images-2.gog-statics.com/686ecf388cc275d5c6a16b40a57d80eaf50d5c887c7d3510b4a648d7a2d64285"
+  },
+  {
+    "id": 1207658887,
+    "name": "Planescape: Torment",
+    "cover": "https://images-4.gog-statics.com/f3ae682a33b03abad3b78078b35052255722611a1b0e3ffa76bb8e864c7d6105"
+  },
+  {
+    "id": 1132393016,
+    "name": "Planescape: Torment: Enhanced Edition",
+    "cover": "https://images-2.gog-statics.com/241d816ec5486889d9978d5f850ac80723b3ca6a3f6c0ed4de067aca91f06ef6"
+  },
+  {
+    "id": 1207658754,
+    "name": "POSTAL: Classic and Uncut",
+    "cover": "https://images-2.gog-statics.com/859da396cf61f1782c600b9b07cabb3f8965d17b5611eed3435174a151de2ff4"
+  },
+  {
+    "id": 1207659109,
+    "name": "Prince of Persia",
+    "cover": "https://images-1.gog-statics.com/465413237cb962d9b0ded6b3eaaaa96ea78d029c39b68f00e10f3727fad7f7e3"
+  },
+  {
+    "id": 1207659091,
+    "name": "Prince of Persia: The Two Thrones",
+    "cover": "https://images-4.gog-statics.com/dbff543e65d4b28e73efca18e0c395a1d3bffadee59513fff00ea3d83735f6c8"
+  },
+  {
+    "id": 1207659082,
+    "name": "Prince of Persia: Warrior Within",
+    "cover": "https://images-3.gog-statics.com/80b9c3f18cb3c38c0afe796a43e3eadf5482b2388f09ea5a5102adc70a90dd7e"
+  },
+  {
+    "id": 1207658747,
+    "name": "Prince of Persia®: The Sands of Time",
+    "cover": "https://images-3.gog-statics.com/b39f745aea99e997ec9eb2052761bdb3e93985e8eb07c23b54c86c448350da9f"
+  },
+  {
+    "id": 1273860392,
+    "name": "Prince of Qin",
+    "cover": "https://images-1.gog-statics.com/2cdfddd3dec7917c09b757932786d2c4409d718ffd4168f02498104916f7e718"
+  },
+  {
+    "id": 1207659235,
+    "name": "Project Eden",
+    "cover": "https://images-4.gog-statics.com/ca425062769ef8ed4a3ef2655496787ecaa33c9cb2e2ef1471f84bdaebb37b84"
+  },
+  {
+    "id": 1825786806,
+    "name": "Quake II RTX",
+    "cover": "https://images-2.gog-statics.com/c36ed20220e95cb260b5ecf8e68c94ad0135040092dbea1ca38f4c9b6ae3aafc"
+  },
+  {
+    "id": 1459856053,
+    "name": "Rage of Mages",
+    "cover": "https://images-2.gog-statics.com/8b8608628459247366410e3e937baf51cf868a7a60c54b360205101bbbbf8570"
+  },
+  {
+    "id": 1459856152,
+    "name": "Rage of Mages II: Necromancer",
+    "cover": "https://images-2.gog-statics.com/a7ccf43eb581c1aa299a0006742be5225c7e31e80be645c5462022396cd9b605"
+  },
+  {
+    "id": 1207658940,
+    "name": "Rayman 2: The Great Escape",
+    "cover": "https://images-1.gog-statics.com/54523523db1de150060fa9ec4209a06f10741e77b21536baaa526051409547db"
+  },
+  {
+    "id": 1207658947,
+    "name": "Rayman 3: Hoodlum Havoc",
+    "cover": "https://images-4.gog-statics.com/7776ac03bba9015d3141eb5cb0f07ef3acd0abd4c04f3d70d82de074784e77f3"
+  },
+  {
+    "id": 1207659234,
+    "name": "Rayman Origins",
+    "cover": "https://images-1.gog-statics.com/e6d3961aa89d2e9a297e40aea8a23b2ea9a82b7c9b6ceee345140d6133a665b4"
+  },
+  {
+    "id": 1453737805,
+    "name": "Rayman Raving Rabbids™",
+    "cover": "https://images-3.gog-statics.com/7d8803a1a8514373c34d0be8d1cf3d7a5fa59764ec8d18c8233e56c83dd406a4"
+  },
+  {
+    "id": 1207658919,
+    "name": "Rayman® Forever",
+    "cover": "https://images-4.gog-statics.com/da28dfea86e08ae4c02ce73a6317b37833661c079898f02826b7475bbb685921"
+  },
+  {
+    "id": 1207658921,
+    "name": "Realms of the Haunting",
+    "cover": "https://images-3.gog-statics.com/cf7781f15e1ac1715c78f295f367d0d5bc0d82dc296a9f1222e9189995e8103c"
+  },
+  {
+    "id": 1339695996,
+    "name": "Rebel Galaxy Outlaw",
+    "cover": "https://images-1.gog-statics.com/0847b39c1816051386c0302a040160c9a24758e093652df64585e23c93e5bece"
+  },
+  {
+    "id": 1207664193,
+    "name": "Redline",
+    "cover": "https://images-3.gog-statics.com/6e404bc295ba3bfc3412de5e9519263dc9f63ad7f4d7123043c3f7f0ad8b292d"
+  },
+  {
+    "id": 1449581489,
+    "name": "Requiem: Avenging Angel",
+    "cover": "https://images-3.gog-statics.com/b87f0e05c48ab853637ab9a486560b3f8e1d3bd56a4e944d1e29528cde80cbfe"
+  },
+  {
+    "id": 1207665803,
+    "name": "Revenant",
+    "cover": "https://images-4.gog-statics.com/88d9c06c63b36084900053b0ab61b525584252a3d4b0b70abcb97bb4ec7a7f23"
+  },
+  {
+    "id": 1763268053,
+    "name": "Roadwarden",
+    "cover": "https://images-4.gog-statics.com/5a1b7feacd41c9d815004a9a62909a03dde564265de8266f50307ac26fb2d364"
+  },
+  {
+    "id": 1637928515,
+    "name": "Ruiner",
+    "cover": "https://images-4.gog-statics.com/5c0fbfea7c91d6798df592e6b5eb8051f8cd6f38834e4f7aff7bf02e61c2eeed"
+  },
+  {
+    "id": 1207658651,
+    "name": "Sacrifice",
+    "cover": "https://images-3.gog-statics.com/7f3722b341d0f548d86c424bd0b0b816a5bab1e6839af8a5453848f22276a6e2"
+  },
+  {
+    "id": 2006298293,
+    "name": "Samorost 1",
+    "cover": "https://images-2.gog-statics.com/ed8121351be7442a1a0f46ee2f82d6986e8d5163620d58a306149a0064445a48"
+  },
+  {
+    "id": 1207660203,
+    "name": "Sang-Froid: Tales of Werewolves",
+    "cover": "https://images-4.gog-statics.com/2fac31a23345078c613285fcd4e0a9cb3bba931d0eade3656a8ad099f292e3ec"
+  },
+  {
+    "id": 1207658811,
+    "name": "Sanitarium",
+    "cover": "https://images-3.gog-statics.com/098fae4f00b2c7d0d727fc55f997c80740e2ef2ed5df44cadc30f814da6af16b"
+  },
+  {
+    "id": 1207659141,
+    "name": "Screamer 2",
+    "cover": "https://images-2.gog-statics.com/a0b34abd5c2b5fcc290e990f4b085425a7f5931d1f67920ec92d4a494cbb656e"
+  },
+  {
+    "id": 1455191756,
+    "name": "Sea Dogs: City of Abandoned Ships",
+    "cover": "https://images-4.gog-statics.com/9b64e5756b6c01d9a416d405da5ff4be2514f7bd5d8abca2297e4ac0885ffd90"
+  },
+  {
+    "id": 1973516426,
+    "name": "Seal of Evil",
+    "cover": "https://images-1.gog-statics.com/6bab93874372626c33b82f36d7661ea48d6e7fc73065a5d6f8e9f53a1860f11a"
+  },
+  {
+    "id": 1207658742,
+    "name": "Septerra Core: Legacy of the Creator",
+    "cover": "https://images-3.gog-statics.com/436e29daa00967df120288227b7f6089dd714234a7dc188b83d306aa7e7f37b6"
+  },
+  {
+    "id": 1207658876,
+    "name": "Serious Sam: The First Encounter",
+    "cover": "https://images-1.gog-statics.com/cfc2af27c688c5c4f0d797f649a22d20a6f5ccfb370e409f41dcc1f25fac6145"
+  },
+  {
+    "id": 1207658877,
+    "name": "Serious Sam: The Second Encounter",
+    "cover": "https://images-1.gog-statics.com/ce80fcf1b31927a651023040ae995c5971209f0a018b3f63b83fcc4d70a53654"
+  },
+  {
+    "id": 1242122770,
+    "name": "Severed Steel",
+    "cover": "https://images-2.gog-statics.com/3a118f17c94b812bccc04752009f836944ed60903a486af25966eeb55a4e91b9"
+  },
+  {
+    "id": 1434021265,
+    "name": "Shadow Warrior 2",
+    "cover": "https://images-4.gog-statics.com/dd878390cb16f2cac44bdf79cfbbfe28b26239ae0524bfaf45dba3686e124ef4"
+  },
+  {
+    "id": 1207659142,
+    "name": "Shadow Warrior Classic Complete",
+    "cover": "https://images-3.gog-statics.com/68242319701d590dce72be3f0e2fe7fd716c98e958e69dda7ea9f9c8eb6e09f2"
+  },
+  {
+    "id": 1436866438,
+    "name": "Shadowrun Hong Kong - Extended Edition",
+    "cover": "https://images-3.gog-statics.com/fcc90f964947d19b0bc49825d55cd181fea2389cd1312a5619ac731fc1c64208"
+  },
+  {
+    "id": 1207660413,
+    "name": "Shadowrun Returns",
+    "cover": "https://images-2.gog-statics.com/6c35ecb988f57725cc0f385acf860241082da16eda9fab66115f4da883dae3d1"
+  },
+  {
+    "id": 1207660913,
+    "name": "Shadowrun: Dragonfall - Director's Cut",
+    "cover": "https://images-3.gog-statics.com/3151b8deaeff59ad905af2bf37cfca592d615cd1615fbe48d893ac6f797140ad"
+  },
+  {
+    "id": 2009626177,
+    "name": "She Sees Red - Interactive Movie",
+    "cover": "https://images-2.gog-statics.com/f3240832c7edfd8de5105b700d3e4aa6f82e2a595b79f24dff1f17d5ef874978"
+  },
+  {
+    "id": 1207658659,
+    "name": "Shogo: Mobile Armor Division",
+    "cover": "https://images-3.gog-statics.com/20ad9e48fa6fba46333a31edcf3cb5637680349d5e5e71caa215ecc3c91741e4"
+  },
+  {
+    "id": 1691128039,
+    "name": "Shogun Showdown: Prologue",
+    "cover": "https://images-4.gog-statics.com/b036aa55f25a21c5a85c469662c6b301842b7ee28b55d0fb54a73b0209252ee3"
+  },
+  {
+    "id": 1689019552,
+    "name": "Shores Unknown: Arrival",
+    "cover": "https://images-4.gog-statics.com/aa485936254a93b3a2ed0f780d3e64609413aee0ebe23c40b3e10e91b947e0ef"
+  },
+  {
+    "id": 1207660343,
+    "name": "SiN Gold",
+    "cover": "https://images-4.gog-statics.com/ed6e1d793c7966cc24f528d2c835e5f7e4cbe6ffdf6b8906aa2eab89479177da"
+  },
+  {
+    "id": 1603656118,
+    "name": "Sin Slayers: The First Sin",
+    "cover": "https://images-1.gog-statics.com/b356d14cf18812bfa70d1d6cf23139434d71e89a92eae68b88170fcdfc015cfb"
+  },
+  {
+    "id": 1207662553,
+    "name": "Slave Zero",
+    "cover": "https://images-2.gog-statics.com/7b15bf4d01f024b66a4c5368ebfdc5afeef41ff8df072ee1abeea16ad65c6f7a"
+  },
+  {
+    "id": 1741843789,
+    "name": "Sleeping Dogs: Definitive Edition",
+    "cover": "https://images-3.gog-statics.com/809c14faae9bdd30d35f5a8e75b8abc7227b33aebdd06517f56fe400cb5a24e7"
+  },
+  {
+    "id": 1439487606,
+    "name": "SOMA",
+    "cover": "https://images-3.gog-statics.com/04171b58c59c02140ce3327a3f769b8f06b2c948949331afa17130fd98f26605"
+  },
+  {
+    "id": 1207659003,
+    "name": "Soulbringer",
+    "cover": "https://images-1.gog-statics.com/7dd63ed2d660f2815a8f78bf2a5a47990fe8adb8a4a25161a48c56cc69fc888e"
+  },
+  {
+    "id": 1501803768,
+    "name": "South Scrimshaw, Part One",
+    "cover": "https://images-1.gog-statics.com/9dc6fd77dd483621ac95185b4012c44d0672be826a234f732e33c673e3f0f39f"
+  },
+  {
+    "id": 1207666403,
+    "name": "STAR WARS®: TIE Fighter (1994)",
+    "cover": "https://images-3.gog-statics.com/4b0c9163f1336e3fd1c81fe291ec4d24ff3e7e93cdbcf0d8b41226e4fbb1c219"
+  },
+  {
+    "id": 1207666413,
+    "name": "STAR WARS®: TIE Fighter (1998)",
+    "cover": "https://images-1.gog-statics.com/88e02470c364cdae77c8a1c9f6edf6d12d9f54180d803cadfdafe006ae4d45c9"
+  },
+  {
+    "id": 1207667223,
+    "name": "STAR WARS®: TIE Fighter Collector's CD (1995)",
+    "cover": "https://images-1.gog-statics.com/1a661809cdf3d3b038c2a123a29afc02687aa3a269f8ad6630c3a3afae4d4335"
+  },
+  {
+    "id": 1421404646,
+    "name": "STAR WARS™ Galactic Battlegrounds Saga",
+    "cover": "https://images-1.gog-statics.com/59602aacf196b109d70801ed36fded6dbe9305b8ad56041d8712cb05ed2f9f26"
+  },
+  {
+    "id": 1422286819,
+    "name": "STAR WARS™ Jedi Knight: Dark Forces II",
+    "cover": "https://images-3.gog-statics.com/59e36f6eebad61a5dc10c5c385767d7f564bad4f5d76ea2b46a5615f01cc4aae"
+  },
+  {
+    "id": 1422285784,
+    "name": "STAR WARS™ Jedi Knight: Dark Forces II - Mysteries of the Sith",
+    "cover": "https://images-2.gog-statics.com/9167e6c841f5a5803e0876454dd2fb0bf0a42d9564edd69a19fea409b0674da9"
+  },
+  {
+    "id": 1207659693,
+    "name": "Stargunner",
+    "cover": "https://images-1.gog-statics.com/8921d6e3d1a8aed517fa5fc183a2d09c3f44339b54458125c2e293d02a9ecbb6"
+  },
+  {
+    "id": 1439548178,
+    "name": "STASIS",
+    "cover": "https://images-2.gog-statics.com/2470f1b7f6a94b35303ee395e859a00954790bea38049423c06f201979166852"
+  },
+  {
+    "id": 1861082507,
+    "name": "SteamWorld Dig 2",
+    "cover": "https://images-1.gog-statics.com/5654f925afb8116ac9522f4834774cb1cae87e478ad023e02c7f96ac2d7f2b0e"
+  },
+  {
+    "id": 1207658882,
+    "name": "Still Life",
+    "cover": "https://images-1.gog-statics.com/700f05a57cc1b0ff1a25a92935cb924c06297d1df0c2eaf3b862690173639be5"
+  },
+  {
+    "id": 1748855533,
+    "name": "Sunrider: Mask of Arcadius",
+    "cover": "https://images-3.gog-statics.com/5ef5c4127eeade8aa1e26b878c05108b5e9b7fd338c2af88f0ece7dbbb99bdbb"
+  },
+  {
+    "id": 1207658849,
+    "name": "Syberia II",
+    "cover": "https://images-3.gog-statics.com/0cdfa04271c7b1c5bea9e0b4d6cccb2111a5aa601337697ce9bd0c4f96a01e64"
+  },
+  {
+    "id": 2069516170,
+    "name": "Symphonia (Student Project, 2020)",
+    "cover": "https://images-4.gog-statics.com/b3e0bc00ddf8d56fbdf5c60189bd04d2d152dc2b65cf185933b10f9e448117b3"
+  },
+  {
+    "id": 1207658992,
+    "name": "Syndicate Plus™",
+    "cover": "https://images-4.gog-statics.com/73599010340e1630b66dadcdbf922049c99deeeb40eeaf2fc83ace6c3792e05a"
+  },
+  {
+    "id": 1207659193,
+    "name": "Syndicate Wars™",
+    "cover": "https://images-3.gog-statics.com/6385eb91c19cdb3df180903dcfd570657cef6a7ea58bf1fd725aaa94f72aecc3"
+  },
+  {
+    "id": 1543567149,
+    "name": "SYNTHETIK: Legion Rising",
+    "cover": "https://images-2.gog-statics.com/b18c10ac801eac53a434c5c9c149295b822ee59d211c4eb505771d4b7856accd"
+  },
+  {
+    "id": 1442473063,
+    "name": "System Shock: Classic Edition",
+    "cover": "https://images-1.gog-statics.com/e9605054a689acefef7ccd75c3c9387e540d68dbf0030efeec354706c6168be5"
+  },
+  {
+    "id": 1439995156,
+    "name": "System Shock: Enhanced Edition",
+    "cover": "https://images-3.gog-statics.com/ebfafc5f1fc112fdfe21e223b550c478e1018e8239d54dc65c5112cc174f897d"
+  },
+  {
+    "id": 1207659172,
+    "name": "System Shock® 2 (1999)",
+    "cover": "https://images-3.gog-statics.com/5256f14e991169a1d50abf30b35fa99b2afe3d5e807a99aa1d9d3c4327741a84"
+  },
+  {
+    "id": 1207659066,
+    "name": "Tales of Monkey Island: Complete Season",
+    "cover": "https://images-1.gog-statics.com/415c0869fd75717832c7d319d197b33e7a0594144c37d6423d9afe04bfbbba11"
+  },
+  {
+    "id": 1207658753,
+    "name": "Teenagent",
+    "cover": "https://images-4.gog-statics.com/83440dfe39a478e559a6c71d70ba33b66a28796a822d6c4d7f8de28368339b62"
+  },
+  {
+    "id": 1207658767,
+    "name": "Tex Murphy: Under a Killing Moon",
+    "cover": "https://images-3.gog-statics.com/7531e3615073cbbfc6f3279b7acdaf356e50af55a482b7f2b364fadc838733ee"
+  },
+  {
+    "id": 1976524578,
+    "name": "The Companion",
+    "cover": "https://images-4.gog-statics.com/5a1de78f828c26dba06177dbf2ed1bda2e5e9b0912a92383a3947e656f54c337"
+  },
+  {
+    "id": 1358213898,
+    "name": "The Darkest Tales - Into the Nightmare",
+    "cover": "https://images-1.gog-statics.com/849f9229f0fac0c74fa8e8b32c111b96632e31260eed9d152fab2aafb5d2f972"
+  },
+  {
+    "id": 1435829617,
+    "name": "The Elder Scrolls Adventures: Redguard",
+    "cover": "https://images-1.gog-statics.com/dfbac6c314accbdae6fd89276633857aed2cab3392754e34a2c879eef7ca3e66"
+  },
+  {
+    "id": 1435829353,
+    "name": "The Elder Scrolls II: Daggerfall",
+    "cover": "https://images-4.gog-statics.com/89dbf9cbf36f1f68194b3384042828320f80a75ac506e411f1b52c370abb9858"
+  },
+  {
+    "id": 1435828767,
+    "name": "The Elder Scrolls III: Morrowind GOTY Edition",
+    "cover": "https://images-2.gog-statics.com/e19e2055ee1d083793a4ea093872f15b749e3d75384bf8c0f3d81002a4a4fd47"
+  },
+  {
+    "id": 1435828982,
+    "name": "The Elder Scrolls: Arena",
+    "cover": "https://images-4.gog-statics.com/8d44338ce97551e378650caa1bd7ce4a25fe115f3b46bd6845dae4a18c186512"
+  },
+  {
+    "id": 1690611606,
+    "name": "The Feast",
+    "cover": "https://images-2.gog-statics.com/b188993796d92e5fc2cf3e3efa95a31bb5bbfa8964d4e63579a91ab184c250e4"
+  },
+  {
+    "id": 1499274528,
+    "name": "The First Tree",
+    "cover": "https://images-2.gog-statics.com/f48610f676661db1cf5c05f36c1dfd4d95dad878003a0337a1b0435d771d8443"
+  },
+  {
+    "id": 1656945959,
+    "name": "The Life and Suffering of Sir Brante - Chapter 1 & 2",
+    "cover": "https://images-4.gog-statics.com/84909822081b1427ec628ebcd589e216258d838b50569a8b39e2ddbfd49e8a49"
+  },
+  {
+    "id": 1207659333,
+    "name": "The Lords of Midnight",
+    "cover": "https://images-4.gog-statics.com/0cc8a987884c525bd57c5ac9f3fefc4eb85a6ec11d2ecfc618be5b100269ec5f"
+  },
+  {
+    "id": 1435827232,
+    "name": "The Ultimate Doom",
+    "cover": "https://images-2.gog-statics.com/5175cf9ebd744a41f9ba0a2cca30ece6ba20281cafe72cce9fcf09e937f6867f"
+  },
+  {
+    "id": 1207658930,
+    "name": "The Witcher 2: Assassins of Kings Enhanced Edition",
+    "cover": "https://images-4.gog-statics.com/8355e657a19311b158a3553a154e109199d6991c7791a20c3305af1f84d15ed7"
+  },
+  {
+    "id": 1207658924,
+    "name": "The Witcher: Enhanced Edition",
+    "cover": "https://images-1.gog-statics.com/37d4a208d1f5bb0e163da540ac894ba46a7d566ede31aaaefc74bbcd46ebd190"
+  },
+  {
+    "id": 1207659001,
+    "name": "Thief™ 2: The Metal Age",
+    "cover": "https://images-1.gog-statics.com/9fee86856dec591d46e81ee8eba47c4945a980ce9730549581eae646330629d5"
+  },
+  {
+    "id": 1207658997,
+    "name": "Thief™ Gold",
+    "cover": "https://images-4.gog-statics.com/ad68a58a4dcc05edbe97edc0370cc4865ba09327cf47a68e47d214c6e4f4a1d4"
+  },
+  {
+    "id": 1207658987,
+    "name": "Time Commando",
+    "cover": "https://images-3.gog-statics.com/89e51af1528c1c41cb6f4d005e13c32a5c0943a07ea4eb0db0095ff7e122cc1d"
+  },
+  {
+    "id": 1207659013,
+    "name": "Treasure Adventure Game",
+    "cover": "https://images-1.gog-statics.com/e966b44b9f146d21bc835a2f0785693116422778e4e112020d3add98046141c9"
+  },
+  {
+    "id": 1207658901,
+    "name": "Tyrian 2000",
+    "cover": "https://images-4.gog-statics.com/346da67f4079d2d4e64ab0e7c310ee81218734d4bde4d74d3a3f074510cf6fa5"
+  },
+  {
+    "id": 1207662463,
+    "name": "Ultima™  Underworld I",
+    "cover": "https://images-1.gog-statics.com/aded25b118381e697e520542c45de23766a71425646db6a72b0e19ac574dd79d"
+  },
+  {
+    "id": 1207662473,
+    "name": "Ultima™  Underworld II",
+    "cover": "https://images-3.gog-statics.com/ccb50e17fe3af2ab43892f1821265020f962f33144c87d23446099cd00b2146f"
+  },
+  {
+    "id": 1207658962,
+    "name": "Ultima™ IV: Quest of the Avatar",
+    "cover": "https://images-2.gog-statics.com/cb10216b4721fc46db91a79af4bee55dc90123c13ebcc11a50980d384ca1a4a1"
+  },
+  {
+    "id": 1207659062,
+    "name": "Ultima™ Worlds of Adventure 2: Martian Dreams",
+    "cover": "https://images-1.gog-statics.com/10f120bcf0bf4b9bbd7552a413c084f891ed3cd5f7e3e562f9e856271fd98bc2"
+  },
+  {
+    "id": 1447688349,
+    "name": "UnderRail",
+    "cover": "https://images-2.gog-statics.com/87ca1683e714cda0492dbf6fd56b3270eb5cd432c5f19ac3b3057896c6fb6766"
+  },
+  {
+    "id": 1207659033,
+    "name": "Uplink: Hacker Elite",
+    "cover": "https://images-4.gog-statics.com/d7f2e68314ba6bf198f369ef0eb816f1a11d6f1e5955526fa95f366d8cb962ac"
+  },
+  {
+    "id": 1453195863,
+    "name": "Uprising: Join or Die",
+    "cover": "https://images-2.gog-statics.com/d6530350cd7508880df7c531d882b2b0f97a09d391b0f7d480aea75e24b17d2c"
+  },
+  {
+    "id": 1197512724,
+    "name": "Urbek City Builder Prologue",
+    "cover": "https://images-3.gog-statics.com/358ed0dc866c43c5904ca082c5c737945e59ba48e61f210cef1fe0eb926e5507"
+  },
+  {
+    "id": 1381758449,
+    "name": "Vagrus - The Riven Realms: Prologue",
+    "cover": "https://images-3.gog-statics.com/51142e34454d26cb2f6920c125128bd3f218b4933a87748e7158ef0199023cda"
+  },
+  {
+    "id": 2116968103,
+    "name": "VirtuaVerse",
+    "cover": "https://images-4.gog-statics.com/9cc3b38ecefc0bd7ea8cd5cb939ac402a0d9aeee88c951979cdec8b07cb5be71"
+  },
+  {
+    "id": 1207665483,
+    "name": "Wacky Wheels",
+    "cover": "https://images-3.gog-statics.com/95400ccafacfad840b2ab7087938b871437808e6901e8d27c58fa3055681fcb3"
+  },
+  {
+    "id": 1739170762,
+    "name": "Wanderlust: Travel Stories",
+    "cover": "https://images-1.gog-statics.com/4b2eccbe2c58a5a9f2981bc314124339d2af9f56a0d7fe916a82723f546977e3"
+  },
+  {
+    "id": 1455545518,
+    "name": "War Wind ",
+    "cover": "https://images-4.gog-statics.com/fb04b8c1e4536da657ab043b92c9199d57338297bfbca5f6f6079db115745fb2"
+  },
+  {
+    "id": 1433928487,
+    "name": "Warhammer 40,000: Chaos Gate",
+    "cover": "https://images-4.gog-statics.com/755e9bd1b3c50dda1739ea78bcf7b1d9e415a6529dd1ba3c4f472067529e8a5a"
+  },
+  {
+    "id": 1525121122,
+    "name": "Warhammer 40,000: Dawn of War - Anniversary Edition",
+    "cover": "https://images-1.gog-statics.com/782220e9c318eebd5ba2689b0edc9aaacadcd3aa4405450bd8f586909cfca346"
+  },
+  {
+    "id": 2138821505,
+    "name": "Warhammer 40,000: Dawn of War - Dark Crusade",
+    "cover": "https://images-2.gog-statics.com/1c38ce4da1dfa494446f16018991f6c5e68d71589aaefc94d23e6259cb8a0a92"
+  },
+  {
+    "id": 1646341461,
+    "name": "Warhammer 40,000: Dawn of War - Soulstorm",
+    "cover": "https://images-2.gog-statics.com/33cd784a77552c2c1895c74a75c1409cd060928e26d07ce689e3c9fd7ab00aba"
+  },
+  {
+    "id": 2132761962,
+    "name": "Warhammer 40,000: Dawn of War - Winter Assault",
+    "cover": "https://images-2.gog-statics.com/912040d5ecd716f0b16f8012a514fd9cb208fe585a93c51865f2e5c11b8ef72d"
+  },
+  {
+    "id": 1604634952,
+    "name": "Warhammer 40,000: Gladius - Relics of War",
+    "cover": "https://images-3.gog-statics.com/fe0fa01266af131e0bc03535f070087a08f194e4bdcbb005e6315a4a1b075266"
+  },
+  {
+    "id": 1720387858,
+    "name": "Warhammer Skulls 2023 - Free Game + Digitial Goodie Pack",
+    "cover": "https://images-1.gog-statics.com/c26b76c9232ea2c8c9271f321c1234dc40431aaf684ce262514671092bea6169"
+  },
+  {
+    "id": 1207659110,
+    "name": "Warlords Battlecry",
+    "cover": "https://images-1.gog-statics.com/25d058cc4564c109fc62f00ffd2037e8004333a5cd9aff0661b901a6611d8fd6"
+  },
+  {
+    "id": 1207659137,
+    "name": "Warlords Battlecry 2",
+    "cover": "https://images-4.gog-statics.com/213d180f40a6b5fd42dbd36b81c7ad3c5c9e1d298cdf5fb3585a069106a04952"
+  },
+  {
+    "id": 1233068155,
+    "name": "Warlords III: Darklords Rising",
+    "cover": "https://images-2.gog-statics.com/df98ed10dcca4bdf776cc58a0fab6bd5244dd9072d4840868efff6bc8b802dfe"
+  },
+  {
+    "id": 1827430975,
+    "name": "Wavetale",
+    "cover": "https://images-3.gog-statics.com/b090d0ed0bf4b3bb87997be929fcf8a6a272ae1d72a0db65d7f90327e743455b"
+  },
+  {
+    "id": 1315510047,
+    "name": "Witchaven",
+    "cover": "https://images-1.gog-statics.com/8967d3c8092266168e0831be2c9fe916efce982b6ca5255a20e8e8cf6f21ea4b"
+  },
+  {
+    "id": 1073977251,
+    "name": "Witchaven II: Blood Vengeance",
+    "cover": "https://images-3.gog-statics.com/aaa14941f2c3cfe94eb9a0fdd19b69e29b54c5fdd7afa2dfb0f3918456ce6eb4"
+  },
+  {
+    "id": 1207659061,
+    "name": "Worlds of Ultima™: The Savage Empire",
+    "cover": "https://images-4.gog-statics.com/07c86c0a10902cd350ff5476ed7f27f5290246016bd1a3ab3d52cda5759663ce"
+  },
+  {
+    "id": 1482002159,
+    "name": "XCOM® 2",
+    "cover": "https://images-1.gog-statics.com/7c1632de7498519c33b422fd7e4af30a33db1ee84529b4a5cd6c708684d56099"
+  },
+  {
+    "id": 1207658920,
+    "name": "XIII",
+    "cover": "https://images-4.gog-statics.com/c961f804cf039a4a1aecb56acbf51788f2cc0f7c5bc04fa1283ac37eceff89fc"
+  },
+  {
+    "id": 1186527913,
+    "name": "Yu Crossing Animals",
+    "cover": "https://images-3.gog-statics.com/f60ddfc43140aa46ee8a84392e476773fee62db427f3e6a62fc46a2ff613b9c3"
+  }
+]
