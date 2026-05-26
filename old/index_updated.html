@@ -14,8 +14,6 @@
     --text-muted: #a1a1aa; 
     --brand: #f29100; 
     --brand-glow: rgba(242, 145, 0, 0.2); 
-    --success: #10b981;
-    --success-glow: rgba(16, 185, 129, 0.2);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
@@ -27,19 +25,21 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-fo
 
 .content-card { width: 100%; max-width: 580px; text-align: center; position: relative; }
 
-/* REQUISITO 7 (Precedente): PLACEHOLDER GIF ANIMATE */
+/* REQUISITO 7: PLACEHOLDER GIF ANIMATE */
 .gif-placeholder-container { width: 100%; aspect-ratio: 16/9; background: #0b0b0e; border: 1px dashed var(--border); border-radius: 12px; margin: 20px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px; gap: 8px; }
 .gif-placeholder-container svg { width: 32px; height: 32px; stroke: var(--text-muted); stroke-width: 1.5; fill: none; }
 
-/* DECORAZIONI HOME PAGE */
+/* 3 CARD DECORATIVE PAGINA INIZIALE */
 .early-preview-deck { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; width: 100%; }
 .mock-card { width: 100px; height: 130px; border-radius: 10px; background-size: cover; background-position: center; border: 1px solid var(--border); box-shadow: 0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s; }
 .mock-card:nth-child(1) { transform: rotate(-8deg) translateY(10px); }
 .mock-card:nth-child(2) { transform: scale(1.1); z-index: 2; }
 .mock-card:nth-child(3) { transform: rotate(8deg) translateY(10px); }
 
+/* MICRO BOX PRIVACY */
 .pills-privacy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0; }
 .privacy-pill { background: var(--surface); border: 1px solid var(--border); padding: 12px 6px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
+
 .privacy-notice-box { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 11px; line-height: 1.5; }
 
 /* PROGRESS BAR */
@@ -52,14 +52,9 @@ h1 { font-size: 40px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1
 p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bottom: 30px; }
 .sub-caption { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
 
-/* BOTTONI E CTA CON CORREZIONI DI COLORE ED HOVER (REQUISITI 1, 2, 10) */
-.cta-button { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; padding: 18px 30px; border-radius: 16px; font-weight: 700; font-size: 16px; text-decoration: none; border: 1px solid transparent; cursor: pointer; box-shadow: 0 10px 25px var(--brand-glow); transition: all 0.2s; }
+/* BOTTONI PREDEFINITI */
+.cta-button { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; padding: 18px 30px; border-radius: 16px; font-weight: 700; font-size: 16px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 10px 25px var(--brand-glow); transition: all 0.2s; }
 .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(242, 145, 0, 0.3); }
-
-/* REQUISITO 1: Il pulsante in basso per passare allo step successivo deve essere verde */
-.cta-button-next { background: linear-gradient(135deg, var(--success) 0%, #059669 100%); color: #fff; box-shadow: 0 10px 25px var(--success-glow); }
-.cta-button-next:hover { box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4); }
-
 .cta-button-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-muted); width: 100%; padding: 14px; font-size: 14px; font-weight: 600; border-radius: 14px; cursor: pointer; text-align: center; margin-top: 12px; transition: all 0.15s; display: block; text-decoration: none; }
 .cta-button-secondary:hover { color: #fff; border-color: #444452; }
 
@@ -67,51 +62,41 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .back-arrow-link { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: color 0.15s; }
 .back-arrow-link:hover { color: #fff; }
 
-/* REQUISITO 2: Scarica elenco e apri la mia pagina diventano arancioni nel bordo on hover */
-.drag-pill-anchor { display: inline-flex; align-items: center; gap: 10px; background: #1f1f27; color: var(--brand); padding: 16px 28px; border-radius: 14px; font-weight: 700; font-size: 15px; text-decoration: none; cursor: grab; border: 2px dashed rgba(242,145,0,0.4); transition: all 0.2s; margin-top: 20px; }
-.drag-pill-anchor:hover { border-color: var(--brand); transform: translateY(-1px); }
+.drag-pill-anchor { display: inline-flex; align-items: center; gap: 10px; background: #1f1f27; color: var(--brand); padding: 16px 28px; border-radius: 14px; font-weight: 700; font-size: 15px; text-decoration: none; cursor: grab; border: 2px dashed rgba(242,145,0,0.4); transition: transform 0.2s; margin-top: 20px; }
 .drag-pill-anchor:active { cursor: grabbing; transform: scale(0.97); }
-
-.btn-gog-account-link { background: #1f1f27; color: #fff; box-shadow: none; border: 1px solid var(--border); }
-.btn-gog-account-link:hover { border-color: var(--brand); color: #fff; }
 
 .drop-zone { border: 2px dashed var(--border); background: rgba(255,255,255,0.01); border-radius: 16px; padding: 40px 20px; cursor: pointer; transition: all 0.3s; position: relative; margin-bottom: 20px; }
 .drop-zone:hover, .drop-zone.dragover { border-color: var(--brand); background: rgba(242, 145, 0, 0.03); }
 .drop-zone input { position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer; }
 
 /* STRUTTURA FINALE SHOWCASE */
-#app-gallery-view { display: none; padding: 60px 20px 40px 20px; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
+#app-gallery-view { display: none; padding: 100px 20px 40px 20px; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
 
-/* REQUISITO 6 & 7: TITOLO RE-STILIZZATO SENZA FLOATING BAR, I BOTTONI VANNO SOTTO AL TITOLO */
-.gallery-stiloso-title-container { text-align: center; margin-bottom: 30px; }
-.gallery-stiloso-title-container h2 { font-size: 42px; font-weight: 900; background: linear-gradient(135deg, #fff 40%, var(--brand) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; margin-bottom: 4px; text-transform: none; }
-.gallery-stiloso-title-container .subtitle-count { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); display: block; margin-top: 4px; }
+.gallery-stiloso-title-container { text-align: center; margin-bottom: 25px; }
+.gallery-stiloso-title-container h2 { font-size: 42px; font-weight: 900; background: linear-gradient(135deg, #fff 40%, var(--brand) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1.5px; }
 
-/* BARRA DI CONTROLLO POSTE SOTTO AL TITOLO */
 .app-control-bar-centered { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; margin-bottom: 40px; background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: 20px; }
 .controls-row-items { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
 
-.search-input { background: var(--bg); border: 1px solid var(--border); padding: 12px 18px; border-radius: 10px; color: #fff; font-size: 14px; width: 240px; outline: none; }
+.search-input { background: var(--bg); border: 1px solid var(--border); padding: 12px 18px; border-radius: 10px; color: #fff; font-size: 14px; width: 260px; outline: none; }
 .search-input:focus { border-color: var(--brand); }
 
+/* SELETTORE VISTE */
 .view-toggle-container { display: inline-flex; background: var(--bg); border: 1px solid var(--border); padding: 4px; border-radius: 10px; }
 .toggle-btn { background: none; border: none; color: var(--text-muted); padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.15s; }
 .toggle-btn.active { background: var(--surface-card); color: var(--brand); }
 
-/* REQUISITO 11 (Precedente) modificato con REQUISITO 5 e 6: ORA STA NELLA STRUTTURA REGOLARE SOTTO IL TITOLO */
-.button-group { display: none; gap: 8px; background: var(--bg); padding: 4px; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; justify-content: center; }
-.btn-premium { background: var(--surface-card); border: 1px solid var(--border); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-size: 13px; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all 0.15s; }
+/* REQUISITO 11: GRUPPO PULSANTI FIXED IN ALTO PREMIUM (SOLO IN GALLERY) */
+.button-group { position: fixed; top: 20px; right: 20px; z-index: 9999; display: none; gap: 10px; background: rgba(15, 15, 19, 0.85); padding: 8px; border-radius: 20px; border: 1px solid var(--border); backdrop-filter: blur(12px); }
+.btn-premium { background: var(--surface-card); border: 1px solid var(--border); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; font-size: 13px; font-weight: 700; border-radius: 14px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 .btn-premium svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.btn-premium:hover { border-color: var(--brand); color: var(--brand); }
+.btn-premium:hover { transform: translateY(-2px); border-color: var(--brand); color: var(--brand); }
 .btn-premium.btn-accent { background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; border: none; }
 .btn-premium.btn-accent:hover { color: #000; opacity: 0.9; }
 .btn-premium.btn-danger:hover { border-color: #ef4444; color: #ef4444; }
+.btn-premium .btn-text { display: inline; }
 
-/* REQUISITO 9: MINI BOX KOFI DISCRETO NELLA BARRA O NELL'INDICE */
-.kofi-compact-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 94, 91, 0.1); border: 1px solid rgba(255, 94, 91, 0.3); color: #FF5E5B; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-.kofi-compact-badge:hover { background: #FF5E5B; color: #fff; }
-
-/* GRIGLIE E LAYOUT DELLE GALLERIE */
+/* VISTA 1: COVER GRID */
 .deck-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 .game-item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; display: block; text-decoration: none; padding: 10px; }
 .game-item-card:hover { transform: translateY(-4px); border-color: var(--brand); }
@@ -119,6 +104,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .game-title-box { padding: 8px 4px 2px 4px; text-align: center; }
 .game-title-text { font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+/* REQUISITO 9 & 10: MOOD BOARD CON COPPERTINA INTIERA E STRUTTURA MOBILE 2X2 */
 .moodboard-vertical-list { display: none; flex-direction: column; gap: 30px; width: 100%; }
 .moodboard-row { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
 .moodboard-game-title { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; border-left: 3px solid var(--brand); padding-left: 12px; display: inline-block; margin-bottom: 5px; }
@@ -140,7 +126,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .sidebar-list-scroll li a:hover { color: var(--brand); background: rgba(255,255,255,0.02); }
 #sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1999; display: none; }
 
-/* LIGHTBOX */
+/* LIGHTBOX ULTRA CON FRECCE E X */
 #lightbox-wrapper { position: fixed; inset: 0; background: rgba(5,5,7,0.98); z-index: 15000; display: none; justify-content: center; align-items: center; padding: 40px; }
 #lightbox-wrapper img { max-width: 85%; max-height: 80vh; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 25px 60px rgba(0,0,0,0.9); object-fit: contain; }
 .lightbox-btn-ctrl { position: absolute; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: #fff; padding: 12px 20px; font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.2s; user-select: none; }
@@ -149,10 +135,18 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .lightbox-prev { left: 30px; top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: 30px; top: 50%; transform: translateY(-50%); }
 
-/* NOTA DI SUPPORTO DISCRETA IN FONDO ALLA PAGINA (REQUISITO 8 e 9) */
-.kofi-discreet-footer { margin-top: 50px; text-align: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 25px; }
+/* DONATION KO-FI */
+.kofi-footer-box { margin-top: 60px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 25px; text-align: center; }
+.kofi-button { display: inline-flex; align-items: center; gap: 10px; background: #FF5E5B; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 14px; margin-top: 15px; transition: transform 0.2s; }
+.kofi-button:hover { transform: scale(1.03); }
 
+/* COMPORTAMENTO ADATTIVO DISPOSITIVI MOBILE */
 @media (max-width: 768px) {
+    .btn-premium .btn-text { display: none; }
+    .button-group { top: auto; bottom: 20px; right: 20px; left: auto; border-radius: 16px; }
+    #app-gallery-view { padding-top: 40px; }
+    
+    /* REQUISITO 10: GRIGLIA COMPATTA SMARTPHONE 2X2 */
     .moodboard-media-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
     .moodboard-cover-link { width: 100%; }
     .moodboard-cover-link img { aspect-ratio: 1/1; object-fit: contain; }
@@ -163,6 +157,22 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 </style>
 </head>
 <body>
+
+<!-- REQUISITO 11: PULSANTI CIRCOLARI DI GRUPPO IN HIGH LAYOUT (INIZIALMENTE NASCOSTI) -->
+<div class="button-group" id="app-floating-controls">
+    <button class="btn-premium btn-accent" onclick="pickRandomGame()">
+      <span>🎲</span><span class="btn-text">Cosa Gioco?</span>
+    </button>
+    <button class="btn-premium" onclick="downloadStandaloneFile()">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg><span class="btn-text">Esporta</span>
+    </button>
+    <button class="btn-premium" onclick="toggleSidebarIndex(true)">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg><span class="btn-text">Indice</span>
+    </button>
+    <button class="btn-premium btn-danger" onclick="clearLibrary()">
+      <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span class="btn-text">Svuota</span>
+    </button>
+</div>
 
 <div id="onboarding-flow-wrapper">
 
@@ -176,10 +186,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
       </div>
       <h1>Your GOG Galaxy</h1>
       <p class="lead">Esplora la tua galassia di giochi in maniera rapida. Visualizza copertine e anteprime di gioco in un unica pagina in tutta comodità e porta con te la tua collezione.</p>
-      
-      <!-- REQUISITO 1 & 10: Lettera maiuscola e pulsante di avanzamento verde -->
-      <button class="cta-button cta-button-next" onclick="changeView('view-step1', 33)">✨ Crea la tua GOG library</button>
-      
+      <button class="cta-button" onclick="changeView('view-step1', 33)">✨ Crea la tua GOG library</button>
       <div class="pills-privacy-grid">
         <div class="privacy-pill">🎁 Gratuito</div>
         <div class="privacy-pill">🚫 No Registrazione</div>
@@ -206,20 +213,19 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
       <p class="lead">Trascina il pulsante sotto nella tua <b>Barra dei Preferiti</b> del browser.</p>
       
       <div>
-        <!-- REQUISITO 2: Effetto hover arancione sul bordo gestito da CSS drag-pill-anchor -->
         <a id="injection-sync-pill" class="drag-pill-anchor" href="javascript:(async function(){const overlay=document.createElement('div');overlay.style='position:fixed;inset:0;background:rgba(15,15,18,0.96);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;padding:20px;';overlay.innerHTML='<div style=&quot;background:#141417;padding:35px;border-radius:16px;border:1px solid #f29100;text-align:center;max-width:460px;box-shadow:0 10px 30px rgba(0,0,0,0.5);&quot;><h3 style=&quot;margin:0 0 12px 0;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;color:#fff;&quot;&gt;IMAGE COLLECTION IN PROGRESS</h3><p style=&quot;color:#aaa;font-size:13px;line-height:1.6;margin:0 0 20px 0;&quot;&gt;Gathering store covers and screenshots from your game collection. Please keep this tab open, it will take a few minutes.&nbsp;</p><div style=&quot;background:#222;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;&quot;&gt;<div id=&quot;gog-progress-bar&quot; style=&quot;background:#f29100;width:0%;height:100%;transition:width 0.2s;&quot;&gt;</div></div><p id=&quot;gog-progress-text&quot; style=&quot;color:#f29100;font-size:12px;font-weight:bold;margin:0;&quot;&gt;Initializing...&nbsp;</p></div>';document.body.appendChild(overlay);const textEl=document.getElementById('gog-progress-text');const barEl=document.getElementById('gog-progress-bar');const rawGames=[];const finalGames=[];async function fetchPage(p){return await(await fetch('/en/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page='+p+'&sortBy=title&totalPages=1')).json();}try{textEl.innerText='Estrazione elenco iniziale...';const first=await fetchPage(1);const totalPages=first.totalPages||1;const add=data=>data.products.forEach(p=>{if(p.isGame){let detectedCover=null;if(p.image){let cleanHash=p.image.replace('_product_card_v2.jpg','').replace('_196.jpg','').replace('https:','').replace('//','').split('/').pop();if(cleanHash&&cleanHash.length>20){detectedCover='https://images-2.gog-statics.com/'+cleanHash+'_392.jpg';}else{detectedCover=p.image.startsWith('http')?p.image:'https:'+p.image;}}rawGames.push({id:p.id,name:p.title,url:'https://www.gog.com'+(p.url||'/en/game/'+p.slug),cover:detectedCover});}});add(first);for(let p=2;p<=totalPages;p++)add(await fetchPage(p));for(let i=0;i<rawGames.length;i++){const g=rawGames[i];barEl.style.width=((i+1)/rawGames.length)*100+'%';textEl.innerText=(i+1)+' / '+rawGames.length+' - '+g.name;let shots=[];try{const r=await fetch(g.url);if(r.ok&&!r.url.endsWith('/en/games')){const txt=await r.text();const doc=new DOMParser().parseFromString(txt,'text/html');const storePic=doc.querySelector('.product-row__img');if(storePic){let srcSetAttr=storePic.getAttribute('ng-srcset')||storePic.getAttribute('srcset')||'';let matches=srcSetAttr.match(/\/\/images(?:-\d+)?\.gog-statics\.com\/[a-f0-9_]+/g);if(matches&&matches.length>0){g.cover='https:'+matches[matches.length-1];}}doc.querySelectorAll('.productcard-thumbnails-slider__image, .productcard-thumbnails-slider__slide-item img, [slider-event-bus-channel=&quot;galleryThumbnails&quot;] img').forEach(img=>{const s=img.getAttribute('src')||img.getAttribute('srcset')||img.src||'';const m=s.match(/([a-f0-9]{64})/i);if(m)shots.push('https://images.gog-statics.com/'+m[1]+'.jpg');});}}catch(e){}finalGames.push({name:g.name,url:g.url,cover:g.cover,screenshots:[...new Set(shots)].slice(0,9)});await new Promise(r=>setTimeout(r,100));}const b=new Blob([JSON.stringify(finalGames,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='my_gog_library.json';document.body.appendChild(a);a.click();document.body.removeChild(a);overlay.remove();}catch(e){overlay.remove();alert('Errore estrazione: '+e.message);}})();">
           ★ SCARICA ELENCO GIOCHI
         </a>
         <div class="sub-caption">Trascinami nella barra dei preferiti</div>
       </div>
 
+      <!-- REQUISITO 7: SPAZIO GIF ANIMATA STEP 1 -->
       <div class="gif-placeholder-container">
         <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><circle cx="6" cy="6" r="1"></circle><circle cx="10" cy="6" r="1"></circle></svg>
         <span>[ GIF Demo Dimensione: 480x270 — Formato: GIF o MP4 Loop ]</span>
       </div>
 
-      <!-- REQUISITO 1 & 10: Colore verde in basso e prima lettera maiuscola -->
-      <button class="cta-button cta-button-next" style="margin-top:20px;" onclick="changeView('view-step2', 66)">Ho aggiunto il pulsante ai preferiti, proseguiamo!</button>
+      <button class="cta-button" style="margin-top:20px;" onclick="changeView('view-step2', 66)">ho aggiunto il pulsante ai preferiti, proseguiamo!</button>
     </div>
   </div>
 
@@ -238,22 +244,21 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
         Apri il tuo profilo GOG nella pagina dei tuoi giochi, clicca sul segnalibri salvato, lascia la scheda aperta e attendi qualche minuto, nel frattempo puoi continuare a usare le altre schede del browser.
       </p>
       
-      <!-- REQUISITO 2: Effetto hover arancione sul bordo mediante .btn-gog-account-link -->
-      <button class="cta-button btn-gog-account-link" onclick="window.open('https://www.gog.com/en/account', '_blank')">
+      <button class="cta-button" onclick="window.open('https://www.gog.com/en/account', '_blank')" style="background: #1f1f27; color: #fff; box-shadow: none;">
         Apri la mia pagina GOG ↗
       </button>
 
+      <!-- REQUISITO 7: SPAZIO GIF ANIMATA STEP 2 -->
       <div class="gif-placeholder-container">
         <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
         <span>[ GIF Demo Dimensione: 480x270 — Formato: GIF o MP4 Loop ]</span>
       </div>
 
-      <!-- REQUISITO 1 & 10: Colore verde e Prima lettera maiuscola -->
-      <button class="cta-button cta-button-next" onclick="changeView('view-step3', 100)">Raccolta completata, prosegui! ➔</button>
+      <button class="cta-button" onclick="changeView('view-step3', 100)">Raccolta completata, prosegui! ➔</button>
     </div>
   </div>
 
-  <!-- STEP 3: CARICAMENTO JSON -->
+  <!-- STEP 3: NUOVO STEP CARICAMENTO JSON -->
   <div id="view-step3" class="screen-view">
     <div class="progress-container">
       <div class="progress-text">Step 3 di 3</div>
@@ -264,9 +269,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
         <button class="back-arrow-link" onclick="changeView('view-step2', 66)">← Torna al passo 2</button>
       </div>
       <h1>Carica la tua Libreria</h1>
-      
-      <!-- REQUISITO 3: Testo modificato su richiesta dell'utente -->
-      <p class="lead">Trascina qui il file my_gog_library.json generato nella tua pagina GOG.</p>
+      <p class="lead">Trascina qui il file <b>my_gog_library.json</b> generato dallo scraper per importare la collezione.</p>
 
       <div class="drop-zone" id="drop-zone-area">
         <p style="margin-bottom: 6px; font-weight: 600; font-size: 14px;">Trascina il file JSON qui</p>
@@ -274,6 +277,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
         <input type="file" id="json-file-input" accept=".json">
       </div>
 
+      <!-- REQUISITO 7: SPAZIO GIF ANIMATA STEP 3 -->
       <div class="gif-placeholder-container">
         <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"></path></svg>
         <span>[ GIF Demo Dimensione: 480x270 — Formato: GIF o MP4 Loop ]</span>
@@ -291,8 +295,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
         <span class="value" id="stat-total" style="font-size: 54px; font-weight: 900; color: var(--brand);">0</span>
         <p class="lead" style="margin-top: 10px;" id="stat-total-label">giochi caricati</p>
       </div>
-      <!-- REQUISITO 10: Controllo maiuscole -->
-      <button class="cta-button cta-button-next" onclick="buildFinalShowcaseView()">Genera la mia GOG Galaxy Gallery</button>
+      <button class="cta-button" onclick="buildFinalShowcaseView()">Genera la mia GOG Galaxy Gallery</button>
     </div>
   </div>
 
@@ -308,7 +311,7 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
   <ul class="sidebar-list-scroll" id="sidebar-games-ul"></ul>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- LIGHTBOX CON CONTROLLI COMPLETI -->
 <div id="lightbox-wrapper" onclick="closeLightbox()">
   <button class="lightbox-btn-ctrl lightbox-close" onclick="closeLightbox()">&times;</button>
   <button class="lightbox-btn-ctrl lightbox-prev" onclick="prevLightboxImg(event)">Visualizza Precedente ⬅</button>
@@ -319,49 +322,17 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 <!-- MAIN GALLERY VIEW -->
 <div id="app-gallery-view">
   
-  <!-- REQUISITO 7: Titolo modificato e sottotitolo allargato più piccolo -->
   <div class="gallery-stiloso-title-container">
-    <h2>La mia GOG Galaxy</h2>
-    <span class="subtitle-count" id="gallery-title-count">0 GIOCHI</span>
+    <h2 id="gallery-title-count">La mia Vetrina</h2>
   </div>
 
-  <!-- REQUISITO 6: I pulsanti ora si trovano SOTTO al titolo, inclusi in questa sezione centrale -->
   <div class="app-control-bar-centered">
-    
-    <!-- REQUISITO 5, 6 & 11: I PULSANTI DI CONTROLLO PREDEFINITI PRESI DALL'ALTO E POSIZIONATI SOTTO IL TITOLO -->
-    <div class="button-group" id="app-floating-controls" style="display: none; margin-bottom: 12px;">
-        <button class="btn-premium btn-accent" onclick="pickRandomGame()">
-          <span>🎲</span><span class="btn-text">Cosa Gioco?</span>
-        </button>
-        
-        <!-- REQUISITO 5: Pulsante con freccia circolare che gira per ripristinare e togliere i filtri -->
-        <button class="btn-premium" onclick="resetGalleryFilters()" title="Ripristina filtri">
-          <svg viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg><span class="btn-text">Ripristina</span>
-        </button>
-
-        <button class="btn-premium" onclick="downloadStandaloneFile()">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg><span class="btn-text">Esporta</span>
-        </button>
-        
-        <!-- REQUISITO 4: Azione toggleSidebarButton modificata per aprire e chiudere alternativamente -->
-        <button class="btn-premium" onclick="toggleSidebarIndexAction()">
-          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg><span class="btn-text">Indice</span>
-        </button>
-        
-        <!-- REQUISITO 9: Inserito pulsante ko-fi compatto non ostentato direttamente nei pulsanti superiori della galleria -->
-        <a href="https://ko-fi.com/" target="_blank" class="kofi-compact-badge">☕ Offrimi un caffè</a>
-
-        <button class="btn-premium btn-danger" onclick="clearLibrary()">
-          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span class="btn-text">Svuota</span>
-        </button>
-    </div>
-
     <div class="controls-row-items">
       <div class="view-toggle-container">
         <button class="toggle-btn active" id="btn-view-grid" onclick="switchActiveView('grid')">🖼️ Cover Grid</button>
         <button class="toggle-btn" id="btn-view-timeline" onclick="switchActiveView('timeline')">🎬 Mood Board</button>
       </div>
-      <input type="text" id="live-search-input" class="search-input" placeholder="Cerca un gioco..." oninput="refreshGalleryInterface()">
+      <input type="text" id="live-search-input" class="search-input" placeholder="Cerca..." oninput="refreshGalleryInterface()">
     </div>
   </div>
 
@@ -371,9 +342,9 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
   <!-- VISTA 2: MOOD BOARD -->
   <div id="gallery-deck-timeline" class="moodboard-vertical-list"></div>
 
-  <!-- REQUISITO 8 e 9: Testo modificato, posizionato come nota piè di pagina molto discreta e pulita -->
-  <div class="kofi-discreet-footer">
-    <p>Ti piace questa gallery? Se vuoi supportarmi puoi offrirmi un caffè su <a href="https://ko-fi.com/" target="_blank" style="color: #FF5E5B; font-weight: bold; text-decoration: none;">Ko-fi</a>.</p>
+  <div class="kofi-footer-box">
+    <p style="font-size: 14px; color: var(--text-muted);">Ti piace questa bacheca? Supporta lo sviluppo offrendo un piccolo caffè virtuale!</p>
+    <a href="https://ko-fi.com/" target="_blank" class="kofi-button">☕ Offrimi un Ko-fi</a>
   </div>
 </div>
 
@@ -462,12 +433,6 @@ function switchActiveView(mode) {
     document.getElementById('gallery-deck-timeline').style.display = (mode === 'timeline') ? 'flex' : 'none';
 }
 
-/* REQUISITO 4: Gestione dell'indice con chiusura alternata (Toggle) */
-function toggleSidebarIndexAction() {
-    const isCurrentlyOpen = document.getElementById('sidebar-index').classList.contains('open');
-    toggleSidebarIndex(!isCurrentlyOpen);
-}
-
 function toggleSidebarIndex(open) {
     document.getElementById('sidebar-index').classList.toggle('open', open);
     document.getElementById('sidebar-overlay').style.display = open ? 'block' : 'none';
@@ -477,11 +442,10 @@ function buildFinalShowcaseView() {
     document.getElementById('onboarding-flow-wrapper').style.display = 'none';
     document.getElementById('app-gallery-view').style.display = 'block';
     
-    // Mostra il gruppo pulsanti sotto il titolo
+    // REQUISITO 2 & 11: MOSTRA I BOTTONI FLOATING DI CONTROLLO SOLO QUI
     document.getElementById('app-floating-controls').style.display = 'flex';
     
-    // REQUISITO 7: Aggiornamento del sottotitolo dei giochi caricati
-    document.getElementById('gallery-title-count').innerText = `${userGamesCollection.length} giochi`;
+    document.getElementById('gallery-title-count').innerText = `La mia Vetrina (${userGamesCollection.length} giochi)`;
     
     const sidebarUl = document.getElementById('sidebar-games-ul');
     sidebarUl.innerHTML = '';
@@ -500,12 +464,6 @@ function scrollToOrFilterGame(name) {
     refreshGalleryInterface();
 }
 
-/* REQUISITO 5: Funzione per ripristinare la vista cancellando i filtri di ricerca */
-function resetGalleryFilters() {
-    document.getElementById('live-search-input').value = '';
-    refreshGalleryInterface();
-}
-
 function refreshGalleryInterface() {
     const gridContainer = document.getElementById('gallery-deck-grid');
     const timelineContainer = document.getElementById('gallery-deck-timeline');
@@ -518,6 +476,7 @@ function refreshGalleryInterface() {
     lightboxImagesTrack = [];
 
     filteredGames.forEach((game, idx) => {
+        // POPOLA COVER GRID
         const card = document.createElement('a');
         card.className = 'game-item-card';
         card.href = game.url || '#';
@@ -529,6 +488,7 @@ function refreshGalleryInterface() {
         `;
         gridContainer.appendChild(card);
 
+        // POPOLA MOOD BOARD
         const row = document.createElement('div');
         row.className = 'moodboard-row';
         
@@ -567,6 +527,7 @@ function pickRandomGame() {
     const chosenGame = userGamesCollection[randomIndex];
     document.getElementById('live-search-input').value = chosenGame.name;
     refreshGalleryInterface();
+    // Scroll automatico al titolo
     document.getElementById('app-gallery-view').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -612,7 +573,7 @@ document.addEventListener('keydown', e => {
     if (document.getElementById('lightbox-wrapper').style.display === 'flex') {
         if (e.key === 'Escape') closeLightbox();
         else if (e.key === 'ArrowRight') nextLightboxImg(null);
-        else if (e.key === 'ArrowLeft') prevImg(null);
+        else if (e.key === 'ArrowLeft') prevLightboxImg(null);
     }
 });
 
@@ -621,7 +582,7 @@ function downloadStandaloneFile() {
     const blob = new Blob([sourceCode], { type: "text/html" });
     const element = document.createElement("a");
     element.href = URL.createObjectURL(blob);
-    element.download = "GOG_Galaxy_Gallery.html";
+    element.download = "GOG_Vetrina_Galaxy.html";
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
