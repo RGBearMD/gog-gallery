@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOG Showcase App</title>
+<style>
+:root { --brand: #f29100; --brand-hover: #ffa61a; --bg: #09090b; --card-bg: #141417; --border: #27272a; --text: #e4e4e7; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { background: var(--bg); color: var(--text); padding-bottom: 40px; overflow-x: hidden; }
+
+/* LAYOUT ONBOARDING FULLSCREEN */
+.app-container { max-width: 480px; margin: 0 auto; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+.hero-header { text-align: center; margin-bottom: 40px; }
+.hero-header h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; background: linear-gradient(135deg, #fff 40%, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-header p { color: #a1a1aa; font-size: 15px; line-height: 1.4; }
+
+/* SCHERMATE DEL WIZARD (STILE APP MOBILE) */
+.flow-screen { display: none; animation: screenIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.flow-screen.active { display: flex; flex-direction: column; }
+@keyframes screenIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+/* STEP INDICATOR */
+.steps-pill { display: inline-flex; align-items: center; gap: 6px; background: #1f1f23; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; color: var(--brand); margin: 0 auto 20px auto; width: fit-content; }
+.progress-line { width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 30px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--brand); width: 25%; transition: width 0.3s ease; }
+
+/* OPZIONI DI PERSONALIZZAZIONE (CARD COMODE SU MOBILE) */
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+.opt-card { background: var(--card-bg); border: 2px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; }
+.opt-card:hover { border-color: #3f3f46; }
+.opt-card.selected { border-color: var(--brand); background: rgba(242,145,0,0.04); }
+.opt-card .icon { font-size: 28px; margin-bottom: 8px; display: block; }
+.opt-card .title { font-size: 14px; font-weight: 700; color: #fff; }
+
+/* SKELETON LOADING ELEGANTE */
+.skeleton-wrapper { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+.skeleton-item { height: 70px; background: linear-gradient(90deg, #141417 25%, #222226 50%, #141417 75%); background-size: 200% 100%; animation: loadingShimmer 1.4s infinite; border-radius: 8px; }
+@keyframes loadingShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* BOTTONI CONSUMER STYLE */
+.btn-action { background: var(--brand); color: #09090b; border: none; padding: 16px 24px; font-size: 15px; font-weight: 700; border-radius: 12px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.15s; text-decoration: none; box-shadow: 0 4px 14px rgba(242,145,0,0.15); }
+.btn-action:hover { background: var(--brand-hover); transform: translateY(-1px); }
+.btn-secondary { background: transparent; border: 1px solid var(--border); color: #a1a1aa; padding: 12px; font-size: 14px; font-weight: 600; border-radius: 12px; cursor: pointer; text-align: center; margin-top: 10px; }
+.btn-secondary:hover { color: #fff; border-color: #3f3f46; }
+
+/* INTERFACCIA GALLERY ATTIVA (POST ONBOARDING) */
+#gallery-app { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
+.gallery-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; gap: 20px; flex-wrap: wrap; }
+.search-bar { background: var(--card-bg); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; color: #fff; font-size: 14px; width: 100%; max-width: 360px; outline: none; }
+.search-bar:focus { border-color: var(--brand); }
+
+/* VARIANTI DI LAYOUT DINAMICHE */
+.grid-container { display: grid; gap: 16px; }
+.layout-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.layout-netflix { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+.game-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: transform 0.2s; }
+.game-card:hover { transform: translateY(-4px); }
+.game-card img { width: 100%; height: auto; display: block; object-fit: cover; }
+.layout-netflix .game-card img { height: 150px; }
+.game-info { padding: 12px; }
+.game-title { font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+</head>
+<body>
+
+<div id="onboarding-flow" class="app-container">
+  <div class="steps-pill" id="steps-pill-text">PASSAGGIO 1 DI 4</div>
+  <div class="progress-line"><div id="progress-fill" class="progress-fill"></div></div>
+
+  <div id="screen-1" class="flow-screen active">
+    <div class="hero-header">
+      <h1>Trasforma la tua collezione GOG</h1>
+      <p>Crea una splendida bacheca interattiva dei tuoi giochi da salvare o mostrare agli amici.</p>
+    </div>
+    <button class="btn-action" onclick="goToScreen(2)">
+      <span>🔌</span> Sincronizza la tua Libreria
+    </button>
+  </div>
+
+  <div id="screen-2" class="flow-screen">
+    <div class="hero-header">
+      <h1>Scegli il tuo stile</h1>
+      <p>Come vuoi visualizzare la tua vetrina personale?</p>
+    </div>
+    <div class="options-grid">
+      <div class="opt-card selected" id="opt-l-grid" onclick="selectLayout('grid')">
+        <span class="icon">🖼️</span>
+        <span class="title">Griglia Classica</span>
+      </div>
+      <div class="opt-card" id="opt-l-netflix" onclick="selectLayout('netflix')">
+        <span class="icon">🎬</span>
+        <span class="title">Stile Netflix</span>
+      </div>
+    </div>
+    <button class="btn-action" onclick="goToScreen(3)">Continua</button>
+  </div>
+
+  <div id="screen-3" class="flow-screen">
+    <div class="hero-header">
+      <h1>Sincronizzazione attiva</h1>
+      <p>Apri l'estensione del browser su GOG per inviare i dati qui dentro automaticamente.</p>
+    </div>
+    <div class="skeleton-wrapper">
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+    </div>
+    <button class="btn-secondary" onclick="simulateExtensionArrival()">Simula arrivo dati (Demo)</button>
+  </div>
+
+  <div id="screen-4" class="flow-screen">
+    <div class="hero-header">
+      <h1>La tua bacheca è pronta! 🎉</h1>
+      <p>Abbiamo elaborato con successo la tua collezione.</p>
+    </div>
+    <div style="background:#1c1c24; padding:20px; border-radius:12px; text-align:center; margin-bottom:20px;">
+      <span style="font-size:13px; color:#a1a1aa; display:block; margin-bottom:5px;">GIOCHI TROVATI</span>
+      <span style="font-size:32px; font-weight:800; color:var(--brand);" id="detected-count-val">0</span>
+    </div>
+    <button class="btn-action" onclick="launchGalleryApp()">Apri la tua Galleria</button>
+  </div>
+</div>
+
+<div id="gallery-app">
+  <div class="gallery-header">
+    <h2 style="font-size:24px; font-weight:800;">La mia Collezione</h2>
+    <input type="text" id="search" class="search-bar" placeholder="Filtra tra i tuoi giochi..." oninput="drawGallery()">
+    <button class="btn-secondary" onclick="exportStandaloneHTML()" style="margin:0;">Scarica File Offline</button>
+  </div>
+  <div id="gallery-grid" class="grid-container layout-grid"></div>
+</div>
+
+<script>
+let currentScreen = 1;
+let selectedLayoutType = 'grid';
+let libraryData = [];
+
+// Listener per ascoltare i messaggi nativi inviati dall'estensione del browser
+window.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "GOG_EXT_DATA") {
+        libraryData = event.data.payload;
+        document.getElementById('detected-count-val').innerText = libraryData.length;
+        goToScreen(4);
+    }
+});
+
+function goToScreen(screenNumber) {
+    currentScreen = screenNumber;
+    document.querySelectorAll('.flow-screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(`screen-${screenNumber}`).classList.add('active');
+    
+    const percent = screenNumber * 25;
+    document.getElementById('progress-fill').style.width = `${percent}%`;
+    document.getElementById('steps-pill-text').innerText = `PASSAGGIO ${screenNumber} DI 4`;
+}
+
+function selectLayout(type) {
+    selectedLayoutType = type;
+    document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById(`opt-l-${type}`).classList.add('selected');
+}
+
+function simulateExtensionArrival() {
+    // Dati fake per mostrare il funzionamento istantaneo in assenza di estensione installata
+    const mockData = [
+        {name: "The Witcher 3: Wild Hunt", cover: "https://images-2.gog-statics.com/62e08e61fb196e8e04b46c2f90a990ec8a571da574d642af58e0a7e6b7d2f948_392.jpg"},
+        {name: "Cyberpunk 2077", cover: "https://images-2.gog-statics.com/b5ba805b55050e413008fe58e803c4a229fa1b5cb11b418ad11603ba08fb2fae_392.jpg"},
+        {name: "Baldur's Gate 3", cover: "https://images-2.gog-statics.com/da686df749e79435b89a803be2df790bf7e716e25f82b7c433ff9e3b9e4a3bfb_392.jpg"}
+    ];
+    window.postMessage({ type: "GOG_EXT_DATA", payload: mockData }, "*");
+}
+
+function launchGalleryApp() {
+    document.getElementById('onboarding-flow').style.display = 'none';
+    const app = document.getElementById('gallery-app');
+    app.style.display = 'block';
+    
+    const grid = document.getElementById('gallery-grid');
+    grid.className = `grid-container layout-${selectedLayoutType}`;
+    drawGallery();
+}
+
+function drawGallery() {
+    const grid = document.getElementById('gallery-grid');
+    const query = document.getElementById('search').value.toLowerCase();
+    grid.innerHTML = '';
+    
+    libraryData.filter(g => g.name.toLowerCase().includes(query)).forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.innerHTML = `<img src="${game.cover || ''}" loading="lazy"><div class="game-info"><div class="game-title">${game.name}</div></div>`;
+        grid.appendChild(card);
+    });
+}
+
+function exportStandaloneHTML() {
+    let out = document.documentElement.outerHTML;
+    const blob = new Blob([out], { type: "text/html" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "la_mia_libreria_gog.html";
+    a.click();
+}
+</script>
+</body>
+</html>

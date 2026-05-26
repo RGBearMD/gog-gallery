@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "GOG Vetrina Companion",
+  "version": "1.0",
+  "description": "Sincronizza la tua libreria GOG con la web app in un solo clic.",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.gog.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

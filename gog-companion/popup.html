@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { width: 220px; font-family: sans-serif; background: #09090b; color: #fff; padding: 15px; margin: 0; }
+  h3 { margin: 0 0 10px 0; font-size: 14px; text-align: center; color: #f29100; }
+  p { font-size: 11px; color: #a1a1aa; text-align: center; margin-bottom: 15px; }
+  button { background: #f29100; color: #000; border: none; width: 100%; padding: 10px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+  button:hover { background: #ffa61a; }
+</style>
+</head>
+<body>
+  <h3>GOG Companion</h3>
+  <p>Entra nel tuo profilo su GOG.com, poi premi il tasto qui sotto.</p>
+  <button id="sync-btn">Sincronizza Ora</button>
+
+  <script>
+    document.getElementById('sync-btn').addEventListener('click', async () => {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (!tab.url.includes("gog.com")) {
+        alert("Spostati sulla scheda di GOG.com prima di cliccare!");
+        return;
+      }
+      chrome.tabs.sendMessage(tab.id, { action: "EXTRACT_GOG" });
+    });
+  </script>
+</body>
+</html>
