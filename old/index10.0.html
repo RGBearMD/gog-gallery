@@ -25,30 +25,22 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-fo
 .screen-view.active { display: flex; }
 @keyframes smoothIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-.content-card { width: 100%; max-width: 640px; text-align: center; position: relative; }
+.content-card { width: 100%; max-width: 580px; text-align: center; position: relative; }
 
-/* HERO SECTION RIVISITATA */
-.hero-container { text-align: center; margin-bottom: 35px; }
-.hero-container h1 { font-size: 48px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(135deg, #fff 40%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-container .subheadline { color: var(--text-muted); font-size: 17px; line-height: 1.5; max-width: 540px; margin: 0 auto 24px auto; font-weight: 400; }
-
-.value-prop-badges { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; margin-bottom: 30px; font-size: 14px; font-weight: 500; color: var(--brand); letter-spacing: 0.5px; }
-.value-prop-badges span { display: inline-flex; align-items: center; gap: 6px; background: rgba(242, 145, 0, 0.06); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(242, 145, 0, 0.15); }
-
-/* DECORAZIONI HOME PAGE */
-.early-preview-deck { display: flex; justify-content: center; gap: 15px; margin-bottom: 35px; width: 100%; }
-.mock-card { width: 110px; height: 145px; border-radius: 12px; background-size: cover; background-position: center; border: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,0.6); transition: transform 0.3s; }
-.mock-card:nth-child(1) { transform: rotate(-8deg) translateY(10px); }
-.mock-card:nth-child(2) { transform: scale(1.1); z-index: 2; border-color: rgba(242, 145, 0, 0.3); }
-.mock-card:nth-child(3) { transform: rotate(8deg) translateY(10px); }
-
-.pills-privacy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 30px 0 20px 0; }
-.privacy-pill { background: var(--surface); border: 1px solid var(--border); padding: 12px 6px; border-radius: 10px; font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
-.privacy-notice-box { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 11px; line-height: 1.5; }
-
-/* PLACEHOLDER GIF ANIMATE */
+/* REQUISITO 7 (Precedente): PLACEHOLDER GIF ANIMATE */
 .gif-placeholder-container { width: 100%; aspect-ratio: 16/9; background: #0b0b0e; border: 1px dashed var(--border); border-radius: 12px; margin: 20px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 13px; gap: 8px; }
 .gif-placeholder-container svg { width: 32px; height: 32px; stroke: var(--text-muted); stroke-width: 1.5; fill: none; }
+
+/* DECORAZIONI HOME PAGE */
+.early-preview-deck { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; width: 100%; }
+.mock-card { width: 100px; height: 130px; border-radius: 10px; background-size: cover; background-position: center; border: 1px solid var(--border); box-shadow: 0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s; }
+.mock-card:nth-child(1) { transform: rotate(-8deg) translateY(10px); }
+.mock-card:nth-child(2) { transform: scale(1.1); z-index: 2; }
+.mock-card:nth-child(3) { transform: rotate(8deg) translateY(10px); }
+
+.pills-privacy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0; }
+.privacy-pill { background: var(--surface); border: 1px solid var(--border); padding: 12px 6px; border-radius: 10px; font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
+.privacy-notice-box { background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-align: center; color: var(--text-muted); font-size: 11px; line-height: 1.5; }
 
 /* PROGRESS BAR */
 .progress-container { width: 100%; max-width: 200px; margin: 0 auto 30px auto; text-align: center; }
@@ -56,14 +48,15 @@ body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-fo
 .progress-track { width: 100%; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
 .progress-bar-fill { height: 100%; background: var(--brand); width: 0%; transition: width 0.3s ease; }
 
-h1.step-title { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; color: #fff; }
+h1 { font-size: 40px; font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px; background: linear-gradient(135deg, #fff 50%, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bottom: 30px; }
 .sub-caption { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
 
-/* BOTTONI E CTA */
+/* BOTTONI E CTA CON CORREZIONI DI COLORE ED HOVER (REQUISITI 1, 2, 10) */
 .cta-button { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; padding: 18px 30px; border-radius: 16px; font-weight: 700; font-size: 16px; text-decoration: none; border: 1px solid transparent; cursor: pointer; box-shadow: 0 10px 25px var(--brand-glow); transition: all 0.2s; }
 .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(242, 145, 0, 0.3); }
 
+/* REQUISITO 1: Il pulsante in basso per passare allo step successivo deve essere verde */
 .cta-button-next { background: linear-gradient(135deg, var(--success) 0%, #059669 100%); color: #fff; box-shadow: 0 10px 25px var(--success-glow); }
 .cta-button-next:hover { box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4); }
 
@@ -74,8 +67,10 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .back-arrow-link { background: none; border: none; color: var(--text-muted); font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: color 0.15s; }
 .back-arrow-link:hover { color: #fff; }
 
+/* REQUISITO 2: Scarica elenco e apri la mia pagina diventano arancioni nel bordo on hover */
 .drag-pill-anchor { display: inline-flex; align-items: center; gap: 10px; background: #1f1f27; color: var(--brand); padding: 16px 28px; border-radius: 14px; font-weight: 700; font-size: 15px; text-decoration: none; cursor: grab; border: 2px dashed rgba(242,145,0,0.4); transition: all 0.2s; margin-top: 20px; }
 .drag-pill-anchor:hover { border-color: var(--brand); transform: translateY(-1px); }
+.drag-pill-anchor:active { cursor: grabbing; transform: scale(0.97); }
 
 .btn-gog-account-link { background: #1f1f27; color: #fff; box-shadow: none; border: 1px solid var(--border); }
 .btn-gog-account-link:hover { border-color: var(--brand); color: #fff; }
@@ -84,14 +79,15 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .drop-zone:hover, .drop-zone.dragover { border-color: var(--brand); background: rgba(242, 145, 0, 0.03); }
 .drop-zone input { position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer; }
 
-/* MAIN GALLERY VIEW */
+/* STRUTTURA FINALE SHOWCASE */
 #app-gallery-view { display: none; padding: 60px 20px 40px 20px; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
 
+/* REQUISITO 6 & 7: TITOLO RE-STILIZZATO SENZA FLOATING BAR, I BOTTONI VANNO SOTTO AL TITOLO */
 .gallery-stiloso-title-container { text-align: center; margin-bottom: 30px; }
-.gallery-stiloso-title-container h2 { font-size: 42px; font-weight: 900; background: linear-gradient(135deg, #fff 40%, var(--brand) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; margin-bottom: 4px; }
+.gallery-stiloso-title-container h2 { font-size: 42px; font-weight: 900; background: linear-gradient(135deg, #fff 40%, var(--brand) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; margin-bottom: 4px; text-transform: none; }
 .gallery-stiloso-title-container .subtitle-count { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); display: block; margin-top: 4px; }
 
-/* BARRA DI CONTROLLO */
+/* BARRA DI CONTROLLO POSTE SOTTO AL TITOLO */
 .app-control-bar-centered { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; margin-bottom: 40px; background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: 20px; }
 .controls-row-items { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
 
@@ -102,45 +98,20 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .toggle-btn { background: none; border: none; color: var(--text-muted); padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.15s; }
 .toggle-btn.active { background: var(--surface-card); color: var(--brand); }
 
-/* GRUPPO DI CONTROLLO */
+/* REQUISITO 11 (Precedente) modificato con REQUISITO 5 e 6: ORA STA NELLA STRUTTURA REGOLARE SOTTO IL TITOLO */
 .button-group { display: none; gap: 8px; background: var(--bg); padding: 4px; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; justify-content: center; }
-.btn-premium { background: var(--surface-card); border: 1px solid var(--border); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-size: 13px; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all 0.15s; position: relative; }
+.btn-premium { background: var(--surface-card); border: 1px solid var(--border); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-size: 13px; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all 0.15s; }
 .btn-premium svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .btn-premium:hover { border-color: var(--brand); color: var(--brand); }
 .btn-premium.btn-accent { background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; border: none; }
 .btn-premium.btn-accent:hover { color: #000; opacity: 0.9; }
+.btn-premium.btn-danger:hover { border-color: #ef4444; color: #ef4444; }
 
-/* HOVER TOOLTIP DADO */
-.dice-btn:hover::after { content: "Can’t decide? Roll the dice."; position: absolute; bottom: 135%; left: 50%; transform: translateX(-50%); background: #1e1e24; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 10; }
+/* REQUISITO 9: MINI BOX KOFI DISCRETO NELLA BARRA O NELL'INDICE */
+.kofi-compact-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 94, 91, 0.1); border: 1px solid rgba(255, 94, 91, 0.3); color: #FF5E5B; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+.kofi-compact-badge:hover { background: #FF5E5B; color: #fff; }
 
-/* 3. PULSANTE INDICE FIXED IN ALTO A SINISTRA (SOLO IN GALLERY VIEW) */
-.btn-fixed-index { position: fixed; top: 20px; left: 20px; z-index: 1000; display: none; background: rgba(22, 22, 28, 0.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); color: #fff; padding: 12px 16px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); transition: all 0.2s; }
-.btn-fixed-index:hover { border-color: var(--brand); color: var(--brand); transform: translateX(2px); }
-
-/* 5. CANCELLA GALLERY CON SCRITTA SOLO IN HOVER SULL'ICONA CESTINO */
-.btn-premium.btn-danger { overflow: hidden; max-width: 40px; transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s; padding: 10px; }
-.btn-premium.btn-danger .btn-text { opacity: 0; white-space: nowrap; transition: opacity 0.2s; font-size: 12px; }
-.btn-premium.btn-danger:hover { max-width: 160px; padding: 10px 14px; border-color: #ef4444; color: #ef4444; }
-.btn-premium.btn-danger:hover .btn-text { opacity: 1; margin-left: 4px; }
-
-/* 2. OVERLAY ANIMAZIONE DADO IN MEZZO ALLO SCHERMO */
-#dice-screen-overlay { position: fixed; inset: 0; background: rgba(5, 5, 7, 0.85); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); z-index: 99999; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 20px; }
-.big-dice-box { font-size: 90px; filter: drop-shadow(0 0 30px var(--brand-glow)); }
-.big-dice-text { font-size: 14px; font-weight: 700; color: var(--brand); letter-spacing: 2px; text-transform: uppercase; }
-
-@keyframes dice3DSpin {
-    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.6); opacity: 0; }
-    20% { transform: rotateX(180deg) rotateY(90deg) rotateZ(45deg) scale(1.1); opacity: 1; }
-    50% { transform: rotateX(360deg) rotateY(270deg) rotateZ(180deg) scale(1.2); }
-    80% { transform: rotateX(540deg) rotateY(450deg) rotateZ(270deg) scale(1.05); }
-    100% { transform: rotateX(720deg) rotateY(720deg) rotateZ(360deg) scale(1); opacity: 1; }
-}
-.animate-dice { animation: dice3DSpin 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
-
-/* 4. CONFIGURAZIONE WIDGET KO-FI FIXED IN BASSO A DESTRA */
-.kofi-floating-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
-
-/* GRIGLIE E LAYOUT */
+/* GRIGLIE E LAYOUT DELLE GALLERIE */
 .deck-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 .game-item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; display: block; text-decoration: none; padding: 10px; }
 .game-item-card:hover { transform: translateY(-4px); border-color: var(--brand); }
@@ -148,56 +119,54 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 .game-title-box { padding: 8px 4px 2px 4px; text-align: center; }
 .game-title-text { font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.empty-gallery-state { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--text-muted); font-style: italic; font-size: 16px; }
-
 .moodboard-vertical-list { display: none; flex-direction: column; gap: 30px; width: 100%; }
 .moodboard-row { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
 .moodboard-game-title { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; border-left: 3px solid var(--brand); padding-left: 12px; display: inline-block; margin-bottom: 5px; }
 .moodboard-game-title:hover { color: var(--brand); }
 .moodboard-media-container { display: flex; gap: 20px; align-items: center; overflow: hidden; }
-.moodboard-cover-link { width: 100px; flex-shrink: 0; display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #0b0b0e; }
+.moodboard-cover-link { width: 100px; flex-shrink: 0; display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: border-color 0.2s; background: #0b0b0e; }
+.moodboard-cover-link:hover { border-color: var(--brand); }
 .moodboard-cover-link img { width: 100%; height: auto; display: block; object-fit: contain; aspect-ratio: 3/4; }
-.moodboard-strip-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; width: 100%; }
-.moodboard-strip-scroll img { height: 100px; border-radius: 8px; cursor: pointer; object-fit: cover; aspect-ratio: 16/9; border: 1px solid var(--border); transition: border-color 0.2s; }
-.moodboard-strip-scroll img:hover { border-color: var(--brand); }
+.moodboard-strip-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; width: 100%; scrollbar-width: thin; }
+.moodboard-strip-scroll img { height: 100px; border-radius: 8px; cursor: pointer; object-fit: cover; aspect-ratio: 16/9; transition: border-color 0.2s, opacity 0.2s; border: 1px solid var(--border); }
+.moodboard-strip-scroll img:hover { opacity: 0.85; border-color: var(--brand); }
 
 /* SIDEBAR INDICE */
-#sidebar-index { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); z-index: 5000; padding: 30px 20px; transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+#sidebar-index { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); z-index: 2000; padding: 30px 20px; transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
 #sidebar-index.open { left: 0; }
 .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
 .sidebar-list-scroll { flex-grow: 1; overflow-y: auto; list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .sidebar-list-scroll li a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; display: block; padding: 6px 10px; border-radius: 6px; transition: all 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sidebar-list-scroll li a:hover { color: var(--brand); background: rgba(255,255,255,0.02); }
-#sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 4999; display: none; }
+#sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1999; display: none; }
 
 /* LIGHTBOX */
 #lightbox-wrapper { position: fixed; inset: 0; background: rgba(5,5,7,0.98); z-index: 15000; display: none; justify-content: center; align-items: center; padding: 40px; }
-#lightbox-wrapper img { max-width: 85%; max-height: 80vh; border-radius: 12px; border: 1px solid var(--border); object-fit: contain; }
-.lightbox-btn-ctrl { position: absolute; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: #fff; padding: 12px 20px; font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+#lightbox-wrapper img { max-width: 85%; max-height: 80vh; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 25px 60px rgba(0,0,0,0.9); object-fit: contain; }
+.lightbox-btn-ctrl { position: absolute; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: #fff; padding: 12px 20px; font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.2s; user-select: none; }
 .lightbox-btn-ctrl:hover { background: var(--brand); color: #000; border-color: var(--brand); }
-.lightbox-close { top: 30px; right: 30px; }
+.lightbox-close { top: 30px; right: 30px; font-size: 20px; }
 .lightbox-prev { left: 30px; top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: 30px; top: 50%; transform: translateY(-50%); }
 
-.kofi-discreet-footer { margin-top: 50px; text-align: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 25px; padding-bottom: 40px; }
+/* NOTA DI SUPPORTO DISCRETA IN FONDO ALLA PAGINA (REQUISITO 8 e 9) */
+.kofi-discreet-footer { margin-top: 50px; text-align: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 25px; }
+
+@media (max-width: 768px) {
+    .moodboard-media-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
+    .moodboard-cover-link { width: 100%; }
+    .moodboard-cover-link img { aspect-ratio: 1/1; object-fit: contain; }
+    .moodboard-strip-scroll { display: contents; }
+    .moodboard-strip-scroll img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; }
+    .moodboard-strip-scroll img:nth-child(n+4) { display: none; }
+}
 </style>
 </head>
 <body>
 
-<!-- 3. PULSANTE FIXED INDEX IN ALTO A SINISTRA (COMPARE SOLO IN GALLERY VIEW) -->
-<button id="fixed-index-trigger" class="btn-fixed-index" onclick="toggleSidebarIndex(true)">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-  Indice Giochi
-</button>
-
-<!-- 2. OVERLAY ANIMAZIONE DADO CENTRALE -->
-<div id="dice-screen-overlay">
-  <div class="big-dice-box" id="big-dice-element">🎲</div>
-  <div class="big-dice-text">Scegliendo il prossimo gioco...</div>
-</div>
-
 <div id="onboarding-flow-wrapper">
-  <!-- HERO LANDING -->
+
+  <!-- HOME LANDING -->
   <div id="view-landing" class="screen-view active">
     <div class="content-card">
       <div class="early-preview-deck">
@@ -205,33 +174,25 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
         <div class="mock-card" style="background-image: url('https://images-2.gog-statics.com/62e08e61fb196e8e04b46c2f90a990ec8a571da574d642af58e0a7e6b7d2f948_392.jpg');"></div>
         <div class="mock-card" style="background-image: url('https://images-2.gog-statics.com/b5ba805b55050e413008fe58e803c4a229fa1b5cb11b418ad11603ba08fb2fae_392.jpg');"></div>
       </div>
+      <h1>Your GOG Galaxy</h1>
+      <p class="lead">Esplora la tua galassia di giochi in maniera rapida. Visualizza copertine e anteprime di gioco in un unica pagina in tutta comodità e porta con te la tua collezione.</p>
       
-      <div class="hero-container">
-        <h1>Rediscover your library in seconds.</h1>
-        <p class="subheadline">Scroll through screenshots, recognize forgotten games and pick something to play faster.</p>
-        <div class="value-prop-badges">
-          <span>⚡ Browse your library visually.</span>
-          <span>👁️ See your games at a glance.</span>
-        </div>
-      </div>
-      
-      <!-- 1. NOTA PER IL FILE DEMO IN ASSETS -->
-      <button class="cta-button cta-button-next" onclick="changeView('view-step1', 33)">✨ Try With My GOG Library</button>
-      <button class="cta-button-secondary" style="margin-top: 10px; border-radius: 16px; padding: 14px;" onclick="simulateDemoDataAndLaunch()">View Demo Gallery</button>
-      <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">(Nota: Per testare la demo puoi anche caricare il file <code>my_gog_library.json</code> situato nella cartella <code>assets</code>)</p>
+      <!-- REQUISITO 1 & 10: Lettera maiuscola e pulsante di avanzamento verde -->
+      <button class="cta-button cta-button-next" onclick="changeView('view-step1', 33)">✨ Crea la tua GOG library</button>
       
       <div class="pills-privacy-grid">
-        <div class="privacy-pill">🎁 Free to use</div>
-        <div class="privacy-pill">🔒 100% Client-Side</div>
-        <div class="privacy-pill">⚡ Instant load</div>
+        <div class="privacy-pill">🎁 Gratuito</div>
+        <div class="privacy-pill">🚫 No Registrazione</div>
+        <div class="privacy-pill">🔒 Privacy 100%</div>
       </div>
       <div class="privacy-notice-box">
-        No signup. No launcher. Just your collection. All data is processed locally in your browser memory.
+        🔒 <b>Specifiche sulla Privacy Garantita:</b><br>
+        Questo strumento agisce interamente in ambiente locale (Client-Side). Il file JSON caricato viene elaborato esclusivamente dalla memoria temporanea del tuo browser. Nessun dato viene trasmesso, tracciato o memorizzato su server esterni.
       </div>
     </div>
   </div>
 
-  <!-- STEP 1 -->
+  <!-- STEP 1: SCARICA ELENCO -->
   <div id="view-step1" class="screen-view">
     <div class="progress-container">
       <div class="progress-text">Step 1 di 3</div>
@@ -241,20 +202,28 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
       <div class="navigation-wizard-links">
         <button class="back-arrow-link" onclick="changeView('view-landing', 0)">← Indietro alla Home</button>
       </div>
-      <h1 class="step-title">Scarica la lista dei tuoi giochi</h1>
+      <h1>Scarica la lista dei tuoi giochi</h1>
       <p class="lead">Trascina il pulsante sotto nella tua <b>Barra dei Preferiti</b> del browser.</p>
+      
       <div>
-        <a id="injection-sync-pill" class="drag-pill-anchor" href="javascript:alert('Trascina questo pulsante nella barra dei preferiti!');">★ SCARICA ELENCO GIOCHI</a>
+        <!-- REQUISITO 2: Effetto hover arancione sul bordo gestito da CSS drag-pill-anchor -->
+        <a id="injection-sync-pill" class="drag-pill-anchor" href="javascript:(async function(){const overlay=document.createElement('div');overlay.style='position:fixed;inset:0;background:rgba(15,15,18,0.96);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;padding:20px;';overlay.innerHTML='<div style=&quot;background:#141417;padding:35px;border-radius:16px;border:1px solid #f29100;text-align:center;max-width:460px;box-shadow:0 10px 30px rgba(0,0,0,0.5);&quot;><h3 style=&quot;margin:0 0 12px 0;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;color:#fff;&quot;&gt;IMAGE COLLECTION IN PROGRESS</h3><p style=&quot;color:#aaa;font-size:13px;line-height:1.6;margin:0 0 20px 0;&quot;&gt;Gathering store covers and screenshots from your game collection. Please keep this tab open, it will take a few minutes.&nbsp;</p><div style=&quot;background:#222;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;&quot;&gt;<div id=&quot;gog-progress-bar&quot; style=&quot;background:#f29100;width:0%;height:100%;transition:width 0.2s;&quot;&gt;</div></div><p id=&quot;gog-progress-text&quot; style=&quot;color:#f29100;font-size:12px;font-weight:bold;margin:0;&quot;&gt;Initializing...&nbsp;</p></div>';document.body.appendChild(overlay);const textEl=document.getElementById('gog-progress-text');const barEl=document.getElementById('gog-progress-bar');const rawGames=[];const finalGames=[];async function fetchPage(p){return await(await fetch('/en/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page='+p+'&sortBy=title&totalPages=1')).json();}try{textEl.innerText='Estrazione elenco iniziale...';const first=await fetchPage(1);const totalPages=first.totalPages||1;const add=data=>data.products.forEach(p=>{if(p.isGame){let detectedCover=null;if(p.image){let cleanHash=p.image.replace('_product_card_v2.jpg','').replace('_196.jpg','').replace('https:','').replace('//','').split('/').pop();if(cleanHash&&cleanHash.length>20){detectedCover='https://images-2.gog-statics.com/'+cleanHash+'_392.jpg';}else{detectedCover=p.image.startsWith('http')?p.image:'https:'+p.image;}}rawGames.push({id:p.id,name:p.title,url:'https://www.gog.com'+(p.url||'/en/game/'+p.slug),cover:detectedCover});}});add(first);for(let p=2;p<=totalPages;p++)add(await fetchPage(p));for(let i=0;i<rawGames.length;i++){const g=rawGames[i];barEl.style.width=((i+1)/rawGames.length)*100+'%';textEl.innerText=(i+1)+' / '+rawGames.length+' - '+g.name;let shots=[];try{const r=await fetch(g.url);if(r.ok&&!r.url.endsWith('/en/games')){const txt=await r.text();const doc=new DOMParser().parseFromString(txt,'text/html');const storePic=doc.querySelector('.product-row__img');if(storePic){let srcSetAttr=storePic.getAttribute('ng-srcset')||storePic.getAttribute('srcset')||'';let matches=srcSetAttr.match(/\/\/images(?:-\d+)?\.gog-statics\.com\/[a-f0-9_]+/g);if(matches&&matches.length>0){g.cover='https:'+matches[matches.length-1];}}doc.querySelectorAll('.productcard-thumbnails-slider__image, .productcard-thumbnails-slider__slide-item img, [slider-event-bus-channel=&quot;galleryThumbnails&quot;] img').forEach(img=>{const s=img.getAttribute('src')||img.getAttribute('srcset')||img.src||'';const m=s.match(/([a-f0-9]{64})/i);if(m)shots.push('https://images.gog-statics.com/'+m[1]+'.jpg');});}}catch(e){}finalGames.push({name:g.name,url:g.url,cover:g.cover,screenshots:[...new Set(shots)].slice(0,9)});await new Promise(r=>setTimeout(r,100));}const b=new Blob([JSON.stringify(finalGames,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='my_gog_library.json';document.body.appendChild(a);a.click();document.body.removeChild(a);overlay.remove();}catch(e){overlay.remove();alert('Errore estrazione: '+e.message);}})();">
+          ★ SCARICA ELENCO GIOCHI
+        </a>
+        <div class="sub-caption">Trascinami nella barra dei preferiti</div>
       </div>
+
       <div class="gif-placeholder-container">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-        <span>[ GIF Demo Dimensione: 480x270 ]</span>
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><circle cx="6" cy="6" r="1"></circle><circle cx="10" cy="6" r="1"></circle></svg>
+        <span>[ GIF Demo Dimensione: 480x270 — Formato: GIF o MP4 Loop ]</span>
       </div>
+
+      <!-- REQUISITO 1 & 10: Colore verde in basso e prima lettera maiuscola -->
       <button class="cta-button cta-button-next" style="margin-top:20px;" onclick="changeView('view-step2', 66)">Ho aggiunto il pulsante ai preferiti, proseguiamo!</button>
     </div>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- STEP 2: AVVIA RACCOLTA DELLE IMMAGINI -->
   <div id="view-step2" class="screen-view">
     <div class="progress-container">
       <div class="progress-text">Step 2 di 3</div>
@@ -264,18 +233,27 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
       <div class="navigation-wizard-links">
         <button class="back-arrow-link" onclick="changeView('view-step1', 33)">← Torna al passo 1</button>
       </div>
-      <h1 class="step-title">Building your gaming gallery...</h1>
-      <p class="sub-caption" style="font-size: 15px; margin-bottom: 25px;">Apri il tuo profilo GOG nella pagina dei tuoi giochi, clicca sul segnalibri salvato e attendi.</p>
-      <button class="cta-button btn-gog-account-link" onclick="window.open('https://www.gog.com/en/account', '_blank')">Apri la mia pagina GOG ↗</button>
+      <h1>avvia raccolta delle immagini</h1>
+      <p class="sub-caption" style="font-size: 15px; margin-bottom: 25px;">
+        Apri il tuo profilo GOG nella pagina dei tuoi giochi, clicca sul segnalibri salvato, lascia la scheda aperta e attendi qualche minuto, nel frattempo puoi continuare a usare le altre schede del browser.
+      </p>
+      
+      <!-- REQUISITO 2: Effetto hover arancione sul bordo mediante .btn-gog-account-link -->
+      <button class="cta-button btn-gog-account-link" onclick="window.open('https://www.gog.com/en/account', '_blank')">
+        Apri la mia pagina GOG ↗
+      </button>
+
       <div class="gif-placeholder-container">
         <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-        <span>[ GIF Demo Dimensione: 480x270 ]</span>
+        <span>[ GIF Demo Dimensione: 480x270 — Formato: GIF o MP4 Loop ]</span>
       </div>
+
+      <!-- REQUISITO 1 & 10: Colore verde e Prima lettera maiuscola -->
       <button class="cta-button cta-button-next" onclick="changeView('view-step3', 100)">Raccolta completata, prosegui! ➔</button>
     </div>
   </div>
 
-  <!-- STEP 3 -->
+  <!-- STEP 3: CARICAMENTO JSON -->
   <div id="view-step3" class="screen-view">
     <div class="progress-container">
       <div class="progress-text">Step 3 di 3</div>
@@ -285,14 +263,23 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
       <div class="navigation-wizard-links">
         <button class="back-arrow-link" onclick="changeView('view-step2', 66)">← Torna al passo 2</button>
       </div>
-      <h1 class="step-title">Load My Collection</h1>
+      <h1>Carica la tua Libreria</h1>
+      
+      <!-- REQUISITO 3: Testo modificato su richiesta dell'utente -->
       <p class="lead">Trascina qui il file my_gog_library.json generato nella tua pagina GOG.</p>
+
       <div class="drop-zone" id="drop-zone-area">
         <p style="margin-bottom: 6px; font-weight: 600; font-size: 14px;">Trascina il file JSON qui</p>
         <p style="font-size: 12px; color: var(--text-muted);">oppure clicca per selezionarlo dal computer</p>
         <input type="file" id="json-file-input" accept=".json">
       </div>
-      <button class="cta-button-secondary" onclick="simulateDemoDataAndLaunch()">Usa Dati Demo di Prova ✨</button>
+
+      <div class="gif-placeholder-container">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"></path></svg>
+        <span>[ GIF Demo Dimensione: 480x270 — Formato: GIF o MP4 Loop ]</span>
+      </div>
+
+      <button class="cta-button-secondary" onclick="simulateWrappedArrival()">Usa Dati Demo di Prova ✨</button>
     </div>
   </div>
 
@@ -304,9 +291,11 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
         <span class="value" id="stat-total" style="font-size: 54px; font-weight: 900; color: var(--brand);">0</span>
         <p class="lead" style="margin-top: 10px;" id="stat-total-label">giochi caricati</p>
       </div>
+      <!-- REQUISITO 10: Controllo maiuscole -->
       <button class="cta-button cta-button-next" onclick="buildFinalShowcaseView()">Genera la mia GOG Galaxy Gallery</button>
     </div>
   </div>
+
 </div>
 
 <!-- SIDEBAR INDICE -->
@@ -322,36 +311,48 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
 <!-- LIGHTBOX -->
 <div id="lightbox-wrapper" onclick="closeLightbox()">
   <button class="lightbox-btn-ctrl lightbox-close" onclick="closeLightbox()">&times;</button>
-  <button class="lightbox-btn-ctrl lightbox-prev" onclick="prevLightboxImg(event)">⬅ Precedente</button>
-  <button class="lightbox-btn-ctrl lightbox-next" onclick="nextLightboxImg(event)">Successiva ➔</button>
+  <button class="lightbox-btn-ctrl lightbox-prev" onclick="prevLightboxImg(event)">Visualizza Precedente ⬅</button>
+  <button class="lightbox-btn-ctrl lightbox-next" onclick="nextLightboxImg(event)">➔</button>
   <img id="lightbox-img" src="" alt="Screenshot" onclick="event.stopPropagation()">
 </div>
 
 <!-- MAIN GALLERY VIEW -->
 <div id="app-gallery-view">
+  
+  <!-- REQUISITO 7: Titolo modificato e sottotitolo allargato più piccolo -->
   <div class="gallery-stiloso-title-container">
     <h2>La mia GOG Galaxy</h2>
     <span class="subtitle-count" id="gallery-title-count">0 GIOCHI</span>
   </div>
 
+  <!-- REQUISITO 6: I pulsanti ora si trovano SOTTO al titolo, inclusi in questa sezione centrale -->
   <div class="app-control-bar-centered">
+    
+    <!-- REQUISITO 5, 6 & 11: I PULSANTI DI CONTROLLO PREDEFINITI PRESI DALL'ALTO E POSIZIONATI SOTTO IL TITOLO -->
     <div class="button-group" id="app-floating-controls" style="display: none; margin-bottom: 12px;">
-        <button class="btn-premium btn-accent dice-btn" id="dice-action-button" onclick="pickRandomGame()">
+        <button class="btn-premium btn-accent" onclick="pickRandomGame()">
           <span>🎲</span><span class="btn-text">Cosa Gioco?</span>
         </button>
         
-        <button class="btn-premium" onclick="resetGalleryFilters()">
+        <!-- REQUISITO 5: Pulsante con freccia circolare che gira per ripristinare e togliere i filtri -->
+        <button class="btn-premium" onclick="resetGalleryFilters()" title="Ripristina filtri">
           <svg viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg><span class="btn-text">Ripristina</span>
         </button>
 
         <button class="btn-premium" onclick="downloadStandaloneFile()">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg><span class="btn-text">Download & Share Your Gallery</span>
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg><span class="btn-text">Esporta</span>
         </button>
+        
+        <!-- REQUISITO 4: Azione toggleSidebarButton modificata per aprire e chiudere alternativamente -->
+        <button class="btn-premium" onclick="toggleSidebarIndexAction()">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg><span class="btn-text">Indice</span>
+        </button>
+        
+        <!-- REQUISITO 9: Inserito pulsante ko-fi compatto non ostentato direttamente nei pulsanti superiori della galleria -->
+        <a href="https://ko-fi.com/" target="_blank" class="kofi-compact-badge">☕ Offrimi un caffè</a>
 
-        <!-- 5. PULSANTE CANCELLA GALLERY CON SCRITTA SOLO IN HOVER -->
         <button class="btn-premium btn-danger" onclick="clearLibrary()">
-          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-          <span class="btn-text">Cancella Gallery</span>
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><span class="btn-text">Svuota</span>
         </button>
     </div>
 
@@ -364,21 +365,16 @@ p.lead { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bot
     </div>
   </div>
 
+  <!-- VISTA 1: COVER GRID -->
   <div id="gallery-deck-grid" class="deck-grid"></div>
+
+  <!-- VISTA 2: MOOD BOARD -->
   <div id="gallery-deck-timeline" class="moodboard-vertical-list"></div>
 
+  <!-- REQUISITO 8 e 9: Testo modificato, posizionato come nota piè di pagina molto discreta e pulita -->
   <div class="kofi-discreet-footer">
-    <p>Ti piace questa gallery? Supporta il progetto!</p>
+    <p>Ti piace questa gallery? Se vuoi supportarmi puoi offrirmi un caffè su <a href="https://ko-fi.com/" target="_blank" style="color: #FF5E5B; font-weight: bold; text-decoration: none;">Ko-fi</a>.</p>
   </div>
-</div>
-
-<!-- 4. EMBED INTEGRATO WIDGET KO-FI FIXED IN BASSO A DESTRA SU TUTTO IL SITO -->
-<div class="kofi-floating-container">
-  <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-  <script type='text/javascript'>
-    kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'X0W0206J65');
-    kofiwidget2.draw();
-  </script>
 </div>
 
 <script>
@@ -426,7 +422,7 @@ function handleFileSelect() {
     reader.readAsText(file);
 }
 
-function simulateDemoDataAndLaunch() {
+function simulateWrappedArrival() {
     userGamesCollection = [
         {
             name: "Advent Rising",
@@ -435,7 +431,8 @@ function simulateDemoDataAndLaunch() {
             screenshots: [
                 "https://images.gog-statics.com/cc5f0a20531d7e40aa7b24421e967d10f644a1e19bcb59bb80008bacdfd43180.jpg",
                 "https://images.gog-statics.com/45ba199848c7275c3b4a1f731af99e40360b0f674b51481c323b5de9eb942cbf.jpg",
-                "https://images.gog-statics.com/111e9ff57b44e236fd29b04316bc98d922ec42bf4bdbe79050893196ed47099a.jpg"
+                "https://images.gog-statics.com/111e9ff57b44e236fd29b04316bc98d922ec42bf4bdbe79050893196ed47099a.jpg",
+                "https://images.gog-statics.com/ad6c2b9b42092f02b0efb1256d4660fcd998b053ab58eb653c9418d9ca63a125.jpg"
             ]
         },
         {
@@ -451,15 +448,24 @@ function simulateDemoDataAndLaunch() {
             screenshots: []
         }
     ].sort((a, b) => a.name.localeCompare(b.name));
-    buildFinalShowcaseView();
+    document.getElementById('stat-total').innerText = userGamesCollection.length;
+    document.getElementById('stat-total-label').innerText = `${userGamesCollection.length} giochi caricati`;
+    changeView('view-wrapped', 100);
 }
 
 function switchActiveView(mode) {
     currentViewMode = mode;
     document.getElementById('btn-view-grid').classList.toggle('active', mode === 'grid');
     document.getElementById('btn-view-timeline').classList.toggle('active', mode === 'timeline');
+    
     document.getElementById('gallery-deck-grid').style.display = (mode === 'grid') ? 'grid' : 'none';
     document.getElementById('gallery-deck-timeline').style.display = (mode === 'timeline') ? 'flex' : 'none';
+}
+
+/* REQUISITO 4: Gestione dell'indice con chiusura alternata (Toggle) */
+function toggleSidebarIndexAction() {
+    const isCurrentlyOpen = document.getElementById('sidebar-index').classList.contains('open');
+    toggleSidebarIndex(!isCurrentlyOpen);
 }
 
 function toggleSidebarIndex(open) {
@@ -470,11 +476,11 @@ function toggleSidebarIndex(open) {
 function buildFinalShowcaseView() {
     document.getElementById('onboarding-flow-wrapper').style.display = 'none';
     document.getElementById('app-gallery-view').style.display = 'block';
+    
+    // Mostra il gruppo pulsanti sotto il titolo
     document.getElementById('app-floating-controls').style.display = 'flex';
     
-    // 3. MOSTRE IL PULSANTE DI TRIGGER DELL'INDICE FIXED IN ALTO A SINISITRA
-    document.getElementById('fixed-index-trigger').style.display = 'inline-flex';
-    
+    // REQUISITO 7: Aggiornamento del sottotitolo dei giochi caricati
     document.getElementById('gallery-title-count').innerText = `${userGamesCollection.length} giochi`;
     
     const sidebarUl = document.getElementById('sidebar-games-ul');
@@ -494,6 +500,7 @@ function scrollToOrFilterGame(name) {
     refreshGalleryInterface();
 }
 
+/* REQUISITO 5: Funzione per ripristinare la vista cancellando i filtri di ricerca */
 function resetGalleryFilters() {
     document.getElementById('live-search-input').value = '';
     refreshGalleryInterface();
@@ -509,14 +516,6 @@ function refreshGalleryInterface() {
 
     const filteredGames = userGamesCollection.filter(g => g.name && g.name.toLowerCase().includes(filterText));
     lightboxImagesTrack = [];
-
-    if (filteredGames.length === 0) {
-        const emptyState = document.createElement('div');
-        emptyState.className = 'empty-gallery-state';
-        emptyState.innerText = "Your gallery is waiting to be filled.";
-        gridContainer.appendChild(emptyState);
-        return;
-    }
 
     filteredGames.forEach((game, idx) => {
         const card = document.createElement('a');
@@ -535,7 +534,8 @@ function refreshGalleryInterface() {
         
         let screenshotsHtml = '';
         if (game.screenshots && game.screenshots.length > 0) {
-            game.screenshots.slice(0, 7).forEach(shotUrl => {
+            const limitedShots = game.screenshots.slice(0, 7);
+            limitedShots.forEach(shotUrl => {
                 lightboxImagesTrack.push(shotUrl);
                 const currentGlobalIdx = lightboxImagesTrack.length - 1;
                 screenshotsHtml += `<img src="${shotUrl}" loading="lazy" onclick="openLightbox(${currentGlobalIdx})" onerror="this.style.display='none'">`;
@@ -552,40 +552,27 @@ function refreshGalleryInterface() {
                 <a href="${game.url || '#'}" target="_blank" class="moodboard-cover-link">
                     <img src="${game.cover || ''}" loading="lazy" onerror="this.style.opacity='0.15'">
                 </a>
-                <div class="moodboard-strip-scroll">${screenshotsHtml}</div>
+                <div class="moodboard-strip-scroll">
+                    ${screenshotsHtml}
+                </div>
             </div>
         `;
         timelineContainer.appendChild(row);
     });
 }
 
-/* 2. LOGICA INTERAMENTE AGGIORNATA PER IL COSA GIOCO CON ANIMAZIONE OVERLAY GIGANTE */
 function pickRandomGame() {
     if(userGamesCollection.length === 0) return;
-    
-    const overlay = document.getElementById('dice-screen-overlay');
-    const diceBox = document.getElementById('big-dice-element');
-    
-    overlay.style.display = 'flex';
-    diceBox.classList.remove('animate-dice');
-    void diceBox.offsetWidth; // Trigger reflow per resettare animazione
-    diceBox.classList.add('animate-dice');
-    
-    setTimeout(() => {
-        const randomIndex = Math.floor(Math.random() * userGamesCollection.length);
-        const chosenGame = userGamesCollection[randomIndex];
-        document.getElementById('live-search-input').value = chosenGame.name;
-        refreshGalleryInterface();
-        
-        overlay.style.display = 'none';
-        document.getElementById('app-gallery-view').scrollIntoView({ behavior: 'smooth' });
-    }, 900); // Durata massima dell'animazione controllata a 0.9 secondi
+    const randomIndex = Math.floor(Math.random() * userGamesCollection.length);
+    const chosenGame = userGamesCollection[randomIndex];
+    document.getElementById('live-search-input').value = chosenGame.name;
+    refreshGalleryInterface();
+    document.getElementById('app-gallery-view').scrollIntoView({ behavior: 'smooth' });
 }
 
 function clearLibrary() {
-    if(confirm("Sei sicuro di voler cancellare la gallery attuale? Dovrai ricaricare il file JSON.")) {
+    if(confirm("Sei sicuro di voler svuotare la gallery attuale? Dovrai ricaricare il file JSON.")) {
         userGamesCollection = [];
-        document.getElementById('fixed-index-trigger').style.display = 'none';
         document.getElementById('app-floating-controls').style.display = 'none';
         document.getElementById('app-gallery-view').style.display = 'none';
         document.getElementById('onboarding-flow-wrapper').style.display = 'block';
@@ -604,11 +591,17 @@ function closeLightbox() {
 }
 function prevLightboxImg(e) {
     if(e) e.stopPropagation();
-    if(currentLightboxIndex > 0) { currentLightboxIndex--; updateLightboxView(); }
+    if(currentLightboxIndex > 0) {
+        currentLightboxIndex--;
+        updateLightboxView();
+    }
 }
 function nextLightboxImg(e) {
     if(e) e.stopPropagation();
-    if(currentLightboxIndex < lightboxImagesTrack.length - 1) { currentLightboxIndex++; updateLightboxView(); }
+    if(currentLightboxIndex < lightboxImagesTrack.length - 1) {
+        currentLightboxIndex++;
+        updateLightboxView();
+    }
 }
 function updateLightboxView() {
     const targetUrl = lightboxImagesTrack[currentLightboxIndex];
@@ -619,7 +612,7 @@ document.addEventListener('keydown', e => {
     if (document.getElementById('lightbox-wrapper').style.display === 'flex') {
         if (e.key === 'Escape') closeLightbox();
         else if (e.key === 'ArrowRight') nextLightboxImg(null);
-        else if (e.key === 'ArrowLeft') prevLightboxImg(null);
+        else if (e.key === 'ArrowLeft') prevImg(null);
     }
 });
 
