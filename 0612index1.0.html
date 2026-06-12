@@ -1,0 +1,217 @@
+<style>
+/* Refactored Global Layout */
+#onboarding-flow-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: smoothIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Header & Trust Signals */
+.intro-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.intro-header h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 40%, var(--brand) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.intro-header .subheadline {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    line-height: 1.5;
+}
+.trust-badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+.trust-badge {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+.privacy-note {
+    font-size: 13px;
+    color: var(--success);
+    font-weight: 500;
+}
+
+/* 3-Step Grid */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+}
+.step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.step-card:hover {
+    border-color: var(--brand);
+}
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.step-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--brand);
+    letter-spacing: 1px;
+}
+.step-progress {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+.step-instruction {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Responsive specific */
+.mobile-only { display: none; }
+@media (max-width: 900px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
+}
+
+/* UI Elements */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dotted var(--text-muted);
+}
+.tooltip-container .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #1f1f27;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid var(--border);
+    pointer-events: none;
+}
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+</style>
+
+<div id="onboarding-flow-wrapper">
+    <!-- Header Section -->
+    <div class="intro-header">
+        <h1>Rediscover your library in seconds.</h1>
+        <p class="subheadline">⚡ Browse your library visually. 👁️ See your games at a glance.<br>Scroll through screenshots, recognize forgotten games and pick something to play faster.</p>
+        
+        <div class="trust-badges">
+            <span class="trust-badge">🎁 Free to use</span>
+            <span class="trust-badge">🔒 100% Client-Side</span>
+            <span class="trust-badge">⚡ Instant load</span>
+        </div>
+        <p class="privacy-note">No signup. No launcher. Just your collection. All data is processed locally in browser memory.</p>
+    </div>
+
+    <!-- 3-Step Grid Section -->
+    <div class="steps-grid">
+        
+        <!-- STEP 1 -->
+        <div class="step-card" id="step-card-1">
+            <div class="step-header">
+                <span class="step-title">STEP 1</span>
+                <span class="step-progress">1/3</span>
+            </div>
+            
+            <div class="desktop-only step-instruction">
+                Drag the button below into your browser's bookmarks bar.
+            </div>
+            <div class="desktop-only" style="text-align: center;">
+                <!-- Note: The bookmarklet payload is updated with the new trust wording -->
+                <a class="drag-pill-anchor" style="margin-top: 0;" href="javascript:(async function(){const overlay=document.createElement('div');overlay.style='position:fixed;inset:0;background:rgba(15,15,18,0.96);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;padding:20px;';overlay.innerHTML='%3Cdiv%20style=%22background:#141417;padding:35px;border-radius:16px;border:1px%20solid%20#f29100;text-align:center;max-width:460px;box-shadow:0%2010px%2030px%20rgba(0,0,0,0.5);%22%3E%3Ch3%20style=%22margin:0%200%2012px%200;font-size:18px;font-weight:bold;color:#fff;%22%3EBuilding%20your%20visual%20library%3C/h3%3E%3Cp%20style=%22color:#aaa;font-size:13px;line-height:1.6;margin:0%200%2020px%200;%22%3EFetching%20cover%20images%20for%20your%20owned%20games%20from%20GOG.%3Cbr%3E%3Cbr%3E%F0%9F%94%92%20This%20process%20runs%20locally%20in%20your%20browser.%20No%20data%20is%20sent%20to%20external%20servers.%3Cbr%3E%3Cbr%3EPlease%20keep%20this%20tab%20open%20while%20it%20completes.%3C/p%3E%3Cdiv%20style=%22background:#222;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;%22%3E%3Cdiv%20id=%22gog-progress-bar%22%20style=%22background:#f29100;width:0%;height:100%;transition:width%200.2s;%22%3E%3C/div%3E%3C/div%3E%3Cp%20id=%22gog-progress-text%22%20style=%22color:#f29100;font-size:12px;font-weight:bold;margin:0;%22%3EInitializing...%C2%A0%3C/p%3E%3C/div%3E';document.body.appendChild(overlay);const textEl=document.getElementById('gog-progress-text');const barEl=document.getElementById('gog-progress-bar');const rawGames=[];const finalGames=[];async function fetchPage(p){return await(await fetch('/en/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page='+p+'&sortBy=title&totalPages=1')).json();}try{textEl.innerText='Estrazione%20elenco%20iniziale...';const first=await fetchPage(1);const totalPages=first.totalPages||1;const add=data=>data.products.forEach(p=>{if(p.isGame){let detectedCover=null;if(p.image){let cleanHash=p.image.replace('_product_card_v2.jpg','').replace('_196.jpg','').replace('https:','').replace('//','').split('/').pop();if(cleanHash&&cleanHash.length>20){detectedCover='https://images-2.gog-statics.com/'+cleanHash+'_392.jpg';}else{detectedCover=p.image.startsWith('http')?p.image:'https:'+p.image;}}rawGames.push({id:p.id,name:p.title,url:'https://www.gog.com'+(p.url||'/en/game/'+p.slug),cover:detectedCover});}});add(first);for(let p=2;p<=totalPages;p++)add(await fetchPage(p));for(let i=0;i<rawGames.length;i++){const g=rawGames[i];barEl.style.width=((i+1)/rawGames.length)*100+'%';textEl.innerText=(i+1)+' / '+rawGames.length+' - '+g.name;let shots=[];try{const r=await fetch(g.url);if(r.ok&&!r.url.endsWith('/en/games')){const txt=await r.text();const doc=new DOMParser().parseFromString(txt,'text/html');const storePic=doc.querySelector('.product-row__img');if(storePic){let srcSetAttr=storePic.getAttribute('ng-srcset')||storePic.getAttribute('srcset')||'';let matches=srcSetAttr.match(/\/\/images(?:-\d+)?\.gog-statics\.com\/[a-f0-9_]+/g);if(matches&&matches.length>0){g.cover='https:'+matches[matches.length-1];}}doc.querySelectorAll('.productcard-thumbnails-slider__image, .productcard-thumbnails-slider__slide-item img, [slider-event-bus-channel=%22galleryThumbnails%22] img').forEach(img=>{const s=img.getAttribute('src')||img.getAttribute('srcset')||img.src||'';const m=s.match(/([a-f0-9]{64})/i);if(m)shots.push('https://images.gog-statics.com/'+m[1]+'.jpg');});}}catch(e){}finalGames.push({name:g.name,url:g.url,cover:g.cover,screenshots:[...new Set(shots)].slice(0,9)});await new Promise(r=>setTimeout(r,100));}const b=new Blob([JSON.stringify(finalGames,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='my_gog_library.json';document.body.appendChild(a);a.click();document.body.removeChild(a);overlay.remove();}catch(e){overlay.remove();alert('Errore estrazione: '+e.message);}})();">
+                    Download Game List
+                </a>
+            </div>
+
+            <div class="mobile-only step-instruction">
+                Copy the bookmarklet code, then add it manually to your browser bookmarks.
+            </div>
+            <div class="mobile-only" style="text-align: center;">
+                <button class="cta-button" style="padding: 12px 20px; font-size: 14px;" onclick="copyBookmarkletToClipboard()">Copy Bookmarklet</button>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-card" id="step-card-2">
+            <div class="step-header">
+                <span class="step-title">STEP 2</span>
+                <span class="step-progress">2/3</span>
+            </div>
+            <div class="step-instruction">
+                <p style="margin-bottom: 12px;">Log in to GOG and open your <a href="https://www.gog.com/en/account" target="_blank" style="color: var(--brand);">library page</a>.</p>
+                <p>Once the page is open, click the 
+                    <span class="tooltip-container">
+                        'Download Game List' bookmark
+                        <span class="tooltip-text">Clicking this will run a safe, local script to map your game covers without leaving your browser.</span>
+                    </span> 
+                from your bookmarks bar.</p>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-card" id="step-card-3">
+            <div class="step-header">
+                <span class="step-title">STEP 3</span>
+                <span class="step-progress">3/3</span>
+            </div>
+            <div class="step-instruction" style="text-align: center;">
+                <h3 style="margin-bottom: 10px; font-size: 16px;">Load My Collection</h3>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Drag and drop the file <strong>my_gog_library.json</strong> into this area.</p>
+                
+                <div class="drop-zone" id="drop-zone-area" style="padding: 20px 10px; margin-bottom: 0;">
+                    <p style="font-size: 12px; color: var(--brand); font-weight: bold;">+ Drop JSON File Here</p>
+                    <input type="file" id="json-file-input" accept=".json">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
