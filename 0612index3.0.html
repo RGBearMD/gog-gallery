@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your GOG Galaxy — Vetrina Personale</title>
+<style>
+:root { 
+    --bg: #050507; 
+    --surface: #0f0f13; 
+    --surface-card: #16161c; 
+    --border: #22222a; 
+    --text: #f4f4f5; 
+    --text-muted: #a1a1aa; 
+    --brand: #f29100; 
+    --brand-glow: rgba(242, 145, 0, 0.2); 
+    --success: #10b981;
+    --success-glow: rgba(16, 185, 129, 0.2);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+/* MAGIC FLUID FLOW CONTAINER */
+#magic-onboarding-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeInSmooth 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeInSmooth { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* HERO TEXT & TRUST ARCHITECTURE */
+.magic-hero-title {
+    font-size: 46px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 40%, var(--brand) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1.5px;
+}
+.magic-subheadline {
+    color: var(--text-muted);
+    font-size: 17px;
+    max-width: 620px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+.magic-trust-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
+.magic-badge {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.magic-privacy-shield {
+    font-size: 14.5px;
+    color: var(--success);
+    font-weight: 500;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* UNIFIED ONE-CLICK INTERACTIVE BUTTON */
+.magic-primary-cta-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.magic-btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%);
+    color: #000;
+    padding: 20px 32px;
+    border-radius: 16px;
+    font-weight: 800;
+    font-size: 19px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 25px var(--brand-glow);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.magic-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(242, 145, 0, 0.35);
+}
+.magic-btn-primary:active {
+    transform: translateY(0);
+}
+
+/* DRAG & DROP SUBTLE DISCREET ZONE FOR RETURNING USERS */
+.discreet-drop-wrapper {
+    margin-top: 40px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+.discreet-drop-wrapper:hover { opacity: 1; }
+.discreet-zone {
+    border: 1px dashed var(--border);
+    padding: 14px;
+    border-radius: 12px;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.01);
+    position: relative;
+    cursor: pointer;
+}
+.discreet-zone input { position: absolute; inset:0; opacity:0; cursor:pointer; }
+
+/* GUIDED ASSISTANT STREAMLINED OVERLAY */
+#guided-assistant-overlay {
+    display: none;
+    width: 100%;
+    max-width: 500px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 35px 30px;
+    margin: 20px auto;
+    text-align: left;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.assistant-header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+}
+.assistant-header h3 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+.assistant-header p { font-size: 13.5px; color: var(--text-muted); }
+
+/* STEP STREAMLINE TRACKER */
+.assistant-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+.assistant-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0.4;
+    transition: opacity 0.3s, transform 0.3s;
+}
+.assistant-row.active { opacity: 1; transform: translateX(2px); }
+.assistant-row.completed { opacity: 1; color: var(--success); }
+
+.status-indicator-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all 0.25s;
+    color: var(--text-muted);
+}
+.assistant-row.active .status-indicator-dot { border-color: var(--brand); color: var(--brand); box-shadow: 0 0 10px var(--brand-glow); }
+.assistant-row.completed .status-indicator-dot { border-color: var(--success); background: var(--success); color: #000; }
+
+.assistant-row-text { font-size: 14.5px; font-weight: 500; }
+.assistant-row.completed .assistant-row-text { color: #fff; }
+
+/* INSTRUCTION CALLOUT BANNER */
+.live-instruction-banner {
+    background: rgba(242, 145, 0, 0.06);
+    border: 1px solid rgba(242, 145, 0, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    display: none;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+@keyframes pulseGlow { 0%, 100% { border-color: rgba(242, 145, 0, 0.2); } 50% { border-color: var(--brand); box-shadow: 0 0 12px rgba(242, 145, 0, 0.1); } }
+.live-instruction-banner p { font-size: 14px; line-height: 1.5; color: #fff; }
+
+/* FILE RETURN CAPTURE DROPZONE WITHIN ASSISTANT */
+.assistant-capture-box {
+    border: 2px dashed rgba(242,145,0,0.3);
+    background: rgba(255,255,255,0.01);
+    border-radius: 14px;
+    padding: 22px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    display: none;
+    transition: all 0.25s;
+}
+.assistant-capture-box:hover { border-color: var(--brand); background: rgba(242, 145, 0, 0.02); }
+.assistant-capture-box input { position: absolute; inset:0; opacity:0; cursor:pointer; }
+
+/* DYNAMIC TOAST SYSTEM */
+#toast-notification-node {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(40px);
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 999999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#toast-notification-node.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* MAIN GALLERY VIEW (PRESERVED) */
+#app-gallery-view { display: none; padding: 60px 20px 40px 20px; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
+.gallery-stiloso-title-container { text-align: center; margin-bottom: 30px; }
+.gallery-stiloso-title-container h2 { font-size: 42px; font-weight: 900; background: linear-gradient(135deg, #fff 40%, var(--brand) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; margin-bottom: 4px; }
+.gallery-stiloso-title-container .subtitle-count { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); display: block; margin-top: 4px; }
+
+.app-control-bar-centered { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; margin-bottom: 40px; background: var(--surface); border: 1px solid var(--border); padding: 20px; border-radius: 20px; }
+.controls-row-items { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
+.search-input { background: var(--bg); border: 1px solid var(--border); padding: 12px 18px; border-radius: 10px; color: #fff; font-size: 14px; width: 240px; outline: none; }
+.search-input:focus { border-color: var(--brand); }
+.view-toggle-container { display: inline-flex; background: var(--bg); border: 1px solid var(--border); padding: 4px; border-radius: 10px; }
+.toggle-btn { background: none; border: none; color: var(--text-muted); padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+.toggle-btn.active { background: var(--surface-card); color: var(--brand); }
+
+.button-group { display: none; gap: 8px; background: var(--bg); padding: 4px; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; justify-content: center; }
+.btn-premium { background: var(--surface-card); border: 1px solid var(--border); color: #fff; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 14px; font-size: 13px; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all 0.15s; position: relative; }
+.btn-premium svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.btn-premium:hover { border-color: var(--brand); color: var(--brand); }
+.btn-premium.btn-accent { background: linear-gradient(135deg, var(--brand) 0%, #d97706 100%); color: #000; border: none; }
+.btn-premium.btn-accent:hover { color: #000; opacity: 0.9; }
+.dice-btn:hover::after { content: "Can’t decide? Roll the dice."; position: absolute; bottom: 135%; left: 50%; transform: translateX(-50%); background: #1e1e24; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 10; }
+.btn-fixed-index { position: fixed; top: 20px; left: 20px; z-index: 1000; display: none; background: rgba(22, 22, 28, 0.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid var(--border); color: #fff; padding: 12px 16px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); transition: all 0.2s; }
+.btn-fixed-index:hover { border-color: var(--brand); color: var(--brand); transform: translateX(2px); }
+.btn-premium.btn-danger { overflow: hidden; max-width: 40px; transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s; padding: 10px; }
+.btn-premium.btn-danger .btn-text { opacity: 0; white-space: nowrap; transition: opacity 0.2s; font-size: 12px; }
+.btn-premium.btn-danger:hover { max-width: 160px; padding: 10px 14px; border-color: #ef4444; color: #ef4444; }
+.btn-premium.btn-danger:hover .btn-text { opacity: 1; margin-left: 4px; }
+
+#dice-screen-overlay { position: fixed; inset: 0; background: rgba(5, 5, 7, 0.85); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); z-index: 99999; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 20px; }
+.big-dice-box { font-size: 90px; filter: drop-shadow(0 0 30px var(--brand-glow)); }
+.big-dice-text { font-size: 14px; font-weight: 700; color: var(--brand); letter-spacing: 2px; text-transform: uppercase; }
+@keyframes dice3DSpin {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.6); opacity: 0; }
+    20% { transform: rotateX(180deg) rotateY(90deg) rotateZ(45deg) scale(1.1); opacity: 1; }
+    50% { transform: rotateX(360deg) rotateY(270deg) rotateZ(180deg) scale(1.2); }
+    80% { transform: rotateX(540deg) rotateY(450deg) rotateZ(270deg) scale(1.05); }
+    100% { transform: rotateX(720deg) rotateY(720deg) rotateZ(360deg) scale(1); opacity: 1; }
+}
+.animate-dice { animation: dice3DSpin 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+.kofi-floating-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+
+.deck-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.game-item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, border-color 0.25s; display: block; text-decoration: none; padding: 10px; }
+.game-item-card:hover { transform: translateY(-4px); border-color: var(--brand); }
+.game-item-card img { width: 100%; height: 160px; display: block; object-fit: contain; background: #0b0b0e; border-radius: 8px; }
+.game-title-box { padding: 8px 4px 2px 4px; text-align: center; }
+.game-title-text { font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.moodboard-vertical-list { display: none; flex-direction: column; gap: 30px; width: 100%; }
+.moodboard-row { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 25px; display: flex; flex-direction: column; gap: 15px; }
+.moodboard-game-title { font-size: 20px; font-weight: 800; color: #fff; text-decoration: none; border-left: 3px solid var(--brand); padding-left: 12px; display: inline-block; margin-bottom: 5px; }
+.moodboard-game-title:hover { color: var(--brand); }
+.moodboard-media-container { display: flex; gap: 20px; align-items: center; overflow: hidden; }
+.moodboard-cover-link { width: 100px; flex-shrink: 0; display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); background: #0b0b0e; }
+.moodboard-cover-link img { width: 100%; height: auto; display: block; object-fit: contain; aspect-ratio: 3/4; }
+.moodboard-strip-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; width: 100%; }
+.moodboard-strip-scroll img { height: 100px; border-radius: 8px; cursor: pointer; object-fit: cover; aspect-ratio: 16/9; border: 1px solid var(--border); transition: border-color 0.2s; }
+.moodboard-strip-scroll img:hover { border-color: var(--brand); }
+
+#sidebar-index { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--surface); border-right: 1px solid var(--border); z-index: 5000; padding: 30px 20px; transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+#sidebar-index.open { left: 0; }
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.sidebar-list-scroll { flex-grow: 1; overflow-y: auto; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sidebar-list-scroll li a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; display: block; padding: 6px 10px; border-radius: 6px; transition: all 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar-list-scroll li a:hover { color: var(--brand); background: rgba(255,255,255,0.02); }
+#sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 4999; display: none; }
+
+#lightbox-wrapper { position: fixed; inset: 0; background: rgba(5,5,7,0.98); z-index: 15000; display: none; justify-content: center; align-items: center; padding: 40px; }
+#lightbox-wrapper img { max-width: 85%; max-height: 80vh; border-radius: 12px; border: 1px solid var(--border); object-fit: contain; }
+.lightbox-btn-ctrl { position: absolute; background: rgba(255,255,255,0.03); border: 1px solid var(--border); color: #fff; padding: 12px 20px; font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+.lightbox-btn-ctrl:hover { background: var(--brand); color: #000; border-color: var(--brand); }
+.lightbox-close { top: 30px; right: 30px; }
+.lightbox-prev { left: 30px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 30px; top: 50%; transform: translateY(-50%); }
+
+.kofi-discreet-footer { margin-top: 50px; text-align: center; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 25px; padding-bottom: 40px; }
+
+/* RECOVERY & COMPLETE ACTION SUMMARY LAYOUT */
+#action-complete-summary { display: none; text-align: center; margin-top: 25px; width: 100%; max-width: 500px; animation: fadeInSmooth 0.4s ease forwards; }
+</style>
+</head>
+<body>
+
+<div id="toast-notification-node">
+  <span style="color:var(--success);">✔</span> <span id="toast-message-content">Bookmarklet copied to clipboard</span>
+</div>
+
+<button id="fixed-index-trigger" class="btn-fixed-index" onclick="toggleSidebarIndex(true)">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  Indice Giochi
+</button>
+
+<div id="dice-screen-overlay">
+  <div class="big-dice-box" id="big-dice-element">🎲</div>
+  <div class="big-dice-text">Scegliendo il prossimo gioco...</div>
+</div>
+
+<div id="magic-onboarding-wrapper">
+  
+  <div id="initial-hero-panel">
+    <h1 class="magic-hero-title">Rediscover your library in seconds.</h1>
+    <p class="magic-subheadline">Browse your library visually. See your games at a glance.<br>Scroll through screenshots, recognize forgotten games and pick something to play faster.</p>
+    
+    <div class="magic-trust-row">
+      <span class="magic-badge">🎁 Free to use</span>
+      <span class="magic-badge">🔒 100% Client-Side</span>
+      <span class="magic-badge">⚡ Instant load</span>
+    </div>
+    
+    <div class="magic-privacy-shield">
+      <span>🔒</span> Everything runs locally in your browser. No data is sent to external servers.
+    </div>
+
+    <div class="magic-primary-cta-container">
+      <button class="magic-btn-primary" id="trigger-magic-flow-btn" onclick="igniteMagicOneClickFlow()">
+        <span id="cta-icon-state">🚀</span> <span id="cta-text-state">Generate my library</span>
+      </button>
+    </div>
+
+    <div style="margin-top: 25px;">
+      <button class="cta-button-secondary" style="padding: 8px 16px; font-size: 13px;" onclick="simulateDemoDataAndLaunch()">Guarda la Demo di Prova ✨</button>
+    </div>
+
+    <div class="discreet-drop-wrapper">
+      <p>Hai già estratto la tua libreria in precedenza?</p>
+      <div class="discreet-zone">
+        <p style="color:var(--brand); font-weight:600;">+ Rilascia o seleziona il file my_gog_library.json qui</p>
+        <input type="file" class="legacy-json-file-input" accept=".json" onchange="handleFileProcessing(this)">
+      </div>
+    </div>
+  </div>
+
+  <div id="guided-assistant-overlay">
+    <div class="assistant-header">
+      <h3 id="assistant-main-title">Building your library</h3>
+      <p id="assistant-main-desc">Building your visual library. Fetching cover images for your owned games from GOG.</p>
+    </div>
+
+    <div class="live-instruction-banner" id="live-instruction-callout">
+      <p>👉 <strong>Ora clicca sul segnalibro "GOG Helper"</strong> appena aggiunto nella barra dei preferiti del tuo browser per raccogliere le copertine dei giochi.</p>
+    </div>
+
+    <div class="assistant-steps-list">
+      <div class="assistant-row" id="flow-row-1">
+        <div class="status-indicator-dot" id="dot-row-1">1</div>
+        <span class="assistant-row-text">Connecting to system</span>
+      </div>
+      <div class="assistant-row" id="flow-row-2">
+        <div class="status-indicator-dot" id="dot-row-2">2</div>
+        <span class="assistant-row-text">Opening GOG Account space</span>
+      </div>
+      <div class="assistant-row" id="flow-row-3">
+        <div class="status-indicator-dot" id="dot-row-3">3</div>
+        <span class="assistant-row-text">Waiting for bookmark execution</span>
+      </div>
+      <div class="assistant-row" id="flow-row-4">
+        <div class="status-indicator-dot" id="dot-row-4">4</div>
+        <span class="assistant-row-text">Generating library data</span>
+      </div>
+      <div class="assistant-row" id="flow-row-5">
+        <div class="status-indicator-dot" id="dot-row-5">5</div>
+        <span class="assistant-row-text">Download Ready</span>
+      </div>
+    </div>
+
+    <div class="assistant-capture-box" id="assistant-drop-capture">
+      <p style="font-size: 13.5px; color: var(--brand); font-weight:700;">Rilascia il file generato my_gog_library.json qui</p>
+      <p style="font-size: 11px; color: var(--text-muted); margin-top:3px;">La scheda rileverà ed elaborerà la collezione automaticamente</p>
+      <input type="file" accept=".json" onchange="handleFileProcessing(this)">
+    </div>
+  </div>
+
+  <div id="action-complete-summary">
+    <div style="background: var(--surface); border: 1px solid var(--border); padding: 35px 30px; border-radius: 20px;">
+      <p style="font-size: 38px; margin-bottom: 5px;">✔</p>
+      <h2 style="font-size: 22px; margin-bottom: 8px;" id="ready-summary-headline">Your library is ready</h2>
+      <p style="font-size: 14px; color:var(--text-muted); margin-bottom: 25px;">Download completato. I tuoi metadati grafici sono caricati in memoria locale.</p>
+      
+      <button class="cta-button" style="background: linear-gradient(135deg, var(--success) 0%, #059669 100%); color: #fff; padding: 16px 28px; font-size:16px;" onclick="buildFinalShowcaseView()">
+        Open library again ➔
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<div id="sidebar-overlay" onclick="toggleSidebarIndex(false)"></div>
+<div id="sidebar-index">
+  <div class="sidebar-header">
+    <h3 style="font-weight: 800;">Indice Giochi</h3>
+    <button onclick="toggleSidebarIndex(false)" style="background:none; border:none; color:var(--text-muted); font-size:24px; cursor:pointer;">&times;</button>
+  </div>
+  <ul class="sidebar-list-scroll" id="sidebar-games-ul"></ul>
+</div>
+
+<div id="lightbox-wrapper" onclick="closeLightbox()">
+  <button class="lightbox-btn-ctrl lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-btn-ctrl lightbox-prev" onclick="prevLightboxImg(event)">⬅ Precedente</button>
+  <button class="lightbox-btn-ctrl lightbox-next" onclick="nextLightboxImg(event)">Successiva ➔</button>
+  <img id="lightbox-img" src="" alt="Screenshot" onclick="event.stopPropagation()">
+</div>
+
+<div id="app-gallery-view">
+  <div class="gallery-stiloso-title-container">
+    <h2>La mia GOG Galaxy</h2>
+    <span class="subtitle-count" id="gallery-title-count">0 GIOCHI</span>
+  </div>
+
+  <div class="app-control-bar-centered">
+    <div class="button-group" id="app-floating-controls" style="display: none; margin-bottom: 12px;">
+        <button class="btn-premium btn-accent dice-btn" id="dice-action-button" onclick="pickRandomGame()">
+          <span>🎲</span><span class="btn-text">Cosa Gioco?</span>
+        </button>
+        
+        <button class="btn-premium" onclick="resetGalleryFilters()">
+          <svg viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg><span class="btn-text">Ripristina</span>
+        </button>
+
+        <button class="btn-premium" onclick="downloadStandaloneFile()">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg><span class="btn-text">Download & Share Your Gallery</span>
+        </button>
+
+        <button class="btn-premium btn-danger" onclick="clearLibrary()">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span class="btn-text">Cancella Gallery</span>
+        </button>
+    </div>
+
+    <div class="controls-row-items">
+      <div class="view-toggle-container">
+        <button class="toggle-btn active" id="btn-view-grid" onclick="switchActiveView('grid')">🖼️ Cover Grid</button>
+        <button class="toggle-btn" id="btn-view-timeline" onclick="switchActiveView('timeline')">🎬 Mood Board</button>
+      </div>
+      <input type="text" id="live-search-input" class="search-input" placeholder="Cerca un gioco..." oninput="refreshGalleryInterface()">
+    </div>
+  </div>
+
+  <div id="gallery-deck-grid" class="deck-grid"></div>
+  <div id="gallery-deck-timeline" class="moodboard-vertical-list"></div>
+
+  <div class="kofi-discreet-footer">
+    <p>Ti piace questa gallery? Supporta il progetto!</p>
+  </div>
+</div>
+
+<div class="kofi-floating-container">
+  <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+  <script type='text/javascript'>
+    kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'X0W0206J65');
+    kofiwidget2.draw();
+  </script>
+</div>
+
+<div id="raw-bookmarklet-payload-storage" style="display:none;" data-code="javascript:(async function(){const overlay=document.createElement('div');overlay.style='position:fixed;inset:0;background:rgba(15,15,18,0.96);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:Arial,sans-serif;padding:20px;';overlay.innerHTML='%3Cdiv%20style=%22background:#141417;padding:35px;border-radius:16px;border:1px%20solid%20#f29100;text-align:center;max-width:460px;box-shadow:0%2010px%2030px%20rgba(0,0,0,0.5);%22%3E%3Ch3%20style=%22margin:0%200%2012px%200;font-size:18px;font-weight:900;color:#fff;%22%3EBuilding%20your%20visual%20library%3C/h3%3E%3Cp%20style=%22color:#aaa;font-size:13px;line-height:1.6;margin:0%200%2020px%200;%22%3EFetching%20cover%20images%20for%20your%20owned%20games%20from%20GOG.%3Cbr%3E%3Cbr%3E%F0%9F%94%92%20This%20process%20runs%20locally%20in%20your%20browser.%20No%20data%20is%20sent%20to%20external%20servers.%3Cbr%3E%3Cbr%3EPlease%20keep%20this%20tab%20open%20while%20it%20completes.%3C/p%3E%3Cdiv%20style=%22background:#222;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;%22%3E%3Cdiv%20id=%22gog-progress-bar%22%20style=%22background:#f29100;width:0%;height:100%;transition:width%200.2s;%22%3E%3C/div%3E%3C/div%3E%3Cp%20id=%22gog-progress-text%22%20style=%22color:#f29100;font-size:12px;font-weight:bold;margin:0;%22%3EInitializing...%C2%A0%3C/p%3E%3C/div%3E';document.body.appendChild(overlay);const textEl=document.getElementById('gog-progress-text');const barEl=document.getElementById('gog-progress-bar');const rawGames=[];const finalGames=[];async function fetchPage(p){return await(await fetch('/en/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page='+p+'&sortBy=title&totalPages=1')).json();}try{textEl.innerText='Estrazione elenco...';const first=await fetchPage(1);const totalPages=first.totalPages||1;const add=data=>data.products.forEach(p=>{if(p.isGame){let dCover=null;if(p.image){let hash=p.image.replace('_product_card_v2.jpg','').replace('_196.jpg','').replace('https:','').replace('//','').split('/').pop();if(hash&&hash.length>20){dCover='https://images-2.gog-statics.com/'+hash+'_392.jpg';}else{dCover=p.image.startsWith('http')?p.image:'https:'+p.image;}}rawGames.push({id:p.id,name:p.title,url:'https://www.gog.com'+(p.url||'/en/game/'+p.slug),cover:dCover});}});add(first);for(let p=2;p<===totalPages;p++)add(await fetchPage(p));for(let i=0;i<rawGames.length;i++){const g=rawGames[i];barEl.style.width=((i+1)/rawGames.length)*100+'%';textEl.innerText=(i+1)+' / '+rawGames.length+' - '+g.name;let shots=[];try{const r=await fetch(g.url);if(r.ok&&!r.url.endsWith('/en/games')){const txt=await r.text();const doc=new DOMParser().parseFromString(txt,'text/html');const storePic=doc.querySelector('.product-row__img');if(storePic){let srcSetAttr=storePic.getAttribute('ng-srcset')||storePic.getAttribute('srcset')||'';let matches=srcSetAttr.match(/\/\/images(?:-\d+)?\.gog-statics\.com\/[a-f0-9_]+/g);if(matches&&matches.length>0){g.cover='https:'+matches[matches.length-1];}}doc.querySelectorAll('.productcard-thumbnails-slider__image, .productcard-thumbnails-slider__slide-item img').forEach(img=>{const s=img.getAttribute('src')||img.getAttribute('srcset')||img.src||'';const m=s.match(/([a-f0-9]{64})/i);if(m)shots.push('https://images.gog-statics.com/'+m[1]+'.jpg');});}}catch(e){}finalGames.push({name:g.name,url:g.url,cover:g.cover,screenshots:[...new Set(shots)].slice(0,9)});await new Promise(r=>setTimeout(r,100));}const b=new Blob([JSON.stringify(finalGames,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='my_gog_library.json';document.body.appendChild(a);a.click();document.body.removeChild(a);overlay.remove();}catch(e){overlay.remove();alert('Errore: '+e.message);}})();"></div>
+
+<script>
+let currentViewMode = 'grid';
+let userGamesCollection = [];
+let lightboxImagesTrack = [];
+let currentLightboxIndex = 0;
+
+/* FLUX MACHINE INTERNAL ENGINE CONTROL STATE */
+let internalFlowState = {
+    flowStarted: false,
+    bookmarkletCopied: false,
+    gogOpened: false,
+    bookmarkExecuted: false
+};
+
+function displayToast(messageText) {
+    const toast = document.getElementById('toast-notification-node');
+    document.getElementById('toast-message-content').innerText = messageText;
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); }, 3500);
+}
+
+/* INTERACTIVE MAGIC ACTION EXECUTER */
+function igniteMagicOneClickFlow() {
+    const btn = document.getElementById('trigger-magic-flow-btn');
+    document.getElementById('cta-icon-state').innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="animation: spinAround 1s linear infinite;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><style>@keyframes spinAround { to { transform: rotate(360deg); } }</style>`;
+    document.getElementById('cta-text-state').innerText = "Preparing your library…";
+    
+    // Extract the Raw string source bookmarklet
+    const bookmarkletPayload = document.getElementById('raw-bookmarklet-payload-storage').getAttribute('data-code');
+    
+    // STEP 2 — Execute Background Automations
+    navigator.clipboard.writeText(bookmarkletPayload).then(() => {
+        displayToast("Bookmarklet copied to clipboard!");
+        internalFlowState.bookmarkletCopied = true;
+        
+        setTimeout(() => {
+            // Open GOG in external navigation layer
+            window.open("https://www.gog.com/en/account", "_blank");
+            internalFlowState.gogOpened = true;
+            internalFlowState.flowStarted = true;
+            
+            // Persist State UI Transition
+            transitionUIToAssistantOverlay();
+        }, 800);
+    }).catch(() => {
+        // Fallback for isolated secure contexts
+        displayToast("Permesso negato. Apertura in corso...");
+        window.open("https://www.gog.com/en/account", "_blank");
+        internalFlowState.gogOpened = true;
+        internalFlowState.flowStarted = true;
+        transitionUIToAssistantOverlay();
+    });
+}
+
+function transitionUIToAssistantOverlay() {
+    document.getElementById('initial-hero-panel').style.display = 'none';
+    document.getElementById('guided-assistant-overlay').style.display = 'block';
+    
+    // Advance deterministically through Step 1 and 2
+    updateAssistantRowVisual(1, 'completed');
+    
+    setTimeout(() => {
+        updateAssistantRowVisual(2, 'completed');
+        updateAssistantRowVisual(3, 'active');
+        document.getElementById('live-instruction-callout').style.display = 'block';
+        document.getElementById('assistant-drop-capture').style.display = 'block';
+    }, 1200);
+}
+
+function updateAssistantRowVisual(stepIndex, stateClass) {
+    const row = document.getElementById(`flow-row-${stepIndex}`);
+    const dot = document.getElementById(`dot-row-${stepIndex}`);
+    if(!row) return;
+    
+    row.classList.remove('active', 'completed');
+    if(stateClass === 'completed') {
+        row.classList.add('completed');
+        dot.innerText = "✔";
+    } else if(stateClass === 'active') {
+        row.classList.add('active');
+    }
+}
+
+/* SMART TAB RETURN BEHAVIOR DETECTOR */
+window.onfocus = function() {
+    if (internalFlowState.flowStarted && internalFlowState.gogOpened && !internalFlowState.bookmarkExecuted) {
+        // User came back from GOG tab. Adjust guidance expectations.
+        updateAssistantRowVisual(3, 'completed');
+        updateAssistantRowVisual(4, 'active');
+        document.getElementById('assistant-main-title').innerText = "Processing metadata file...";
+    }
+};
+
+/* CENTRALIZED FILE INTERCEPTOR */
+function handleFileProcessing(inputNode) {
+    const targetFile = inputNode.files[0];
+    if (!targetFile) return;
+    
+    const fileLoader = new FileReader();
+    fileLoader.onload = function(event) {
+        try {
+            const structuralCollection = JSON.parse(event.target.result);
+            if (Array.isArray(structuralCollection)) {
+                userGamesCollection = structuralCollection.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                
+                // Finalize Guided Tracker State Flow
+                internalFlowState.bookmarkExecuted = true;
+                updateAssistantRowVisual(4, 'completed');
+                updateAssistantRowVisual(5, 'completed');
+                
+                setTimeout(() => {
+                    document.getElementById('guided-assistant-overlay').style.display = 'none';
+                    document.getElementById('action-complete-summary').style.display = 'block';
+                    document.getElementById('ready-summary-headline').innerText = `Your library is ready (${userGamesCollection.length} games)`;
+                }, 800);
+                
+            } else { alert("Il file fornito non rispetta il formato della libreria GOG."); }
+        } catch(err) { alert("Struttura JSON corrotta o non leggibile."); }
+    };
+    fileLoader.readAsText(targetFile);
+}
+
+/* DEMO ENVIRONMENT SIMULATOR (PRESERVED) */
+function simulateDemoDataAndLaunch() {
+    userGamesCollection = [
+        {
+            name: "Advent Rising",
+            url: "https://www.gog.com/en/game/advent_rising",
+            cover: "https://images-2.gog-statics.com/53a056e07c6f1ce0a76306dfcecb104d9b7f106605605f5c5aac8fb133b3cc73_392.jpg",
+            screenshots: [
+                "https://images.gog-statics.com/cc5f0a20531d7e40aa7b24421e967d10f644a1e19bcb59bb80008bacdfd43180.jpg",
+                "https://images.gog-statics.com/45ba199848c7275c3b4a1f731af99e40360b0f674b51481c323b5de9eb942cbf.jpg"
+            ]
+        },
+        {
+            name: "Cyberpunk 2077",
+            url: "https://www.gog.com/en/game/cyberpunk_2077",
+            cover: "https://images-2.gog-statics.com/b5ba805b55050e413008fe58e803c4a229fa1b5cb11b418ad11603ba08fb2fae_392.jpg",
+            screenshots: []
+        },
+        {
+            name: "The Witcher 3: Wild Hunt",
+            url: "https://www.gog.com/en/game/the_witcher_3_wild_hunt",
+            cover: "https://images-2.gog-statics.com/62e08e61fb196e8e04b46c2f90a990ec8a571da574d642af58e0a7e6b7d2f948_392.jpg",
+            screenshots: []
+        }
+    ].sort((a, b) => a.name.localeCompare(b.name));
+    buildFinalShowcaseView();
+}
+
+/* VIEW SWITCHING & INTERFACES MANAGEMENT (PRESERVED) */
+function switchActiveView(mode) {
+    currentViewMode = mode;
+    document.getElementById('btn-view-grid').classList.toggle('active', mode === 'grid');
+    document.getElementById('btn-view-timeline').classList.toggle('active', mode === 'timeline');
+    document.getElementById('gallery-deck-grid').style.display = (mode === 'grid') ? 'grid' : 'none';
+    document.getElementById('gallery-deck-timeline').style.display = (mode === 'timeline') ? 'flex' : 'none';
+}
+
+function toggleSidebarIndex(open) {
+    document.getElementById('sidebar-index').classList.toggle('open', open);
+    document.getElementById('sidebar-overlay').style.display = open ? 'block' : 'none';
+}
+
+function buildFinalShowcaseView() {
+    document.getElementById('magic-onboarding-wrapper').style.display = 'none';
+    document.getElementById('app-gallery-view').style.display = 'block';
+    document.getElementById('app-floating-controls').style.display = 'flex';
+    
+    document.getElementById('fixed-index-trigger').style.display = 'inline-flex';
+    document.getElementById('gallery-title-count').innerText = `${userGamesCollection.length} giochi`;
+    
+    const sidebarUl = document.getElementById('sidebar-games-ul');
+    sidebarUl.innerHTML = '';
+    userGamesCollection.forEach((game, idx) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#game-node-${idx}" onclick="scrollToOrFilterGame('${game.name.replace(/'/g, "\\'")}')">${game.name}</a>`;
+        sidebarUl.appendChild(li);
+    });
+
+    refreshGalleryInterface();
+}
+
+function scrollToOrFilterGame(name) {
+    toggleSidebarIndex(false);
+    document.getElementById('live-search-input').value = name;
+    refreshGalleryInterface();
+}
+
+function resetGalleryFilters() {
+    document.getElementById('live-search-input').value = '';
+    refreshGalleryInterface();
+}
+
+function refreshGalleryInterface() {
+    const gridContainer = document.getElementById('gallery-deck-grid');
+    const timelineContainer = document.getElementById('gallery-deck-timeline');
+    const filterText = document.getElementById('live-search-input').value.toLowerCase().trim();
+    
+    gridContainer.innerHTML = '';
+    timelineContainer.innerHTML = '';
+
+    const filteredGames = userGamesCollection.filter(g => g.name && g.name.toLowerCase().includes(filterText));
+    lightboxImagesTrack = [];
+
+    if (filteredGames.length === 0) {
+        const emptyState = document.createElement('div');
+        emptyState.className = 'empty-gallery-state';
+        emptyState.innerText = "Nessun gioco corrisponde ai filtri impostati.";
+        gridContainer.appendChild(emptyState);
+        return;
+    }
+
+    filteredGames.forEach((game, idx) => {
+        const card = document.createElement('a');
+        card.className = 'game-item-card';
+        card.href = game.url || '#';
+        card.target = '_blank';
+        card.id = `game-node-${idx}`;
+        card.innerHTML = `
+            <img src="${game.cover || ''}" loading="lazy" onerror="this.style.opacity='0.15'">
+            <div class="game-title-box"><div class="game-title-text">${game.name}</div></div>
+        `;
+        gridContainer.appendChild(card);
+
+        const row = document.createElement('div');
+        row.className = 'moodboard-row';
+        
+        let screenshotsHtml = '';
+        if (game.screenshots && game.screenshots.length > 0) {
+            game.screenshots.slice(0, 7).forEach(shotUrl => {
+                lightboxImagesTrack.push(shotUrl);
+                const currentGlobalIdx = lightboxImagesTrack.length - 1;
+                screenshotsHtml += `<img src="${shotUrl}" loading="lazy" onclick="openLightbox(${currentGlobalIdx})" onerror="this.style.display='none'">`;
+            });
+        } else {
+            screenshotsHtml = `<p style="font-size:12px; color:var(--text-muted); font-style:italic; padding: 20px 0 0 10px;">Nessuno screenshot disponibile.</p>`;
+        }
+
+        row.innerHTML = `
+            <div>
+                <a href="${game.url || '#'}" target="_blank" class="moodboard-game-title">${game.name}</a>
+            </div>
+            <div class="moodboard-media-container">
+                <a href="${game.url || '#'}" target="_blank" class="moodboard-cover-link">
+                    <img src="${game.cover || ''}" loading="lazy" onerror="this.style.opacity='0.15'">
+                </a>
+                <div class="moodboard-strip-scroll">${screenshotsHtml}</div>
+            </div>
+        `;
+        timelineContainer.appendChild(row);
+    });
+}
+
+/* GAMING RANDOM CHANGER (🎲) (PRESERVED) */
+function pickRandomGame() {
+    if(userGamesCollection.length === 0) return;
+    
+    const overlay = document.getElementById('dice-screen-overlay');
+    const diceBox = document.getElementById('big-dice-element');
+    
+    overlay.style.display = 'flex';
+    diceBox.classList.remove('animate-dice');
+    void diceBox.offsetWidth;
+    diceBox.classList.add('animate-dice');
+    
+    setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * userGamesCollection.length);
+        const chosenGame = userGamesCollection[randomIndex];
+        document.getElementById('live-search-input').value = chosenGame.name;
+        refreshGalleryInterface();
+        
+        overlay.style.display = 'none';
+        document.getElementById('app-gallery-view').scrollIntoView({ behavior: 'smooth' });
+    }, 900);
+}
+
+/* RESET FLOW PURGE (PRESERVED) */
+function clearLibrary() {
+    if(confirm("Sei sicuro di voler cancellare la gallery attuale? Dovrai ricaricare il file JSON.")) {
+        userGamesCollection = [];
+        internalFlowState = { flowStarted: false, bookmarkletCopied: false, gogOpened: false, bookmarkExecuted: false };
+        
+        document.getElementById('fixed-index-trigger').style.display = 'none';
+        document.getElementById('app-floating-controls').style.display = 'none';
+        document.getElementById('app-gallery-view').style.display = 'none';
+        document.getElementById('action-complete-summary').style.display = 'none';
+        document.getElementById('guided-assistant-overlay').style.display = 'none';
+        document.getElementById('live-instruction-callout').style.display = 'none';
+        
+        // Restore initial UI CTA state
+        document.getElementById('cta-icon-state').innerText = "🚀";
+        document.getElementById('cta-text-state').innerText = "Generate my library";
+        
+        document.getElementById('magic-onboarding-wrapper').style.display = 'flex';
+        document.getElementById('initial-hero-panel').style.display = 'block';
+    }
+}
+
+/* LIGHTBOX MANAGER (PRESERVED) */
+function openLightbox(globalIdx) {
+    currentLightboxIndex = globalIdx;
+    updateLightboxView();
+    document.getElementById('lightbox-wrapper').style.display = 'flex';
+}
+function closeLightbox() {
+    document.getElementById('lightbox-wrapper').style.display = 'none';
+}
+function prevLightboxImg(e) {
+    if(e) e.stopPropagation();
+    if(currentLightboxIndex > 0) { currentLightboxIndex--; updateLightboxView(); }
+}
+function nextLightboxImg(e) {
+    if(e) e.stopPropagation();
+    if(currentLightboxIndex < lightboxImagesTrack.length - 1) { currentLightboxIndex++; updateLightboxView(); }
+}
+function updateLightboxView() {
+    const targetUrl = lightboxImagesTrack[currentLightboxIndex];
+    if(targetUrl) document.getElementById('lightbox-img').src = targetUrl;
+}
+
+document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox-wrapper').style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowRight') nextLightboxImg(null);
+        else if (e.key === 'ArrowLeft') prevLightboxImg(null);
+    }
+});
+
+/* RAW SOURCE EXPORT STANDALONE (PRESERVED) */
+function downloadStandaloneFile() {
+    let sourceCode = document.documentElement.outerHTML;
+    const blob = new Blob([sourceCode], { type: "text/html" });
+    const element = document.createElement("a");
+    element.href = URL.createObjectURL(blob);
+    element.download = "GOG_Galaxy_Gallery.html";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+</script>
+</body>
+</html>
