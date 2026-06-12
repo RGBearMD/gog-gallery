@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOG Visual Galaxy — Rediscover your library.</title>
+<style>
+:root {
+    --bg: #070709;
+    --surface: #0f0f13;
+    --surface-card: #14141a;
+    --border: #1f1f27;
+    --border-active: #3b82f6;
+    --text: #f4f4f5;
+    --text-muted: #8b8b93;
+    --brand: #f29100;
+    --brand-glow: rgba(242, 145, 0, 0.1);
+    --blue-glow: rgba(59, 130, 246, 0.15);
+    --success: #10b981;
+    --success-bg: rgba(16, 185, 129, 0.06);
+    --error: #ef4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+
+/* PREMIUM LINEAR×APPLE HERO SECTION */
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 24px 60px 24px;
+    text-align: center;
+    background: radial-gradient(circle at top, rgba(255,255,255,0.02) 0%, transparent 70%);
+}
+.hero-title {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+    background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+    font-size: 20px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 620px;
+    margin: 0 auto 24px auto;
+    font-weight: 400;
+}
+.hero-subhead-marketing {
+    font-size: 15px;
+    color: var(--brand);
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+/* MINI BADGES SYSTEM */
+.badge-row { display: flex; gap: 12px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+.badge-premium {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* BUTTONS APPLICATIVE LOGIC */
+.cta-group { display: flex; gap: 16px; justify-content: center; align-items: center; }
+.btn-apple-primary {
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.btn-apple-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(255,255,255,0.06);
+    background: #f4f4f5;
+}
+.btn-apple-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-apple-ghost:hover { color: #fff; }
+
+/* TRUST BAR DISCREET ELEMENT */
+.trust-anchor-bar {
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    border-top: 1px dashed var(--border);
+    padding-top: 24px;
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* FLOW CONTAINER SYSTEM (3 COLUMNS RIGID GRID) */
+.flow-section-wrapper {
+    max-width: 1100px;
+    margin: 60px auto 100px auto;
+    padding: 0 24px;
+}
+.flow-section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.flow-section-intro {
+    font-size: 15px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 40px;
+}
+.steps-rigid-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+@media (max-width: 900px) {
+    .steps-rigid-grid { grid-template-columns: 1fr; }
+}
+
+/* INTERACTION CARD SYSTEM */
+.step-card {
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+}
+/* CARD STATES MATRIX */
+.step-card.state-idle { opacity: 0.75; }
+.step-card.state-active {
+    border-color: var(--border-active);
+    box-shadow: 0 0 30px var(--blue-glow);
+    opacity: 1;
+}
+.step-card.state-done {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: linear-gradient(180deg, var(--surface-card) 0%, rgba(16,185,129,0.02) 100%);
+    opacity: 1;
+}
+
+.card-top-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.card-icon { font-size: 20px; }
+.status-pill {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+.state-active .status-pill { background: rgba(59,130,246,0.1); color: var(--border-active); border-color: transparent; }
+.state-done .status-pill { background: var(--success-bg); color: var(--success); border-color: transparent; }
+
+.card-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+.card-content p { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 24px; }
+
+/* INLINE ACTION OBJECTS */
+.bookmarklet-drag-action {
+    display: block;
+    background: #ffffff;
+    color: #000000;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    cursor: grab;
+    transition: background 0.2s;
+}
+.bookmarklet-drag-action:hover { background: #e4e4e7; }
+.card-action-btn {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.card-action-btn:hover { background: #fff; color: #000; }
+
+/* PREMIUM DROPZONE ARCHITECTURE */
+.premium-dropzone {
+    border: 1px dashed var(--border);
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+}
+.premium-dropzone:hover { border-color: var(--text-muted); }
+.state-active .premium-dropzone { border-color: var(--border-active); }
+.premium-dropzone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.dropzone-title { font-size: 13.5px; font-weight: 600; color: #fff; margin-bottom: 4px; display: block; }
+.dropzone-sub { font-size: 11px; color: var(--text-muted); display: block; }
+
+.micro-status-line { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; margin-top: 14px; }
+.state-done .micro-status-line { color: var(--success); }
+
+/* SYSTEM ERROR BANNER SYSTEM */
+.error-handling-space {
+    max-width: 450px;
+    margin: -20px auto 40px auto;
+    background: rgba(239,68,68,0.06);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 12px;
+    padding: 16px;
+    display: none;
+    animation: slideDownIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes slideDownIn { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+.error-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.error-msg { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* PRIVACY BY DESIGN SECTION */
+.privacy-standalone-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.privacy-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.privacy-lead { font-size: 15px; color: var(--text-muted); max-width: 500px; margin: 0 auto; line-height: 1.5; }
+
+/* --- DYNAMIC SHOWCASE VIEWPORT (PRESERVED) --- */
+#app-gallery-view { display: none; padding: 60px 24px; max-width: 1400px; margin: 0 auto; }
+.gallery-header { text-align: center; margin-bottom: 40px; }
+.gallery-header h2 { font-size: 38px; font-weight: 800; letter-spacing: -1px; }
+.gallery-header span { font-size: 13px; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; display: block; }
+.control-hub-bar { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 40px; background: var(--surface-card); border: 1px solid var(--border); padding: 20px; border-radius: 16px; }
+.controls-flex { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
+.search-field { background: var(--bg); border: 1px solid var(--border); padding: 12px 18px; border-radius: 10px; color: #fff; font-size: 14px; width: 280px; outline: none; }
+.search-field:focus { border-color: var(--border-active); }
+.view-toggle-box { display: inline-flex; background: var(--bg); border: 1px solid var(--border); padding: 4px; border-radius: 10px; }
+.toggle-item { background: none; border: none; color: var(--text-muted); padding: 8px 16px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer; }
+.toggle-item.active { background: var(--surface); color: var(--border-active); }
+.action-buttons-group { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.btn-hub-action { background: var(--surface); border: 1px solid var(--border); color: #fff; padding: 10px 14px; font-size: 13px; font-weight: 600; border-radius: 10px; cursor: pointer; }
+.btn-hub-action.accented { background: #fff; color: #000; border: none; }
+
+.deck-grid-system { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.game-card-node { background: var(--surface-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: block; text-decoration: none; padding: 12px; transition: transform 0.2s, border-color 0.2s; }
+.game-card-node:hover { transform: translateY(-4px); border-color: var(--border-active); }
+.game-card-node img { width: 100%; height: 170px; display: block; object-fit: contain; background: #070709; border-radius: 8px; }
+.game-card-title { padding: 10px 4px 2px 4px; text-align: center; font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.moodboard-list-system { display: none; flex-direction: column; gap: 24px; width: 100%; }
+.moodboard-row-node { background: var(--surface-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.moodboard-title-link { font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; }
+.moodboard-media-flex { display: flex; gap: 16px; align-items: center; overflow: hidden; }
+.moodboard-cover-box { width: 80px; flex-shrink: 0; display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.moodboard-cover-box img { width: 100%; height: auto; display: block; }
+.moodboard-slider-track { display: flex; gap: 12px; overflow-x: auto; width: 100%; }
+.moodboard-slider-track img { height: 90px; border-radius: 6px; object-fit: cover; aspect-ratio: 16/9; border: 1px solid var(--border); cursor: pointer; }
+
+/* SIDEBAR & LIGHTBOX Components */
+#index-sidebar { position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--surface-card); border-right: 1px solid var(--border); z-index: 15000; padding: 30px 20px; transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+#index-sidebar.open { left: 0; }
+.sidebar-scrollable { flex-grow: 1; overflow-y: auto; list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 16px; }
+.sidebar-scrollable li a { color: var(--text-muted); text-decoration: none; font-size: 13.5px; display: block; padding: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar-scrollable li a:hover { color: var(--border-active); }
+#sidebar-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 14999; display: none; }
+.btn-trigger-sidebar { position: fixed; top: 20px; left: 20px; z-index: 9000; display: none; background: var(--surface-card); border: 1px solid var(--border); color: #fff; padding: 10px 14px; border-radius: 10px; font-weight: 600; font-size: 13px; cursor: pointer; }
+
+#global-lightbox { position: fixed; inset: 0; background: rgba(5,5,7,0.98); z-index: 20000; display: none; justify-content: center; align-items: center; padding: 40px; }
+#global-lightbox img { max-width: 85%; max-height: 80vh; border-radius: 12px; object-fit: contain; }
+.lightbox-btn { position: absolute; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: #fff; padding: 12px 18px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+.kofi-footer-node { text-align: center; margin-top: 60px; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border); padding: 30px 0; }
+.kofi-float { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
+</style>
+</head>
+<body>
+
+<button id="sidebar-master-btn" class="btn-trigger-sidebar" onclick="handleSidebarDisplay(true)">☰ Indice Giochi</button>
+<div id="sidebar-backdrop" onclick="handleSidebarDisplay(false)"></div>
+<div id="index-sidebar">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h3 style="font-weight: 800;">Libreria</h3>
+    <button onclick="handleSidebarDisplay(false)" style="background:none; border:none; color:var(--text-muted); font-size:24px; cursor:pointer;">&times;</button>
+  </div>
+  <ul class="sidebar-scrollable" id="sidebar-ul-nodes"></ul>
+</div>
+
+<!-- TOP APPLICATION ROUTER INTERFACE -->
+<div id="marketing-platform-root">
+  
+  <!-- HERO SECTION -->
+  <section class="hero-container">
+    <h1 class="hero-title">Rediscover your library in seconds.</h1>
+    <p class="hero-subtitle">A visual tool that lets you explore your GOG collection the way it should be experienced — visually, locally, instantly.</p>
+    <p class="hero-subhead-marketing">Stop scrolling lists. Start rediscovering games through screenshots, covers, and memory.</p>
+    
+    <div class="badge-row">
+      <div class="badge-premium"><span>🔒</span> 100% client-side</div>
+      <div class="badge-premium"><span>⚡</span> No login required</div>
+      <div class="badge-premium"><span>🎁</span> Free forever</div>
+    </div>
+
+    <div class="cta-group">
+      <button class="btn-apple-primary" onclick="focusRigidStepFlow()">Generate my library</button>
+      <button class="btn-apple-ghost" onclick="focusRigidStepFlow()">Learn how it works</button>
+    </div>
+
+    <div class="trust-anchor-bar">
+      <span>🔒</span> Everything runs locally in your browser. No data is uploaded or stored externally.
+    </div>
+  </section>
+
+  <!-- ERRORS CONTEXT DISPATCHER -->
+  <div id="global-error-banner" class="error-handling-space">
+    <div class="error-title">
+      <span style="color:var(--error)">⚠️</span> <span id="error-card-title">Error</span>
+    </div>
+    <div class="error-msg" id="error-card-msg">Message body</div>
+  </div>
+
+  <!-- HOW IT WORKS SECTION / THREE STEPS PREMIUM RIGID METRICS -->
+  <section class="flow-section-wrapper" id="anchored-step-flow">
+    <h2 class="flow-section-title">How it works</h2>
+    <p class="flow-section-intro">A simple 3-step process to rebuild your library locally in your browser.</p>
+
+    <div class="steps-rigid-grid">
+      
+      <!-- STEP 1 CARD -->
+      <div class="step-card state-active" id="dom-card-step1">
+        <div class="card-top-meta">
+          <div class="card-icon">💻</div>
+          <div class="status-pill" id="pill-step1">Active</div>
+        </div>
+        <div class="card-content">
+          <h3>Connect your browser</h3>
+          <p>Save a helper bookmark to enable library extraction.</p>
+          <a id="payload-bookmarklet-link" class="bookmarklet-drag-action" href="#">GOG Helper</a>
+        </div>
+        <div class="micro-status-line" id="micro-status-1">
+          <span id="dot-step1">⚡</span> <span id="txt-step1">Ready to copy / Drag to bar</span>
+        </div>
+      </div>
+
+      <!-- STEP 2 CARD -->
+      <div class="step-card state-idle" id="dom-card-step2">
+        <div class="card-top-meta">
+          <div class="card-icon">🌐</div>
+          <div class="status-pill" id="pill-step2">Idle</div>
+        </div>
+        <div class="card-content">
+          <h3>Open GOG</h3>
+          <p>Go to your GOG account and activate the helper tool.</p>
+          <button class="card-action-btn" onclick="executeGogTabRedirection()">Open GOG ➔</button>
+        </div>
+        <div class="micro-status-line" style="font-size:11px; line-height:1.3;">
+          Then click “GOG Helper” from your bookmarks bar.
+        </div>
+      </div>
+
+      <!-- STEP 3 CARD -->
+      <div class="step-card state-idle" id="dom-card-step3">
+        <div class="card-top-meta">
+          <div class="card-icon">📦</div>
+          <div class="status-pill" id="pill-step3">Idle</div>
+        </div>
+        <div class="card-content">
+          <h3>Export your library</h3>
+          <p>Download your games as a local JSON file.</p>
+          
+          <div class="premium-dropzone">
+            <span class="dropzone-title">Drop my_gog_library.json here</span>
+            <span class="dropzone-sub">or click to upload</span>
+            <input type="file" accept=".json" onchange="processLocalDataUpload(this)">
+          </div>
+        </div>
+        <div class="micro-status-line">
+          <span>🔒</span> Processed entirely in your browser
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SYSTEM PRIVACY ANCHOR -->
+  <section class="privacy-standalone-section">
+    <h3 class="privacy-title">Privacy by design</h3>
+    <p class="privacy-lead">Your data never leaves your device. Everything runs locally in your browser. No servers, no tracking, no uploads.</p>
+    <p style="margin-top:16px; font-size:13px; color:var(--text-muted);">Vuoi fare un test immediato? <span style="color:var(--border-active); cursor:pointer; text-decoration:underline;" onclick="loadInstantDemoContext()">Carica la Libreria Demo di prova ✨</span></p>
+  </section>
+
+</div>
+
+<!-- --- FINAL VISUAL PLATFORM DISCOVERY CONTAINER --- -->
+<div id="app-gallery-view">
+  <div class="gallery-header">
+    <h2>La mia GOG Galaxy</h2>
+    <span id="gallery-counter-node">0 GIOCHI</span>
+  </div>
+
+  <div class="control-hub-bar">
+    <div class="action-buttons-group">
+      <button class="btn-hub-action accented" onclick="rollTheDiceGame()">🎲 Cosa Gioco?</button>
+      <button class="btn-hub-action" onclick="resetGalleryFilters()">Ripristina</button>
+      <button class="btn-hub-action" onclick="exportStaticGalleryDocument()">Download standalone gallery HTML</button>
+      <button class="btn-hub-action" style="color:var(--error);" onclick="purgeAndHardReset()">Cancella tutto</button>
+    </div>
+    
+    <div class="controls-flex" style="margin-top: 16px;">
+      <div class="view-toggle-box">
+        <button class="toggle-item active" id="btn-view-grid" onclick="mutateViewFormat('grid')">🖼️ Cover Grid</button>
+        <button class="toggle-item" id="btn-view-timeline" onclick="mutateViewFormat('timeline')">🎬 Mood Board</button>
+      </div>
+      <input type="text" id="search-input-field" class="search-field" placeholder="Cerca un titolo nella tua libreria..." oninput="renderEngineView()">
+    </div>
+  </div>
+
+  <div id="wrapper-grid-layout" class="deck-grid-system"></div>
+  <div id="wrapper-timeline-layout" class="moodboard-list-system"></div>
+
+  <div class="kofi-footer-node">
+    <p>GOG Visual Galaxy — Progetto Open Source Client-Side.</p>
+  </div>
+</div>
+
+<!-- MODAL LIGHTBOX SYSTEM -->
+<div id="global-lightbox" onclick="closeGlobalLightbox()">
+  <button class="lightbox-btn" style="top:20px; right:20px;" onclick="closeGlobalLightbox()">&times;</button>
+  <button class="lightbox-btn" style="left:20px;" onclick="navigateLightbox(-1, event)">←</button>
+  <button class="lightbox-btn" style="right:20px;" onclick="navigateLightbox(1, event)">➔</button>
+  <img id="lightbox-image-element" src="" alt="View" onclick="event.stopPropagation()">
+</div>
+
+<div class="kofi-float">
+  <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+  <script type='text/javascript'>
+    kofiwidget2.init('Support me on Ko-fi', '#3b82f6', 'X0W0206J65');
+    kofiwidget2.draw();
+  </script>
+</div>
+
+<!-- PAYLOAD SYSTEM EXTRACTION REPOSITORY -->
+<div id="bookmarklet-raw-payload" style="display:none;" data-code="javascript:(async function(){const overlay=document.createElement('div');overlay.style='position:fixed;inset:0;background:rgba(7,7,9,0.98);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-family:-apple-system,sans-serif;padding:20px;';overlay.innerHTML='%3Cdiv%20style=%22background:#14141a;padding:40px;border-radius:16px;border:1px%20solid%20#3b82f6;text-align:center;max-width:460px;box-shadow:0%2020px%2040px%20rgba(0,0,0,0.7);%22%3E%3Ch3%20style=%22margin:0%200%208px%200;font-size:20px;font-weight:700;color:#fff;%22%3EBuilding%20your%20library%3C/h3%3E%3Cp%20style=%22color:#8b8b93;font-size:14px;line-height:1.5;margin:0%200%2024px%200%22%3ECreating%20your%20collection%20locally.%20Fetching%20game%20covers%20from%20GOG%20account%20space.%3Cbr%3E%3Cbr%3E%F0%9F%94%92%20Locally%20generated%20in%20your%20browser%3C/p%3E%3Cdiv%20style=%22background:#1f1f27;width:100%;height:6px;border-radius:3px;overflow:hidden;margin-bottom:12px;%22%3E%3Cdiv%20id=%22gog-progress-bar%22%20style=%22background:#3b82f6;width:0%;height:100%;transition:width%200.1s;%22%3E%3C/div%3E%3C/div%3E%3Cp%20id=%22gog-progress-text%22%20style=%22color:#3b82f6;font-size:12px;font-weight:600;margin:0;%22%3EConnecting...%3C/p%3E%3C/div%3E';document.body.appendChild(overlay);const textEl=document.getElementById('gog-progress-text');const barEl=document.getElementById('gog-progress-bar');const rawGames=[];const finalGames=[];async function fetchPage(p){return await(await fetch('/en/account/getFilteredProducts?hiddenFlag=0&mediaType=1&page='+p+'&sortBy=title&totalPages=1')).json();}try{const first=await fetchPage(1);const totalPages=first.totalPages||1;const add=data=>data.products.forEach(p=>{if(p.isGame){let dCover=null;if(p.image){let hash=p.image.replace('_product_card_v2.jpg','').replace('_196.jpg','').replace('https:','').replace('//','').split('/').pop();if(hash&&hash.length>20){dCover='https://images-2.gog-statics.com/'+hash+'_392.jpg';}else{dCover=p.image.startsWith('http')?p.image:'https:'+p.image;}}rawGames.push({id:p.id,name:p.title,url:'https://www.gog.com'+(p.url||'/en/game/'+p.slug),cover:dCover});}});add(first);for(let p=2;p<=totalPages;p++)add(await fetchPage(p));for(let i=0;i<rawGames.length;i++){const g=rawGames[i];barEl.style.width=((i+1)/rawGames.length)*100+'%';textEl.innerText=(i+1)+' / '+rawGames.length+' - '+g.name;let shots=[];try{const r=await fetch(g.url);if(r.ok&&!r.url.endsWith('/en/games')){const txt=await r.text();const doc=new DOMParser().parseFromString(txt,'text/html');const storePic=doc.querySelector('.product-row__img');if(storePic){let srcSetAttr=storePic.getAttribute('ng-srcset')||storePic.getAttribute('srcset')||'';let matches=srcSetAttr.match(/\/\/images(?:-\d+)?\.gog-statics\.com\/[a-f0-9_]+/g);if(matches&&matches.length>0){g.cover='https:'+matches[matches.length-1];}}doc.querySelectorAll('.productcard-thumbnails-slider__image, .productcard-thumbnails-slider__slide-item img').forEach(img=>{const s=img.getAttribute('src')||img.getAttribute('srcset')||img.src||'';const m=s.match(/([a-f0-9]{64})/i);if(m)shots.push('https://images.gog-statics.com/'+m[1]+'.jpg');});}}catch(e){}finalGames.push({name:g.name,url:g.url,cover:g.cover,screenshots:[...new Set(shots)].slice(0,9)});await new Promise(r=>setTimeout(r,100));}const b=new Blob([JSON.stringify(finalGames,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='my_gog_library.json';document.body.appendChild(a);a.click();document.body.removeChild(a);overlay.remove();}catch(e){overlay.remove();alert('Error: '+e.message);}})();"></div>
+
+<script>
+let stateCurrentViewMode = 'grid';
+let globalLibraryDataset = [];
+let internalLightboxImageTrack = [];
+let internalLightboxPointer = 0;
+
+// RUN TIME ENGINE INITIALIZER
+window.addEventListener('DOMContentLoaded', () => {
+    const rawCode = document.getElementById('bookmarklet-raw-payload').getAttribute('data-code');
+    document.getElementById('payload-bookmarklet-link').href = rawCode;
+    
+    // Auto-copy helper strategico
+    navigator.clipboard.writeText(rawCode).catch(() => {});
+});
+
+function focusRigidStepFlow() {
+    document.getElementById('anchored-step-flow').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* INTERACTION STATE METRIC FLOW CONTROL */
+function shiftVisualCardState(step, targetState, statusText) {
+    const card = document.getElementById(`dom-card-step${step}`);
+    const pill = document.getElementById(`pill-step${step}`);
+    
+    if(!card) return;
+    
+    card.className = `step-card state-${targetState}`;
+    pill.innerText = targetState.charAt(0).toUpperCase() + targetState.slice(1);
+    
+    if(step === 1 && targetState === 'done') {
+        document.getElementById('dot-step1').innerText = "✔";
+        document.getElementById('txt-step1').innerText = "Bookmarklet saved";
+    }
+}
+
+function triggerSystemError(type) {
+    const space = document.getElementById('global-error-banner');
+    const title = document.getElementById('error-card-title');
+    const msg = document.getElementById('error-card-msg');
+    
+    space.style.display = 'block';
+    space.scrollIntoView({ behavior: 'smooth' });
+    
+    if (type === 'bookmarklet_error') {
+        title.innerText = "Helper not detected";
+        msg.innerText = "We couldn’t find the GOG Helper bookmark. Copy bookmarklet again.";
+    } else if (type === 'empty') {
+        title.innerText = "Missing library file";
+        msg.innerText = "Please upload your my_gog_library.json file to continue.";
+    } else if (type === 'invalid') {
+        title.innerText = "Invalid file format";
+        msg.innerText = "This file doesn’t match the expected library format. Download a new library file.";
+    } else if (type === 'gog_waiting') {
+        title.innerText = "Waiting for GOG";
+        msg.innerText = "Make sure you are logged into your GOG account and the helper is active.";
+    }
+}
+
+function dismissSystemError() {
+    document.getElementById('global-error-banner').style.display = 'none';
+}
+
+/* INTERACTION ACTIONS EXECUTORS */
+function executeGogTabRedirection() {
+    shiftVisualCardState(1, 'done');
+    shiftVisualCardState(2, 'active');
+    
+    // Soft waiting detector state
+    setTimeout(() => {
+        if(globalLibraryDataset.length === 0) {
+            triggerSystemError('gog_waiting');
+        }
+    }, 5000);
+
+    window.open("https://www.gog.com/en/account", "_blank");
+}
+
+function processLocalDataUpload(node) {
+    dismissSystemError();
+    const file = node.files[0];
+    if (!file) {
+        triggerSystemError('empty');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const parsed = JSON.parse(e.target.result);
+            if (Array.isArray(parsed)) {
+                globalLibraryDataset = parsed.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
+                
+                shiftVisualCardState(2, 'done');
+                shiftVisualCardState(3, 'done');
+                
+                // Transizione verso la visualizzazione della Galleria Prodotto
+                setTimeout(() => {
+                    displayVisualShowcaseGallery();
+                }, 400);
+            } else {
+                triggerSystemError('invalid');
+            }
+        } catch(err) {
+            triggerSystemError('invalid');
+        }
+    };
+    reader.readAsText(file);
+}
+
+/* DISPLAY INTERFACE ENGINE */
+function displayVisualShowcaseGallery() {
+    document.getElementById('marketing-platform-root').style.display = 'none';
+    document.getElementById('app-gallery-view').style.display = 'block';
+    document.getElementById('sidebar-master-btn').style.display = 'inline-block';
+    
+    document.getElementById('gallery-counter-node').innerText = `${globalLibraryDataset.length} GIOCHI`;
+    
+    // Creazione indice dinamico laterale
+    const ul = document.getElementById('sidebar-ul-nodes');
+    ul.innerHTML = '';
+    globalLibraryDataset.forEach((g, idx) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="#node-card-${idx}" onclick="jumpToFilteredGame('${g.name.replace(/'/g, "\\'")}')">${g.name}</a>`;
+        ul.appendChild(li);
+    });
+
+    renderEngineView();
+}
+
+function renderEngineView() {
+    const grid = document.getElementById('wrapper-grid-layout');
+    const timeline = document.getElementById('wrapper-timeline-layout');
+    const searchString = document.getElementById('search-input-field').value.toLowerCase().trim();
+    
+    grid.innerHTML = '';
+    timeline.innerHTML = '';
+    internalLightboxImageTrack = [];
+
+    const datasetFiltered = globalLibraryDataset.filter(g => g.name && g.name.toLowerCase().includes(searchString));
+
+    datasetFiltered.forEach((game, index) => {
+        // Grid View Build
+        const itemCard = document.createElement('a');
+        itemCard.className = 'game-card-node';
+        itemCard.href = game.url || '#';
+        itemCard.target = '_blank';
+        itemCard.id = `node-card-${index}`;
+        itemCard.innerHTML = `
+            <img src="${game.cover || ''}" loading="lazy" onerror="this.style.opacity='0.1'">
+            <div class="game-card-title">${game.name}</div>
+        `;
+        grid.appendChild(itemCard);
+
+        // Timeline Moodboard Build
+        const rowNode = document.createElement('div');
+        rowNode.className = 'moodboard-row-node';
+        
+        let sliderImgs = '';
+        if (game.screenshots && game.screenshots.length > 0) {
+            game.screenshots.forEach(src => {
+                internalLightboxImageTrack.push(src);
+                const currentPointer = internalLightboxImageTrack.length - 1;
+                sliderImgs += `<img src="${src}" loading="lazy" onclick="openGlobalLightbox(${currentPointer})" onerror="this.style.display='none'">`;
+            });
+        } else {
+            sliderImgs = `<p style="font-size:12px; color:var(--text-muted); font-style:italic;">Nessuno screenshot memorizzato localmente.</p>`;
+        }
+
+        rowNode.innerHTML = `
+            <div><a href="${game.url || '#'}" target="_blank" class="moodboard-title-link">${game.name}</a></div>
+            <div class="moodboard-media-flex">
+                <a href="${game.url || '#'}" target="_blank" class="moodboard-cover-box">
+                    <img src="${game.cover || ''}" loading="lazy" onerror="this.style.opacity='0.1'">
+                </a>
+                <div class="moodboard-slider-track">${sliderImgs}</div>
+            </div>
+        `;
+        timeline.appendChild(rowNode);
+    });
+}
+
+function mutateViewFormat(type) {
+    stateCurrentViewMode = type;
+    document.getElementById('btn-view-grid').classList.toggle('active', type === 'grid');
+    document.getElementById('btn-view-timeline').classList.toggle('active', type === 'timeline');
+    document.getElementById('wrapper-grid-layout').style.display = (type === 'grid') ? 'grid' : 'none';
+    document.getElementById('wrapper-timeline-layout').style.display = (type === 'timeline') ? 'flex' : 'none';
+}
+
+function handleSidebarDisplay(show) {
+    document.getElementById('index-sidebar').classList.toggle('open', show);
+    document.getElementById('sidebar-backdrop').style.display = show ? 'block' : 'none';
+}
+
+function jumpToFilteredGame(title) {
+    handleSidebarDisplay(false);
+    document.getElementById('search-input-field').value = title;
+    renderEngineView();
+}
+
+function resetGalleryFilters() {
+    document.getElementById('search-input-field').value = '';
+    renderEngineView();
+}
+
+function rollTheDiceGame() {
+    if(globalLibraryDataset.length === 0) return;
+    const rngGame = globalLibraryDataset[Math.floor(Math.random() * globalLibraryDataset.length)];
+    document.getElementById('search-input-field').value = rngGame.name;
+    renderEngineView();
+}
+
+function purgeAndHardReset() {
+    if(confirm("Vuoi rimuovere la libreria caricata e tornare alla dashboard principale?")) {
+        globalLibraryDataset = [];
+        document.getElementById('app-gallery-view').style.display = 'none';
+        document.getElementById('sidebar-master-btn').style.display = 'none';
+        
+        shiftVisualCardState(1, 'active');
+        shiftVisualCardState(2, 'idle');
+        shiftVisualCardState(3, 'idle');
+        
+        document.getElementById('marketing-platform-root').style.display = 'block';
+    }
+}
+
+/* LIGHTBOX INTERFACES */
+function openGlobalLightbox(ptr) {
+    internalLightboxPointer = ptr;
+    const source = internalLightboxImageTrack[ptr];
+    if(source) {
+        document.getElementById('lightbox-image-element').src = source;
+        document.getElementById('global-lightbox').style.display = 'flex';
+    }
+}
+function closeGlobalLightbox() { document.getElementById('global-lightbox').style.display = 'none'; }
+function navigateLightbox(dir, ev) {
+    if(ev) ev.stopPropagation();
+    let index = internalLightboxPointer + dir;
+    if(index >= 0 && index < internalLightboxImageTrack.length) {
+        openGlobalLightbox(index);
+    }
+}
+
+/* TEST SUITE INSTANT DEMO DATA */
+function loadInstantDemoContext() {
+    globalLibraryDataset = [
+        {
+            name: "Cyberpunk 2077",
+            url: "https://www.gog.com/en/game/cyberpunk_2077",
+            cover: "https://images-2.gog-statics.com/b5ba805b55050e413008fe58e803c4a229fa1b5cb11b418ad11603ba08fb2fae_392.jpg",
+            screenshots: ["https://images.gog-statics.com/cc5f0a20531d7e40aa7b24421e967d10f644a1e19bcb59bb80008bacdfd43180.jpg"]
+        },
+        {
+            name: "The Witcher 3: Wild Hunt",
+            url: "https://www.gog.com/en/game/the_witcher_3_wild_hunt",
+            cover: "https://images-2.gog-statics.com/62e08e61fb196e8e04b46c2f90a990ec8a571da574d642af58e0a7e6b7d2f948_392.jpg",
+            screenshots: []
+        }
+    ];
+    displayVisualShowcaseGallery();
+}
+
+/* AUTOMATIC COMPILATION EXPORTER */
+function exportStaticGalleryDocument() {
+    const markupSource = document.documentElement.outerHTML;
+    const blob = new Blob([markupSource], { type: "text/html" });
+    const targetLink = document.createElement("a");
+    targetLink.href = URL.createObjectURL(blob);
+    targetLink.download = "My_GOG_Premium_Galaxy.html";
+    document.body.appendChild(targetLink);
+    targetLink.click();
+    document.body.removeChild(targetLink);
+}
+</script>
+</body>
+</html>
